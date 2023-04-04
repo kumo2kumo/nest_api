@@ -1,0 +1,24 @@
+import { Field } from '@nestjs/graphql';
+import { InputType } from '@nestjs/graphql';
+
+@InputType()
+export class ClubMaxAggregateInput {
+
+    @Field(() => Boolean, {nullable:true})
+    id?: true;
+
+    @Field(() => Boolean, {nullable:true})
+    name?: true;
+
+    @Field(() => Boolean, {nullable:true})
+    rankName?: true;
+
+    @Field(() => Boolean, {nullable:true})
+    rankUnit?: true;
+
+    @Field(() => Boolean, {nullable:true})
+    createdAt?: true;
+
+    @Field(() => Boolean, {nullable:true})
+    updatedAt?: true;
+}

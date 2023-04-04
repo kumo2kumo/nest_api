@@ -1,0 +1,28 @@
+{
+  "version": 2,
+  "env": {
+    "DATABASE_URL": "mysql://root:password@133.18.229.30:3306/develop",
+    "JWT_SECRET" : "wmA/FUPzJ4pqEGQhoZABrvy0zJX/IGQDRXMTfLHi6w/XsqVP04NmihoFOY6Iky0xR6Z8sYZi8L462TQAcEWrVuDu6JIXj3CHKCqxnPUWDqR6XbXimYF7YQk1csH/hsx3qG0D1rqfO2D/OXIAXf9yQGTuhdLyXycwnaKpkpArx59vYmYd18W3oADr1c4oPXgUyR1fckxpOoS78Dnl8UIxXKG89AjwluJYByG4yuQBd0arGXkW3j4CYj+C69PBTS8vGHbajkqCH1dSx+PeZj6USY0tomJVExXVXLJDVtwESTLgrOOnBROtlIME74EavQ0nrzatSaHEKz+T9Ff8fjnPxw==",
+    "APP_URL": "http://133.18.229.30",
+    "FROM_MAIL": "info.bagordare@gmail.com",
+    "MAIL_PASSWORD": "aerwrgbkdfunsirs"
+  },
+  "builds": [
+      {
+          "src": "src/main.ts",
+          "use": "@vercel/node"
+      }
+  ],
+  "routes": [
+      {
+          "src": "/(.*)",
+          "dest": "src/main.ts",
+          "methods": [
+              "GET",
+              "POST",
+              "PUT",
+              "DELETE"
+          ]
+      }
+  ]
+}

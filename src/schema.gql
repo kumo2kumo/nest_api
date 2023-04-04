@@ -1,0 +1,6049 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Attendance {
+  id: ID!
+  text: String!
+  status: Int!
+  createdAt: DateTime!
+  updatedAt: DateTime
+  schedule: Schedule!
+  scheduleId: Int!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type ScheduleCount {
+  attendances: Int!
+}
+
+type Schedule {
+  id: ID!
+  activityDay: DateTime!
+  time: String!
+  category: Int!
+  place: String!
+  address: String
+  meetingTime: String!
+  opponent: String
+  matchTime: String
+  createdAt: DateTime!
+  updatedAt: DateTime
+  club: Club!
+  clubId: Int!
+  attendances: [Attendance!]
+  _count: ScheduleCount!
+}
+
+type Member {
+  id: ID!
+  name: String!
+  englishName: String
+  number: Int
+  position: String
+  birthday: String
+  height: String
+  weight: String
+  strongerSide: String
+  from: String
+  occupation: String
+  hobby: String
+  skill: String
+  startBelong: String
+  startSport: String
+  chance: String
+  dream: String
+  goal: String
+  image: String
+  createdAt: DateTime!
+  updatedAt: DateTime
+  user: User!
+  userId: Int!
+  club: Club!
+  clubId: Int!
+}
+
+type Picture {
+  id: ID!
+  base64: String!
+  mainFlag: Boolean!
+  createdAt: DateTime!
+  updatedAt: DateTime
+  pictureReport: PictureReport!
+  pictureReportId: Int!
+}
+
+type PictureReportCount {
+  pictures: Int!
+}
+
+type PictureReport {
+  id: ID!
+  name: String!
+  date: DateTime!
+  createdAt: DateTime!
+  updatedAt: DateTime
+  club: Club!
+  clubId: Int!
+  uploadUser: User!
+  uploadUserId: Int!
+  pictures: [Picture!]
+  _count: PictureReportCount!
+}
+
+type ReportComment {
+  id: ID!
+  comment: String!
+  createdAt: DateTime!
+  updatedAt: DateTime
+  user: User!
+  userId: Int!
+  report: Report!
+  reportId: Int!
+}
+
+type ReportCount {
+  reportComments: Int!
+}
+
+type Report {
+  id: ID!
+  title: String!
+  text: String!
+  date: DateTime!
+  time: String!
+  opponent: String
+  myScore: Int!
+  opponentScore: Int!
+  category: Int!
+  createdAt: DateTime!
+  updatedAt: DateTime
+  club: Club!
+  clubId: Int!
+  uploadUser: User!
+  uploadUserId: Int!
+  reportComments: [ReportComment!]
+  _count: ReportCount!
+}
+
+type ToolOwner {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime
+  tool: Tool!
+  toolId: Int!
+  user: User!
+  userId: Int!
+}
+
+type ToolCount {
+  toolOwners: Int!
+}
+
+type Tool {
+  id: ID!
+  name: String!
+  createdAt: DateTime!
+  updatedAt: DateTime
+  club: Club!
+  clubId: Int!
+  toolOwners: [ToolOwner!]
+  _count: ToolCount!
+}
+
+type UniformOwner {
+  id: ID!
+  number: Int!
+  createdAt: DateTime!
+  updatedAt: DateTime
+  user: User!
+  userId: Int!
+  club: Club!
+  clubId: Int!
+}
+
+type SledComment {
+  id: ID!
+  comment: String!
+  createdAt: DateTime!
+  updatedAt: DateTime
+  sled: Sled!
+  sledId: Int!
+  user: User!
+  userId: Int!
+  updateUser: User
+  updateUserId: Int
+}
+
+type SledCount {
+  sledComments: Int!
+}
+
+type Sled {
+  id: ID!
+  name: String!
+  topic: String!
+  createdAt: DateTime!
+  updatedAt: DateTime
+  club: Club!
+  clubId: Int!
+  sledComments: [SledComment!]
+  _count: SledCount!
+}
+
+type EventFee {
+  id: ID!
+  january: Boolean!
+  february: Boolean!
+  march: Boolean!
+  april: Boolean!
+  may: Boolean!
+  june: Boolean!
+  july: Boolean!
+  august: Boolean!
+  september: Boolean!
+  october: Boolean!
+  november: Boolean!
+  december: Boolean!
+  createdAt: DateTime!
+  updatedAt: DateTime
+  user: User!
+  userId: Int!
+  club: Club!
+  clubId: Int!
+}
+
+type MembershipFee {
+  id: ID!
+  january: Boolean!
+  february: Boolean!
+  march: Boolean!
+  april: Boolean!
+  may: Boolean!
+  june: Boolean!
+  july: Boolean!
+  august: Boolean!
+  september: Boolean!
+  october: Boolean!
+  november: Boolean!
+  december: Boolean!
+  createdAt: DateTime!
+  updatedAt: DateTime
+  user: User!
+  userId: Int!
+  club: Club!
+  clubId: Int!
+}
+
+type ClubCount {
+  users: Int!
+  schedules: Int!
+  members: Int!
+  pictureReports: Int!
+  reports: Int!
+  tools: Int!
+  uniformOwners: Int!
+  sleds: Int!
+  eventFees: Int!
+  membershipFees: Int!
+}
+
+type Club {
+  id: ID!
+  name: String!
+  rankName: String!
+  rankUnit: String!
+  createdAt: DateTime!
+  updatedAt: DateTime
+  users: [User!]
+  schedules: [Schedule!]
+  members: [Member!]
+  pictureReports: [PictureReport!]
+  reports: [Report!]
+  tools: [Tool!]
+  uniformOwners: [UniformOwner!]
+  sleds: [Sled!]
+  eventFees: [EventFee!]
+  membershipFees: [MembershipFee!]
+  _count: ClubCount!
+}
+
+type UserCount {
+  pictureReports: Int!
+  reports: Int!
+  reportComments: Int!
+  tools: Int!
+  uniformOwners: Int!
+  postSledComments: Int!
+  updateSledComments: Int!
+  eventFees: Int!
+  membershipFees: Int!
+}
+
+type User {
+  id: ID!
+
+  """@Validator.@IsEmail()"""
+  email: String!
+  name: String!
+  role: Int!
+  club: Club!
+  clubId: Int!
+  score: Int!
+  assist: Int!
+  countTool: Int!
+  absence: Int!
+  lateness: Int!
+  contactLate: Int!
+  countPicture: Int!
+  countReport: Int!
+  commentLate: Int!
+  insurance: Int!
+  member: Member
+  pictureReports: [PictureReport!]
+  reports: [Report!]
+  reportComments: [ReportComment!]
+  tools: [ToolOwner!]
+  uniformOwners: [UniformOwner!]
+  postSledComments: [SledComment!]
+  updateSledComments: [SledComment!]
+  eventFees: [EventFee!]
+  membershipFees: [MembershipFee!]
+  _count: UserCount!
+}
+
+type LoginResponse {
+  access_token: String!
+  user: User!
+}
+
+type Query {
+  showUser(where: UserWhereInput, orderBy: [UserOrderByWithRelationInput!], cursor: UserWhereUniqueInput, take: Int, skip: Int, distinct: [UserScalarFieldEnum!]): User!
+  indexUsers(where: UserWhereInput, orderBy: [UserOrderByWithRelationInput!], cursor: UserWhereUniqueInput, take: Int, skip: Int, distinct: [UserScalarFieldEnum!]): [User!]!
+  indexClubs(where: ClubWhereInput, orderBy: [ClubOrderByWithRelationInput!], cursor: ClubWhereUniqueInput, take: Int, skip: Int, distinct: [ClubScalarFieldEnum!]): [Club!]!
+  indexReports(where: ReportWhereInput, orderBy: [ReportOrderByWithRelationInput!], cursor: ReportWhereUniqueInput, take: Int, skip: Int, distinct: [ReportScalarFieldEnum!]): [Report!]!
+  indexSchedules(where: ScheduleWhereInput, orderBy: [ScheduleOrderByWithRelationInput!], cursor: ScheduleWhereUniqueInput, take: Int, skip: Int, distinct: [ScheduleScalarFieldEnum!]): [Schedule!]!
+  indexAttendances(where: AttendanceWhereInput, orderBy: [AttendanceOrderByWithRelationInput!], cursor: AttendanceWhereUniqueInput, take: Int, skip: Int, distinct: [AttendanceScalarFieldEnum!]): Attendance!
+  indexMembers(where: MemberWhereInput, orderBy: [MemberOrderByWithRelationInput!], cursor: MemberWhereUniqueInput, take: Int, skip: Int, distinct: [MemberScalarFieldEnum!]): [Member!]!
+  indexTools(where: ToolWhereInput, orderBy: [ToolOrderByWithRelationInput!], cursor: ToolWhereUniqueInput, take: Int, skip: Int, distinct: [ToolScalarFieldEnum!]): [Tool!]!
+  indexToolOwners(where: ToolOwnerWhereInput, orderBy: [ToolOwnerOrderByWithRelationInput!], cursor: ToolOwnerWhereUniqueInput, take: Int, skip: Int, distinct: [ToolOwnerScalarFieldEnum!]): [ToolOwner!]!
+  indexEventFees(where: EventFeeWhereInput, orderBy: [EventFeeOrderByWithRelationInput!], cursor: EventFeeWhereUniqueInput, take: Int, skip: Int, distinct: [EventFeeScalarFieldEnum!]): [EventFee!]!
+  indexMembershipFees(where: MembershipFeeWhereInput, orderBy: [MembershipFeeOrderByWithRelationInput!], cursor: MembershipFeeWhereUniqueInput, take: Int, skip: Int, distinct: [MembershipFeeScalarFieldEnum!]): [MembershipFee!]!
+  indexUniformOwners(where: UniformOwnerWhereInput, orderBy: [UniformOwnerOrderByWithRelationInput!], cursor: UniformOwnerWhereUniqueInput, take: Int, skip: Int, distinct: [UniformOwnerScalarFieldEnum!]): [UniformOwner!]!
+  indexSleds(where: SledWhereInput, orderBy: [SledOrderByWithRelationInput!], cursor: SledWhereUniqueInput, take: Int, skip: Int, distinct: [SledScalarFieldEnum!]): [Sled!]!
+  indexSledComments(where: SledCommentWhereInput, orderBy: [SledCommentOrderByWithRelationInput!], cursor: SledCommentWhereUniqueInput, take: Int, skip: Int, distinct: [SledCommentScalarFieldEnum!]): [SledComment!]!
+  indexPictureReports(where: PictureReportWhereInput, orderBy: [PictureReportOrderByWithRelationInput!], cursor: PictureReportWhereUniqueInput, take: Int, skip: Int, distinct: [PictureReportScalarFieldEnum!]): [PictureReport!]!
+  indexPictures(where: PictureWhereInput, orderBy: [PictureOrderByWithRelationInput!], cursor: PictureWhereUniqueInput, take: Int, skip: Int, distinct: [PictureScalarFieldEnum!]): [Picture!]!
+  indexReportComments(where: ReportCommentWhereInput, orderBy: [ReportCommentOrderByWithRelationInput!], cursor: ReportCommentWhereUniqueInput, take: Int, skip: Int, distinct: [ReportCommentScalarFieldEnum!]): [ReportComment!]!
+}
+
+input UserWhereInput {
+  AND: [UserWhereInput!]
+  OR: [UserWhereInput!]
+  NOT: [UserWhereInput!]
+  id: IntFilter
+  email: StringFilter
+  name: StringFilter
+  password: StringFilter
+  role: IntFilter
+  club: ClubRelationFilter
+  clubId: IntFilter
+  score: IntFilter
+  assist: IntFilter
+  countTool: IntFilter
+  absence: IntFilter
+  lateness: IntFilter
+  contactLate: IntFilter
+  countPicture: IntFilter
+  countReport: IntFilter
+  commentLate: IntFilter
+  insurance: IntFilter
+  member: MemberRelationFilter
+  pictureReports: PictureReportListRelationFilter
+  reports: ReportListRelationFilter
+  reportComments: ReportCommentListRelationFilter
+  tools: ToolOwnerListRelationFilter
+  uniformOwners: UniformOwnerListRelationFilter
+  postSledComments: SledCommentListRelationFilter
+  updateSledComments: SledCommentListRelationFilter
+  eventFees: EventFeeListRelationFilter
+  membershipFees: MembershipFeeListRelationFilter
+}
+
+input IntFilter {
+  equals: Int
+  in: [Int!]
+  notIn: [Int!]
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  not: NestedIntFilter
+}
+
+input NestedIntFilter {
+  equals: Int
+  in: [Int!]
+  notIn: [Int!]
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  not: NestedIntFilter
+}
+
+input StringFilter {
+  equals: String
+  in: [String!]
+  notIn: [String!]
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  contains: String
+  startsWith: String
+  endsWith: String
+  not: NestedStringFilter
+}
+
+input NestedStringFilter {
+  equals: String
+  in: [String!]
+  notIn: [String!]
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  contains: String
+  startsWith: String
+  endsWith: String
+  not: NestedStringFilter
+}
+
+input ClubRelationFilter {
+  is: ClubWhereInput
+  isNot: ClubWhereInput
+}
+
+input ClubWhereInput {
+  AND: [ClubWhereInput!]
+  OR: [ClubWhereInput!]
+  NOT: [ClubWhereInput!]
+  id: IntFilter
+  name: StringFilter
+  rankName: StringFilter
+  rankUnit: StringFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeNullableFilter
+  users: UserListRelationFilter
+  schedules: ScheduleListRelationFilter
+  members: MemberListRelationFilter
+  pictureReports: PictureReportListRelationFilter
+  reports: ReportListRelationFilter
+  tools: ToolListRelationFilter
+  uniformOwners: UniformOwnerListRelationFilter
+  sleds: SledListRelationFilter
+  eventFees: EventFeeListRelationFilter
+  membershipFees: MembershipFeeListRelationFilter
+}
+
+input DateTimeFilter {
+  equals: DateTime
+  in: [DateTime!]
+  notIn: [DateTime!]
+  lt: DateTime
+  lte: DateTime
+  gt: DateTime
+  gte: DateTime
+  not: NestedDateTimeFilter
+}
+
+input NestedDateTimeFilter {
+  equals: DateTime
+  in: [DateTime!]
+  notIn: [DateTime!]
+  lt: DateTime
+  lte: DateTime
+  gt: DateTime
+  gte: DateTime
+  not: NestedDateTimeFilter
+}
+
+input DateTimeNullableFilter {
+  equals: DateTime
+  in: [DateTime!]
+  notIn: [DateTime!]
+  lt: DateTime
+  lte: DateTime
+  gt: DateTime
+  gte: DateTime
+  not: NestedDateTimeNullableFilter
+}
+
+input NestedDateTimeNullableFilter {
+  equals: DateTime
+  in: [DateTime!]
+  notIn: [DateTime!]
+  lt: DateTime
+  lte: DateTime
+  gt: DateTime
+  gte: DateTime
+  not: NestedDateTimeNullableFilter
+}
+
+input UserListRelationFilter {
+  every: UserWhereInput
+  some: UserWhereInput
+  none: UserWhereInput
+}
+
+input ScheduleListRelationFilter {
+  every: ScheduleWhereInput
+  some: ScheduleWhereInput
+  none: ScheduleWhereInput
+}
+
+input ScheduleWhereInput {
+  AND: [ScheduleWhereInput!]
+  OR: [ScheduleWhereInput!]
+  NOT: [ScheduleWhereInput!]
+  id: IntFilter
+  activityDay: DateTimeFilter
+  time: StringFilter
+  category: IntFilter
+  place: StringFilter
+  address: StringNullableFilter
+  meetingTime: StringFilter
+  opponent: StringNullableFilter
+  matchTime: StringNullableFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeNullableFilter
+  club: ClubRelationFilter
+  clubId: IntFilter
+  attendances: AttendanceListRelationFilter
+}
+
+input StringNullableFilter {
+  equals: String
+  in: [String!]
+  notIn: [String!]
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  contains: String
+  startsWith: String
+  endsWith: String
+  not: NestedStringNullableFilter
+}
+
+input NestedStringNullableFilter {
+  equals: String
+  in: [String!]
+  notIn: [String!]
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  contains: String
+  startsWith: String
+  endsWith: String
+  not: NestedStringNullableFilter
+}
+
+input AttendanceListRelationFilter {
+  every: AttendanceWhereInput
+  some: AttendanceWhereInput
+  none: AttendanceWhereInput
+}
+
+input AttendanceWhereInput {
+  AND: [AttendanceWhereInput!]
+  OR: [AttendanceWhereInput!]
+  NOT: [AttendanceWhereInput!]
+  id: IntFilter
+  text: StringFilter
+  status: IntFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeNullableFilter
+  schedule: ScheduleRelationFilter
+  scheduleId: IntFilter
+}
+
+input ScheduleRelationFilter {
+  is: ScheduleWhereInput
+  isNot: ScheduleWhereInput
+}
+
+input MemberListRelationFilter {
+  every: MemberWhereInput
+  some: MemberWhereInput
+  none: MemberWhereInput
+}
+
+input MemberWhereInput {
+  AND: [MemberWhereInput!]
+  OR: [MemberWhereInput!]
+  NOT: [MemberWhereInput!]
+  id: IntFilter
+  name: StringFilter
+  englishName: StringNullableFilter
+  number: IntNullableFilter
+  position: StringNullableFilter
+  birthday: StringNullableFilter
+  height: StringNullableFilter
+  weight: StringNullableFilter
+  strongerSide: StringNullableFilter
+  from: StringNullableFilter
+  occupation: StringNullableFilter
+  hobby: StringNullableFilter
+  skill: StringNullableFilter
+  startBelong: StringNullableFilter
+  startSport: StringNullableFilter
+  chance: StringNullableFilter
+  dream: StringNullableFilter
+  goal: StringNullableFilter
+  image: StringNullableFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeNullableFilter
+  user: UserRelationFilter
+  userId: IntFilter
+  club: ClubRelationFilter
+  clubId: IntFilter
+}
+
+input IntNullableFilter {
+  equals: Int
+  in: [Int!]
+  notIn: [Int!]
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  not: NestedIntNullableFilter
+}
+
+input NestedIntNullableFilter {
+  equals: Int
+  in: [Int!]
+  notIn: [Int!]
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  not: NestedIntNullableFilter
+}
+
+input UserRelationFilter {
+  is: UserWhereInput
+  isNot: UserWhereInput
+}
+
+input PictureReportListRelationFilter {
+  every: PictureReportWhereInput
+  some: PictureReportWhereInput
+  none: PictureReportWhereInput
+}
+
+input PictureReportWhereInput {
+  AND: [PictureReportWhereInput!]
+  OR: [PictureReportWhereInput!]
+  NOT: [PictureReportWhereInput!]
+  id: IntFilter
+  name: StringFilter
+  date: DateTimeFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeNullableFilter
+  club: ClubRelationFilter
+  clubId: IntFilter
+  uploadUser: UserRelationFilter
+  uploadUserId: IntFilter
+  pictures: PictureListRelationFilter
+}
+
+input PictureListRelationFilter {
+  every: PictureWhereInput
+  some: PictureWhereInput
+  none: PictureWhereInput
+}
+
+input PictureWhereInput {
+  AND: [PictureWhereInput!]
+  OR: [PictureWhereInput!]
+  NOT: [PictureWhereInput!]
+  id: IntFilter
+  base64: StringFilter
+  mainFlag: BoolFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeNullableFilter
+  pictureReport: PictureReportRelationFilter
+  pictureReportId: IntFilter
+}
+
+input BoolFilter {
+  equals: Boolean
+  not: NestedBoolFilter
+}
+
+input NestedBoolFilter {
+  equals: Boolean
+  not: NestedBoolFilter
+}
+
+input PictureReportRelationFilter {
+  is: PictureReportWhereInput
+  isNot: PictureReportWhereInput
+}
+
+input ReportListRelationFilter {
+  every: ReportWhereInput
+  some: ReportWhereInput
+  none: ReportWhereInput
+}
+
+input ReportWhereInput {
+  AND: [ReportWhereInput!]
+  OR: [ReportWhereInput!]
+  NOT: [ReportWhereInput!]
+  id: IntFilter
+  title: StringFilter
+  text: StringFilter
+  date: DateTimeFilter
+  time: StringFilter
+  opponent: StringNullableFilter
+  myScore: IntFilter
+  opponentScore: IntFilter
+  category: IntFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeNullableFilter
+  club: ClubRelationFilter
+  clubId: IntFilter
+  uploadUser: UserRelationFilter
+  uploadUserId: IntFilter
+  reportComments: ReportCommentListRelationFilter
+}
+
+input ReportCommentListRelationFilter {
+  every: ReportCommentWhereInput
+  some: ReportCommentWhereInput
+  none: ReportCommentWhereInput
+}
+
+input ReportCommentWhereInput {
+  AND: [ReportCommentWhereInput!]
+  OR: [ReportCommentWhereInput!]
+  NOT: [ReportCommentWhereInput!]
+  id: IntFilter
+  comment: StringFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeNullableFilter
+  user: UserRelationFilter
+  userId: IntFilter
+  report: ReportRelationFilter
+  reportId: IntFilter
+}
+
+input ReportRelationFilter {
+  is: ReportWhereInput
+  isNot: ReportWhereInput
+}
+
+input ToolListRelationFilter {
+  every: ToolWhereInput
+  some: ToolWhereInput
+  none: ToolWhereInput
+}
+
+input ToolWhereInput {
+  AND: [ToolWhereInput!]
+  OR: [ToolWhereInput!]
+  NOT: [ToolWhereInput!]
+  id: IntFilter
+  name: StringFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeNullableFilter
+  club: ClubRelationFilter
+  clubId: IntFilter
+  toolOwners: ToolOwnerListRelationFilter
+}
+
+input ToolOwnerListRelationFilter {
+  every: ToolOwnerWhereInput
+  some: ToolOwnerWhereInput
+  none: ToolOwnerWhereInput
+}
+
+input ToolOwnerWhereInput {
+  AND: [ToolOwnerWhereInput!]
+  OR: [ToolOwnerWhereInput!]
+  NOT: [ToolOwnerWhereInput!]
+  id: IntFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeNullableFilter
+  tool: ToolRelationFilter
+  toolId: IntFilter
+  user: UserRelationFilter
+  userId: IntFilter
+}
+
+input ToolRelationFilter {
+  is: ToolWhereInput
+  isNot: ToolWhereInput
+}
+
+input UniformOwnerListRelationFilter {
+  every: UniformOwnerWhereInput
+  some: UniformOwnerWhereInput
+  none: UniformOwnerWhereInput
+}
+
+input UniformOwnerWhereInput {
+  AND: [UniformOwnerWhereInput!]
+  OR: [UniformOwnerWhereInput!]
+  NOT: [UniformOwnerWhereInput!]
+  id: IntFilter
+  number: IntFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeNullableFilter
+  user: UserRelationFilter
+  userId: IntFilter
+  club: ClubRelationFilter
+  clubId: IntFilter
+}
+
+input SledListRelationFilter {
+  every: SledWhereInput
+  some: SledWhereInput
+  none: SledWhereInput
+}
+
+input SledWhereInput {
+  AND: [SledWhereInput!]
+  OR: [SledWhereInput!]
+  NOT: [SledWhereInput!]
+  id: IntFilter
+  name: StringFilter
+  topic: StringFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeNullableFilter
+  club: ClubRelationFilter
+  clubId: IntFilter
+  sledComments: SledCommentListRelationFilter
+}
+
+input SledCommentListRelationFilter {
+  every: SledCommentWhereInput
+  some: SledCommentWhereInput
+  none: SledCommentWhereInput
+}
+
+input SledCommentWhereInput {
+  AND: [SledCommentWhereInput!]
+  OR: [SledCommentWhereInput!]
+  NOT: [SledCommentWhereInput!]
+  id: IntFilter
+  comment: StringFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeNullableFilter
+  sled: SledRelationFilter
+  sledId: IntFilter
+  user: UserRelationFilter
+  userId: IntFilter
+  updateUser: UserRelationFilter
+  updateUserId: IntNullableFilter
+}
+
+input SledRelationFilter {
+  is: SledWhereInput
+  isNot: SledWhereInput
+}
+
+input EventFeeListRelationFilter {
+  every: EventFeeWhereInput
+  some: EventFeeWhereInput
+  none: EventFeeWhereInput
+}
+
+input EventFeeWhereInput {
+  AND: [EventFeeWhereInput!]
+  OR: [EventFeeWhereInput!]
+  NOT: [EventFeeWhereInput!]
+  id: IntFilter
+  january: BoolFilter
+  february: BoolFilter
+  march: BoolFilter
+  april: BoolFilter
+  may: BoolFilter
+  june: BoolFilter
+  july: BoolFilter
+  august: BoolFilter
+  september: BoolFilter
+  october: BoolFilter
+  november: BoolFilter
+  december: BoolFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeNullableFilter
+  user: UserRelationFilter
+  userId: IntFilter
+  club: ClubRelationFilter
+  clubId: IntFilter
+}
+
+input MembershipFeeListRelationFilter {
+  every: MembershipFeeWhereInput
+  some: MembershipFeeWhereInput
+  none: MembershipFeeWhereInput
+}
+
+input MembershipFeeWhereInput {
+  AND: [MembershipFeeWhereInput!]
+  OR: [MembershipFeeWhereInput!]
+  NOT: [MembershipFeeWhereInput!]
+  id: IntFilter
+  january: BoolFilter
+  february: BoolFilter
+  march: BoolFilter
+  april: BoolFilter
+  may: BoolFilter
+  june: BoolFilter
+  july: BoolFilter
+  august: BoolFilter
+  september: BoolFilter
+  october: BoolFilter
+  november: BoolFilter
+  december: BoolFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeNullableFilter
+  user: UserRelationFilter
+  userId: IntFilter
+  club: ClubRelationFilter
+  clubId: IntFilter
+}
+
+input MemberRelationFilter {
+  is: MemberWhereInput
+  isNot: MemberWhereInput
+}
+
+input UserOrderByWithRelationInput {
+  id: SortOrder
+  email: SortOrder
+  name: SortOrder
+  password: SortOrder
+  role: SortOrder
+  club: ClubOrderByWithRelationInput
+  clubId: SortOrder
+  score: SortOrder
+  assist: SortOrder
+  countTool: SortOrder
+  absence: SortOrder
+  lateness: SortOrder
+  contactLate: SortOrder
+  countPicture: SortOrder
+  countReport: SortOrder
+  commentLate: SortOrder
+  insurance: SortOrder
+  member: MemberOrderByWithRelationInput
+  pictureReports: PictureReportOrderByRelationAggregateInput
+  reports: ReportOrderByRelationAggregateInput
+  reportComments: ReportCommentOrderByRelationAggregateInput
+  tools: ToolOwnerOrderByRelationAggregateInput
+  uniformOwners: UniformOwnerOrderByRelationAggregateInput
+  postSledComments: SledCommentOrderByRelationAggregateInput
+  updateSledComments: SledCommentOrderByRelationAggregateInput
+  eventFees: EventFeeOrderByRelationAggregateInput
+  membershipFees: MembershipFeeOrderByRelationAggregateInput
+}
+
+enum SortOrder {
+  asc
+  desc
+}
+
+input ClubOrderByWithRelationInput {
+  id: SortOrder
+  name: SortOrder
+  rankName: SortOrder
+  rankUnit: SortOrder
+  createdAt: SortOrder
+  updatedAt: SortOrder
+  users: UserOrderByRelationAggregateInput
+  schedules: ScheduleOrderByRelationAggregateInput
+  members: MemberOrderByRelationAggregateInput
+  pictureReports: PictureReportOrderByRelationAggregateInput
+  reports: ReportOrderByRelationAggregateInput
+  tools: ToolOrderByRelationAggregateInput
+  uniformOwners: UniformOwnerOrderByRelationAggregateInput
+  sleds: SledOrderByRelationAggregateInput
+  eventFees: EventFeeOrderByRelationAggregateInput
+  membershipFees: MembershipFeeOrderByRelationAggregateInput
+}
+
+input UserOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input ScheduleOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input MemberOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input PictureReportOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input ReportOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input ToolOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input UniformOwnerOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input SledOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input EventFeeOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input MembershipFeeOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input MemberOrderByWithRelationInput {
+  id: SortOrder
+  name: SortOrder
+  englishName: SortOrder
+  number: SortOrder
+  position: SortOrder
+  birthday: SortOrder
+  height: SortOrder
+  weight: SortOrder
+  strongerSide: SortOrder
+  from: SortOrder
+  occupation: SortOrder
+  hobby: SortOrder
+  skill: SortOrder
+  startBelong: SortOrder
+  startSport: SortOrder
+  chance: SortOrder
+  dream: SortOrder
+  goal: SortOrder
+  image: SortOrder
+  createdAt: SortOrder
+  updatedAt: SortOrder
+  user: UserOrderByWithRelationInput
+  userId: SortOrder
+  club: ClubOrderByWithRelationInput
+  clubId: SortOrder
+}
+
+input ReportCommentOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input ToolOwnerOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input SledCommentOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input UserWhereUniqueInput {
+  id: Int
+  email_clubId: UserEmailClubIdCompoundUniqueInput
+}
+
+input UserEmailClubIdCompoundUniqueInput {
+  email: String!
+  clubId: Int!
+}
+
+enum UserScalarFieldEnum {
+  id
+  email
+  name
+  password
+  role
+  createdAt
+  updatedAt
+  clubId
+  score
+  assist
+  countTool
+  absence
+  lateness
+  contactLate
+  countPicture
+  countReport
+  commentLate
+  insurance
+}
+
+input ClubWhereUniqueInput {
+  id: Int
+}
+
+enum ClubScalarFieldEnum {
+  id
+  name
+  rankName
+  rankUnit
+  createdAt
+  updatedAt
+}
+
+input ReportOrderByWithRelationInput {
+  id: SortOrder
+  title: SortOrder
+  text: SortOrder
+  date: SortOrder
+  time: SortOrder
+  opponent: SortOrder
+  myScore: SortOrder
+  opponentScore: SortOrder
+  category: SortOrder
+  createdAt: SortOrder
+  updatedAt: SortOrder
+  club: ClubOrderByWithRelationInput
+  clubId: SortOrder
+  uploadUser: UserOrderByWithRelationInput
+  uploadUserId: SortOrder
+  reportComments: ReportCommentOrderByRelationAggregateInput
+}
+
+input ReportWhereUniqueInput {
+  id: Int
+}
+
+enum ReportScalarFieldEnum {
+  id
+  title
+  text
+  date
+  time
+  opponent
+  myScore
+  opponentScore
+  category
+  createdAt
+  updatedAt
+  clubId
+  uploadUserId
+}
+
+input ScheduleOrderByWithRelationInput {
+  id: SortOrder
+  activityDay: SortOrder
+  time: SortOrder
+  category: SortOrder
+  place: SortOrder
+  address: SortOrder
+  meetingTime: SortOrder
+  opponent: SortOrder
+  matchTime: SortOrder
+  createdAt: SortOrder
+  updatedAt: SortOrder
+  club: ClubOrderByWithRelationInput
+  clubId: SortOrder
+  attendances: AttendanceOrderByRelationAggregateInput
+}
+
+input AttendanceOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input ScheduleWhereUniqueInput {
+  id: Int
+}
+
+enum ScheduleScalarFieldEnum {
+  id
+  activityDay
+  time
+  category
+  place
+  address
+  meetingTime
+  opponent
+  matchTime
+  createdAt
+  updatedAt
+  clubId
+}
+
+input AttendanceOrderByWithRelationInput {
+  id: SortOrder
+  text: SortOrder
+  status: SortOrder
+  createdAt: SortOrder
+  updatedAt: SortOrder
+  schedule: ScheduleOrderByWithRelationInput
+  scheduleId: SortOrder
+}
+
+input AttendanceWhereUniqueInput {
+  id: Int
+}
+
+enum AttendanceScalarFieldEnum {
+  id
+  text
+  status
+  createdAt
+  updatedAt
+  scheduleId
+}
+
+input MemberWhereUniqueInput {
+  id: Int
+  userId: Int
+}
+
+enum MemberScalarFieldEnum {
+  id
+  name
+  englishName
+  number
+  position
+  birthday
+  height
+  weight
+  strongerSide
+  from
+  occupation
+  hobby
+  skill
+  startBelong
+  startSport
+  chance
+  dream
+  goal
+  image
+  createdAt
+  updatedAt
+  userId
+  clubId
+}
+
+input ToolOrderByWithRelationInput {
+  id: SortOrder
+  name: SortOrder
+  createdAt: SortOrder
+  updatedAt: SortOrder
+  club: ClubOrderByWithRelationInput
+  clubId: SortOrder
+  toolOwners: ToolOwnerOrderByRelationAggregateInput
+}
+
+input ToolWhereUniqueInput {
+  id: Int
+}
+
+enum ToolScalarFieldEnum {
+  id
+  name
+  createdAt
+  updatedAt
+  clubId
+}
+
+input ToolOwnerOrderByWithRelationInput {
+  id: SortOrder
+  createdAt: SortOrder
+  updatedAt: SortOrder
+  tool: ToolOrderByWithRelationInput
+  toolId: SortOrder
+  user: UserOrderByWithRelationInput
+  userId: SortOrder
+}
+
+input ToolOwnerWhereUniqueInput {
+  id: Int
+}
+
+enum ToolOwnerScalarFieldEnum {
+  id
+  createdAt
+  updatedAt
+  toolId
+  userId
+}
+
+input EventFeeOrderByWithRelationInput {
+  id: SortOrder
+  january: SortOrder
+  february: SortOrder
+  march: SortOrder
+  april: SortOrder
+  may: SortOrder
+  june: SortOrder
+  july: SortOrder
+  august: SortOrder
+  september: SortOrder
+  october: SortOrder
+  november: SortOrder
+  december: SortOrder
+  createdAt: SortOrder
+  updatedAt: SortOrder
+  user: UserOrderByWithRelationInput
+  userId: SortOrder
+  club: ClubOrderByWithRelationInput
+  clubId: SortOrder
+}
+
+input EventFeeWhereUniqueInput {
+  id: Int
+}
+
+enum EventFeeScalarFieldEnum {
+  id
+  january
+  february
+  march
+  april
+  may
+  june
+  july
+  august
+  september
+  october
+  november
+  december
+  createdAt
+  updatedAt
+  userId
+  clubId
+}
+
+input MembershipFeeOrderByWithRelationInput {
+  id: SortOrder
+  january: SortOrder
+  february: SortOrder
+  march: SortOrder
+  april: SortOrder
+  may: SortOrder
+  june: SortOrder
+  july: SortOrder
+  august: SortOrder
+  september: SortOrder
+  october: SortOrder
+  november: SortOrder
+  december: SortOrder
+  createdAt: SortOrder
+  updatedAt: SortOrder
+  user: UserOrderByWithRelationInput
+  userId: SortOrder
+  club: ClubOrderByWithRelationInput
+  clubId: SortOrder
+}
+
+input MembershipFeeWhereUniqueInput {
+  id: Int
+}
+
+enum MembershipFeeScalarFieldEnum {
+  id
+  january
+  february
+  march
+  april
+  may
+  june
+  july
+  august
+  september
+  october
+  november
+  december
+  createdAt
+  updatedAt
+  userId
+  clubId
+}
+
+input UniformOwnerOrderByWithRelationInput {
+  id: SortOrder
+  number: SortOrder
+  createdAt: SortOrder
+  updatedAt: SortOrder
+  user: UserOrderByWithRelationInput
+  userId: SortOrder
+  club: ClubOrderByWithRelationInput
+  clubId: SortOrder
+}
+
+input UniformOwnerWhereUniqueInput {
+  id: Int
+}
+
+enum UniformOwnerScalarFieldEnum {
+  id
+  number
+  createdAt
+  updatedAt
+  userId
+  clubId
+}
+
+input SledOrderByWithRelationInput {
+  id: SortOrder
+  name: SortOrder
+  topic: SortOrder
+  createdAt: SortOrder
+  updatedAt: SortOrder
+  club: ClubOrderByWithRelationInput
+  clubId: SortOrder
+  sledComments: SledCommentOrderByRelationAggregateInput
+}
+
+input SledWhereUniqueInput {
+  id: Int
+}
+
+enum SledScalarFieldEnum {
+  id
+  name
+  topic
+  createdAt
+  updatedAt
+  clubId
+}
+
+input SledCommentOrderByWithRelationInput {
+  id: SortOrder
+  comment: SortOrder
+  createdAt: SortOrder
+  updatedAt: SortOrder
+  sled: SledOrderByWithRelationInput
+  sledId: SortOrder
+  user: UserOrderByWithRelationInput
+  userId: SortOrder
+  updateUser: UserOrderByWithRelationInput
+  updateUserId: SortOrder
+}
+
+input SledCommentWhereUniqueInput {
+  id: Int
+}
+
+enum SledCommentScalarFieldEnum {
+  id
+  comment
+  createdAt
+  updatedAt
+  sledId
+  userId
+  updateUserId
+}
+
+input PictureReportOrderByWithRelationInput {
+  id: SortOrder
+  name: SortOrder
+  date: SortOrder
+  createdAt: SortOrder
+  updatedAt: SortOrder
+  club: ClubOrderByWithRelationInput
+  clubId: SortOrder
+  uploadUser: UserOrderByWithRelationInput
+  uploadUserId: SortOrder
+  pictures: PictureOrderByRelationAggregateInput
+}
+
+input PictureOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input PictureReportWhereUniqueInput {
+  id: Int
+}
+
+enum PictureReportScalarFieldEnum {
+  id
+  name
+  date
+  createdAt
+  updatedAt
+  clubId
+  uploadUserId
+}
+
+input PictureOrderByWithRelationInput {
+  id: SortOrder
+  base64: SortOrder
+  mainFlag: SortOrder
+  createdAt: SortOrder
+  updatedAt: SortOrder
+  pictureReport: PictureReportOrderByWithRelationInput
+  pictureReportId: SortOrder
+}
+
+input PictureWhereUniqueInput {
+  id: Int
+}
+
+enum PictureScalarFieldEnum {
+  id
+  base64
+  mainFlag
+  createdAt
+  updatedAt
+  pictureReportId
+}
+
+input ReportCommentOrderByWithRelationInput {
+  id: SortOrder
+  comment: SortOrder
+  createdAt: SortOrder
+  updatedAt: SortOrder
+  user: UserOrderByWithRelationInput
+  userId: SortOrder
+  report: ReportOrderByWithRelationInput
+  reportId: SortOrder
+}
+
+input ReportCommentWhereUniqueInput {
+  id: Int
+}
+
+enum ReportCommentScalarFieldEnum {
+  id
+  comment
+  createdAt
+  updatedAt
+  userId
+  reportId
+}
+
+type Mutation {
+  login(loginUserInput: LoginUserInput!): LoginResponse!
+  createUser(data: UserCreateInput!): User!
+  updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User!
+  createClub(data: ClubCreateInput!): Club!
+  updateClub(data: ClubUpdateInput!, where: ClubWhereUniqueInput!): Club!
+  deleteClub(where: ClubWhereUniqueInput!): Club!
+  createReport(data: ReportCreateInput!): Report!
+  updateReport(data: ReportUpdateInput!, where: ReportWhereUniqueInput!): Report!
+  deleteReport(where: ReportWhereUniqueInput!): Report!
+  createSchedule(data: ScheduleCreateInput!): Schedule!
+  updateSchedule(data: ScheduleUpdateInput!, where: ScheduleWhereUniqueInput!): Schedule!
+  deleteSchedule(where: ScheduleWhereUniqueInput!): Schedule!
+  createAttendance(data: AttendanceCreateInput!): Attendance!
+  updateAttendance(data: AttendanceUpdateInput!, where: AttendanceWhereUniqueInput!): Attendance!
+  deleteAttendance(where: AttendanceWhereUniqueInput!): Attendance!
+  createMember(data: MemberCreateInput!): Member!
+  updateMember(data: MemberUpdateInput!, where: MemberWhereUniqueInput!): Member!
+  deleteMember(where: MemberWhereUniqueInput!): Member!
+  createTool(data: ToolCreateInput!): Tool!
+  deleteTool(where: ToolWhereUniqueInput!): Tool!
+  createToolOwner(data: ToolOwnerCreateInput!): ToolOwner!
+  updateToolOwner(data: ToolOwnerUpdateInput!, where: ToolOwnerWhereUniqueInput!): ToolOwner!
+  createEventFee(data: EventFeeCreateInput!): EventFee!
+  updateEventFee(data: EventFeeUpdateInput!, where: EventFeeWhereUniqueInput!): EventFee!
+  createMembershipFee(data: MembershipFeeCreateInput!): MembershipFee!
+  updateMembershipFee(data: MembershipFeeUpdateInput!, where: MembershipFeeWhereUniqueInput!): MembershipFee!
+  createUniformOwner(data: UniformOwnerCreateInput!): UniformOwner!
+  updateUniformOwner(data: UniformOwnerUpdateInput!, where: UniformOwnerWhereUniqueInput!): UniformOwner!
+  createSled(data: SledCreateInput!): Sled!
+  updateSled(data: SledUpdateInput!, where: SledWhereUniqueInput!): Sled!
+  deleteSled(where: SledWhereUniqueInput!): Sled!
+  createSledComment(data: SledCommentCreateInput!): SledComment!
+  updateSledComment(data: SledCommentUpdateInput!, where: SledCommentWhereUniqueInput!): SledComment!
+  createPictureReport(data: PictureReportCreateInput!): PictureReport!
+  updatePictureReport(data: PictureReportUpdateInput!, where: PictureReportWhereUniqueInput!): PictureReport!
+  deletePictureReport(where: PictureReportWhereUniqueInput!): PictureReport!
+  createPicture(data: PictureCreateInput!): Picture!
+  updatePicture(data: PictureUpdateInput!, where: PictureWhereUniqueInput!): Picture!
+  deletePicture(where: PictureWhereUniqueInput!): Picture!
+  createReportComment(data: ReportCommentCreateInput!): ReportComment!
+  updateReportComment(data: ReportCommentUpdateInput!, where: ReportCommentWhereUniqueInput!): ReportComment!
+  deleteReportComment(where: ReportCommentWhereUniqueInput!): ReportComment!
+}
+
+input LoginUserInput {
+  email: String!
+  password: String!
+  clubId: Int!
+}
+
+input UserCreateInput {
+  email: String!
+  name: String!
+  password: String!
+  role: Int!
+  club: Int!
+}
+
+input UserUpdateInput {
+  email: StringFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  password: StringFieldUpdateOperationsInput
+  role: IntFieldUpdateOperationsInput
+  club: ClubUpdateOneRequiredWithoutUsersInput
+  score: IntFieldUpdateOperationsInput
+  assist: IntFieldUpdateOperationsInput
+  countTool: IntFieldUpdateOperationsInput
+  absence: IntFieldUpdateOperationsInput
+  lateness: IntFieldUpdateOperationsInput
+  contactLate: IntFieldUpdateOperationsInput
+  countPicture: IntFieldUpdateOperationsInput
+  countReport: IntFieldUpdateOperationsInput
+  commentLate: IntFieldUpdateOperationsInput
+  insurance: IntFieldUpdateOperationsInput
+  member: MemberUpdateOneWithoutUserInput
+  pictureReports: PictureReportUpdateManyWithoutUploadUserInput
+  reports: ReportUpdateManyWithoutUploadUserInput
+  reportComments: ReportCommentUpdateManyWithoutUserInput
+  tools: ToolOwnerUpdateManyWithoutUserInput
+  uniformOwners: UniformOwnerUpdateManyWithoutUserInput
+  postSledComments: SledCommentUpdateManyWithoutUserInput
+  updateSledComments: SledCommentUpdateManyWithoutUpdateUserInput
+  eventFees: EventFeeUpdateManyWithoutUserInput
+  membershipFees: MembershipFeeUpdateManyWithoutUserInput
+}
+
+input StringFieldUpdateOperationsInput {
+  set: String
+}
+
+input IntFieldUpdateOperationsInput {
+  set: Int
+  increment: Int
+  decrement: Int
+  multiply: Int
+  divide: Int
+}
+
+input ClubUpdateOneRequiredWithoutUsersInput {
+  create: ClubCreateWithoutUsersInput
+  connectOrCreate: ClubCreateOrConnectWithoutUsersInput
+  upsert: ClubUpsertWithoutUsersInput
+  connect: ClubWhereUniqueInput
+  update: ClubUpdateWithoutUsersInput
+}
+
+input ClubCreateWithoutUsersInput {
+  name: String!
+  rankName: String!
+  rankUnit: String!
+  createdAt: DateTime
+  updatedAt: DateTime
+  schedules: ScheduleCreateNestedManyWithoutClubInput
+  members: MemberCreateNestedManyWithoutClubInput
+  pictureReports: PictureReportCreateNestedManyWithoutClubInput
+  reports: ReportCreateNestedManyWithoutClubInput
+  tools: ToolCreateNestedManyWithoutClubInput
+  uniformOwners: UniformOwnerCreateNestedManyWithoutClubInput
+  sleds: SledCreateNestedManyWithoutClubInput
+  eventFees: EventFeeCreateNestedManyWithoutClubInput
+  membershipFees: MembershipFeeCreateNestedManyWithoutClubInput
+}
+
+input ScheduleCreateNestedManyWithoutClubInput {
+  create: [ScheduleCreateWithoutClubInput!]
+  connectOrCreate: [ScheduleCreateOrConnectWithoutClubInput!]
+  createMany: ScheduleCreateManyClubInputEnvelope
+  connect: [ScheduleWhereUniqueInput!]
+}
+
+input ScheduleCreateWithoutClubInput {
+  activityDay: DateTime!
+  time: String!
+  category: Int!
+  place: String!
+  address: String
+  meetingTime: String!
+  opponent: String
+  matchTime: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  attendances: AttendanceCreateNestedManyWithoutScheduleInput
+}
+
+input AttendanceCreateNestedManyWithoutScheduleInput {
+  create: [AttendanceCreateWithoutScheduleInput!]
+  connectOrCreate: [AttendanceCreateOrConnectWithoutScheduleInput!]
+  createMany: AttendanceCreateManyScheduleInputEnvelope
+  connect: [AttendanceWhereUniqueInput!]
+}
+
+input AttendanceCreateWithoutScheduleInput {
+  text: String!
+  status: Int!
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+input AttendanceCreateOrConnectWithoutScheduleInput {
+  where: AttendanceWhereUniqueInput!
+  create: AttendanceCreateWithoutScheduleInput!
+}
+
+input AttendanceCreateManyScheduleInputEnvelope {
+  data: [AttendanceCreateManyScheduleInput!]!
+  skipDuplicates: Boolean
+}
+
+input AttendanceCreateManyScheduleInput {
+  id: Int
+  text: String!
+  status: Int!
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+input ScheduleCreateOrConnectWithoutClubInput {
+  where: ScheduleWhereUniqueInput!
+  create: ScheduleCreateWithoutClubInput!
+}
+
+input ScheduleCreateManyClubInputEnvelope {
+  data: [ScheduleCreateManyClubInput!]!
+  skipDuplicates: Boolean
+}
+
+input ScheduleCreateManyClubInput {
+  id: Int
+  activityDay: DateTime!
+  time: String!
+  category: Int!
+  place: String!
+  address: String
+  meetingTime: String!
+  opponent: String
+  matchTime: String
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+input MemberCreateNestedManyWithoutClubInput {
+  create: [MemberCreateWithoutClubInput!]
+  connectOrCreate: [MemberCreateOrConnectWithoutClubInput!]
+  createMany: MemberCreateManyClubInputEnvelope
+  connect: [MemberWhereUniqueInput!]
+}
+
+input MemberCreateWithoutClubInput {
+  name: String!
+  englishName: String
+  number: Int
+  position: String
+  birthday: String
+  height: String
+  weight: String
+  strongerSide: String
+  from: String
+  occupation: String
+  hobby: String
+  skill: String
+  startBelong: String
+  startSport: String
+  chance: String
+  dream: String
+  goal: String
+  image: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  user: UserCreateNestedOneWithoutMemberInput!
+}
+
+input UserCreateNestedOneWithoutMemberInput {
+  create: UserCreateWithoutMemberInput
+  connectOrCreate: UserCreateOrConnectWithoutMemberInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateWithoutMemberInput {
+  email: String!
+  name: String!
+  password: String!
+  role: Int
+  club: ClubCreateNestedOneWithoutUsersInput!
+  score: Int
+  assist: Int
+  countTool: Int
+  absence: Int
+  lateness: Int
+  contactLate: Int
+  countPicture: Int
+  countReport: Int
+  commentLate: Int
+  insurance: Int
+  pictureReports: PictureReportCreateNestedManyWithoutUploadUserInput
+  reports: ReportCreateNestedManyWithoutUploadUserInput
+  reportComments: ReportCommentCreateNestedManyWithoutUserInput
+  tools: ToolOwnerCreateNestedManyWithoutUserInput
+  uniformOwners: UniformOwnerCreateNestedManyWithoutUserInput
+  postSledComments: SledCommentCreateNestedManyWithoutUserInput
+  updateSledComments: SledCommentCreateNestedManyWithoutUpdateUserInput
+  eventFees: EventFeeCreateNestedManyWithoutUserInput
+  membershipFees: MembershipFeeCreateNestedManyWithoutUserInput
+}
+
+input ClubCreateNestedOneWithoutUsersInput {
+  create: ClubCreateWithoutUsersInput
+  connectOrCreate: ClubCreateOrConnectWithoutUsersInput
+  connect: ClubWhereUniqueInput
+}
+
+input ClubCreateOrConnectWithoutUsersInput {
+  where: ClubWhereUniqueInput!
+  create: ClubCreateWithoutUsersInput!
+}
+
+input PictureReportCreateNestedManyWithoutUploadUserInput {
+  create: [PictureReportCreateWithoutUploadUserInput!]
+  connectOrCreate: [PictureReportCreateOrConnectWithoutUploadUserInput!]
+  createMany: PictureReportCreateManyUploadUserInputEnvelope
+  connect: [PictureReportWhereUniqueInput!]
+}
+
+input PictureReportCreateWithoutUploadUserInput {
+  name: String!
+  date: DateTime!
+  createdAt: DateTime
+  updatedAt: DateTime
+  club: ClubCreateNestedOneWithoutPictureReportsInput!
+  pictures: PictureCreateNestedManyWithoutPictureReportInput
+}
+
+input ClubCreateNestedOneWithoutPictureReportsInput {
+  create: ClubCreateWithoutPictureReportsInput
+  connectOrCreate: ClubCreateOrConnectWithoutPictureReportsInput
+  connect: ClubWhereUniqueInput
+}
+
+input ClubCreateWithoutPictureReportsInput {
+  name: String!
+  rankName: String!
+  rankUnit: String!
+  createdAt: DateTime
+  updatedAt: DateTime
+  users: UserCreateNestedManyWithoutClubInput
+  schedules: ScheduleCreateNestedManyWithoutClubInput
+  members: MemberCreateNestedManyWithoutClubInput
+  reports: ReportCreateNestedManyWithoutClubInput
+  tools: ToolCreateNestedManyWithoutClubInput
+  uniformOwners: UniformOwnerCreateNestedManyWithoutClubInput
+  sleds: SledCreateNestedManyWithoutClubInput
+  eventFees: EventFeeCreateNestedManyWithoutClubInput
+  membershipFees: MembershipFeeCreateNestedManyWithoutClubInput
+}
+
+input UserCreateNestedManyWithoutClubInput {
+  create: [UserCreateWithoutClubInput!]
+  connectOrCreate: [UserCreateOrConnectWithoutClubInput!]
+  createMany: UserCreateManyClubInputEnvelope
+  connect: [UserWhereUniqueInput!]
+}
+
+input UserCreateWithoutClubInput {
+  email: String!
+  name: String!
+  password: String!
+  role: Int
+  score: Int
+  assist: Int
+  countTool: Int
+  absence: Int
+  lateness: Int
+  contactLate: Int
+  countPicture: Int
+  countReport: Int
+  commentLate: Int
+  insurance: Int
+  member: MemberCreateNestedOneWithoutUserInput
+  pictureReports: PictureReportCreateNestedManyWithoutUploadUserInput
+  reports: ReportCreateNestedManyWithoutUploadUserInput
+  reportComments: ReportCommentCreateNestedManyWithoutUserInput
+  tools: ToolOwnerCreateNestedManyWithoutUserInput
+  uniformOwners: UniformOwnerCreateNestedManyWithoutUserInput
+  postSledComments: SledCommentCreateNestedManyWithoutUserInput
+  updateSledComments: SledCommentCreateNestedManyWithoutUpdateUserInput
+  eventFees: EventFeeCreateNestedManyWithoutUserInput
+  membershipFees: MembershipFeeCreateNestedManyWithoutUserInput
+}
+
+input MemberCreateNestedOneWithoutUserInput {
+  create: MemberCreateWithoutUserInput
+  connectOrCreate: MemberCreateOrConnectWithoutUserInput
+  connect: MemberWhereUniqueInput
+}
+
+input MemberCreateWithoutUserInput {
+  name: String!
+  englishName: String
+  number: Int
+  position: String
+  birthday: String
+  height: String
+  weight: String
+  strongerSide: String
+  from: String
+  occupation: String
+  hobby: String
+  skill: String
+  startBelong: String
+  startSport: String
+  chance: String
+  dream: String
+  goal: String
+  image: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  club: ClubCreateNestedOneWithoutMembersInput!
+}
+
+input ClubCreateNestedOneWithoutMembersInput {
+  create: ClubCreateWithoutMembersInput
+  connectOrCreate: ClubCreateOrConnectWithoutMembersInput
+  connect: ClubWhereUniqueInput
+}
+
+input ClubCreateWithoutMembersInput {
+  name: String!
+  rankName: String!
+  rankUnit: String!
+  createdAt: DateTime
+  updatedAt: DateTime
+  users: UserCreateNestedManyWithoutClubInput
+  schedules: ScheduleCreateNestedManyWithoutClubInput
+  pictureReports: PictureReportCreateNestedManyWithoutClubInput
+  reports: ReportCreateNestedManyWithoutClubInput
+  tools: ToolCreateNestedManyWithoutClubInput
+  uniformOwners: UniformOwnerCreateNestedManyWithoutClubInput
+  sleds: SledCreateNestedManyWithoutClubInput
+  eventFees: EventFeeCreateNestedManyWithoutClubInput
+  membershipFees: MembershipFeeCreateNestedManyWithoutClubInput
+}
+
+input PictureReportCreateNestedManyWithoutClubInput {
+  create: [PictureReportCreateWithoutClubInput!]
+  connectOrCreate: [PictureReportCreateOrConnectWithoutClubInput!]
+  createMany: PictureReportCreateManyClubInputEnvelope
+  connect: [PictureReportWhereUniqueInput!]
+}
+
+input PictureReportCreateWithoutClubInput {
+  name: String!
+  date: DateTime!
+  createdAt: DateTime
+  updatedAt: DateTime
+  uploadUser: UserCreateNestedOneWithoutPictureReportsInput!
+  pictures: PictureCreateNestedManyWithoutPictureReportInput
+}
+
+input UserCreateNestedOneWithoutPictureReportsInput {
+  create: UserCreateWithoutPictureReportsInput
+  connectOrCreate: UserCreateOrConnectWithoutPictureReportsInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateWithoutPictureReportsInput {
+  email: String!
+  name: String!
+  password: String!
+  role: Int
+  club: ClubCreateNestedOneWithoutUsersInput!
+  score: Int
+  assist: Int
+  countTool: Int
+  absence: Int
+  lateness: Int
+  contactLate: Int
+  countPicture: Int
+  countReport: Int
+  commentLate: Int
+  insurance: Int
+  member: MemberCreateNestedOneWithoutUserInput
+  reports: ReportCreateNestedManyWithoutUploadUserInput
+  reportComments: ReportCommentCreateNestedManyWithoutUserInput
+  tools: ToolOwnerCreateNestedManyWithoutUserInput
+  uniformOwners: UniformOwnerCreateNestedManyWithoutUserInput
+  postSledComments: SledCommentCreateNestedManyWithoutUserInput
+  updateSledComments: SledCommentCreateNestedManyWithoutUpdateUserInput
+  eventFees: EventFeeCreateNestedManyWithoutUserInput
+  membershipFees: MembershipFeeCreateNestedManyWithoutUserInput
+}
+
+input ReportCreateNestedManyWithoutUploadUserInput {
+  create: [ReportCreateWithoutUploadUserInput!]
+  connectOrCreate: [ReportCreateOrConnectWithoutUploadUserInput!]
+  createMany: ReportCreateManyUploadUserInputEnvelope
+  connect: [ReportWhereUniqueInput!]
+}
+
+input ReportCreateWithoutUploadUserInput {
+  title: String!
+  text: String!
+  date: DateTime!
+  time: String!
+  opponent: String
+  myScore: Int
+  opponentScore: Int
+  category: Int!
+  createdAt: DateTime
+  updatedAt: DateTime
+  club: ClubCreateNestedOneWithoutReportsInput!
+  reportComments: ReportCommentCreateNestedManyWithoutReportInput
+}
+
+input ClubCreateNestedOneWithoutReportsInput {
+  create: ClubCreateWithoutReportsInput
+  connectOrCreate: ClubCreateOrConnectWithoutReportsInput
+  connect: ClubWhereUniqueInput
+}
+
+input ClubCreateWithoutReportsInput {
+  name: String!
+  rankName: String!
+  rankUnit: String!
+  createdAt: DateTime
+  updatedAt: DateTime
+  users: UserCreateNestedManyWithoutClubInput
+  schedules: ScheduleCreateNestedManyWithoutClubInput
+  members: MemberCreateNestedManyWithoutClubInput
+  pictureReports: PictureReportCreateNestedManyWithoutClubInput
+  tools: ToolCreateNestedManyWithoutClubInput
+  uniformOwners: UniformOwnerCreateNestedManyWithoutClubInput
+  sleds: SledCreateNestedManyWithoutClubInput
+  eventFees: EventFeeCreateNestedManyWithoutClubInput
+  membershipFees: MembershipFeeCreateNestedManyWithoutClubInput
+}
+
+input ToolCreateNestedManyWithoutClubInput {
+  create: [ToolCreateWithoutClubInput!]
+  connectOrCreate: [ToolCreateOrConnectWithoutClubInput!]
+  createMany: ToolCreateManyClubInputEnvelope
+  connect: [ToolWhereUniqueInput!]
+}
+
+input ToolCreateWithoutClubInput {
+  name: String!
+  createdAt: DateTime
+  updatedAt: DateTime
+  toolOwners: ToolOwnerCreateNestedManyWithoutToolInput
+}
+
+input ToolOwnerCreateNestedManyWithoutToolInput {
+  create: [ToolOwnerCreateWithoutToolInput!]
+  connectOrCreate: [ToolOwnerCreateOrConnectWithoutToolInput!]
+  createMany: ToolOwnerCreateManyToolInputEnvelope
+  connect: [ToolOwnerWhereUniqueInput!]
+}
+
+input ToolOwnerCreateWithoutToolInput {
+  createdAt: DateTime
+  updatedAt: DateTime
+  user: UserCreateNestedOneWithoutToolsInput!
+}
+
+input UserCreateNestedOneWithoutToolsInput {
+  create: UserCreateWithoutToolsInput
+  connectOrCreate: UserCreateOrConnectWithoutToolsInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateWithoutToolsInput {
+  email: String!
+  name: String!
+  password: String!
+  role: Int
+  club: ClubCreateNestedOneWithoutUsersInput!
+  score: Int
+  assist: Int
+  countTool: Int
+  absence: Int
+  lateness: Int
+  contactLate: Int
+  countPicture: Int
+  countReport: Int
+  commentLate: Int
+  insurance: Int
+  member: MemberCreateNestedOneWithoutUserInput
+  pictureReports: PictureReportCreateNestedManyWithoutUploadUserInput
+  reports: ReportCreateNestedManyWithoutUploadUserInput
+  reportComments: ReportCommentCreateNestedManyWithoutUserInput
+  uniformOwners: UniformOwnerCreateNestedManyWithoutUserInput
+  postSledComments: SledCommentCreateNestedManyWithoutUserInput
+  updateSledComments: SledCommentCreateNestedManyWithoutUpdateUserInput
+  eventFees: EventFeeCreateNestedManyWithoutUserInput
+  membershipFees: MembershipFeeCreateNestedManyWithoutUserInput
+}
+
+input ReportCommentCreateNestedManyWithoutUserInput {
+  create: [ReportCommentCreateWithoutUserInput!]
+  connectOrCreate: [ReportCommentCreateOrConnectWithoutUserInput!]
+  createMany: ReportCommentCreateManyUserInputEnvelope
+  connect: [ReportCommentWhereUniqueInput!]
+}
+
+input ReportCommentCreateWithoutUserInput {
+  comment: String!
+  createdAt: DateTime
+  updatedAt: DateTime
+  report: ReportCreateNestedOneWithoutReportCommentsInput!
+}
+
+input ReportCreateNestedOneWithoutReportCommentsInput {
+  create: ReportCreateWithoutReportCommentsInput
+  connectOrCreate: ReportCreateOrConnectWithoutReportCommentsInput
+  connect: ReportWhereUniqueInput
+}
+
+input ReportCreateWithoutReportCommentsInput {
+  title: String!
+  text: String!
+  date: DateTime!
+  time: String!
+  opponent: String
+  myScore: Int
+  opponentScore: Int
+  category: Int!
+  createdAt: DateTime
+  updatedAt: DateTime
+  club: ClubCreateNestedOneWithoutReportsInput!
+  uploadUser: UserCreateNestedOneWithoutReportsInput!
+}
+
+input UserCreateNestedOneWithoutReportsInput {
+  create: UserCreateWithoutReportsInput
+  connectOrCreate: UserCreateOrConnectWithoutReportsInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateWithoutReportsInput {
+  email: String!
+  name: String!
+  password: String!
+  role: Int
+  club: ClubCreateNestedOneWithoutUsersInput!
+  score: Int
+  assist: Int
+  countTool: Int
+  absence: Int
+  lateness: Int
+  contactLate: Int
+  countPicture: Int
+  countReport: Int
+  commentLate: Int
+  insurance: Int
+  member: MemberCreateNestedOneWithoutUserInput
+  pictureReports: PictureReportCreateNestedManyWithoutUploadUserInput
+  reportComments: ReportCommentCreateNestedManyWithoutUserInput
+  tools: ToolOwnerCreateNestedManyWithoutUserInput
+  uniformOwners: UniformOwnerCreateNestedManyWithoutUserInput
+  postSledComments: SledCommentCreateNestedManyWithoutUserInput
+  updateSledComments: SledCommentCreateNestedManyWithoutUpdateUserInput
+  eventFees: EventFeeCreateNestedManyWithoutUserInput
+  membershipFees: MembershipFeeCreateNestedManyWithoutUserInput
+}
+
+input ToolOwnerCreateNestedManyWithoutUserInput {
+  create: [ToolOwnerCreateWithoutUserInput!]
+  connectOrCreate: [ToolOwnerCreateOrConnectWithoutUserInput!]
+  createMany: ToolOwnerCreateManyUserInputEnvelope
+  connect: [ToolOwnerWhereUniqueInput!]
+}
+
+input ToolOwnerCreateWithoutUserInput {
+  createdAt: DateTime
+  updatedAt: DateTime
+  tool: ToolCreateNestedOneWithoutToolOwnersInput!
+}
+
+input ToolCreateNestedOneWithoutToolOwnersInput {
+  create: ToolCreateWithoutToolOwnersInput
+  connectOrCreate: ToolCreateOrConnectWithoutToolOwnersInput
+  connect: ToolWhereUniqueInput
+}
+
+input ToolCreateWithoutToolOwnersInput {
+  name: String!
+  createdAt: DateTime
+  updatedAt: DateTime
+  club: ClubCreateNestedOneWithoutToolsInput!
+}
+
+input ClubCreateNestedOneWithoutToolsInput {
+  create: ClubCreateWithoutToolsInput
+  connectOrCreate: ClubCreateOrConnectWithoutToolsInput
+  connect: ClubWhereUniqueInput
+}
+
+input ClubCreateWithoutToolsInput {
+  name: String!
+  rankName: String!
+  rankUnit: String!
+  createdAt: DateTime
+  updatedAt: DateTime
+  users: UserCreateNestedManyWithoutClubInput
+  schedules: ScheduleCreateNestedManyWithoutClubInput
+  members: MemberCreateNestedManyWithoutClubInput
+  pictureReports: PictureReportCreateNestedManyWithoutClubInput
+  reports: ReportCreateNestedManyWithoutClubInput
+  uniformOwners: UniformOwnerCreateNestedManyWithoutClubInput
+  sleds: SledCreateNestedManyWithoutClubInput
+  eventFees: EventFeeCreateNestedManyWithoutClubInput
+  membershipFees: MembershipFeeCreateNestedManyWithoutClubInput
+}
+
+input ReportCreateNestedManyWithoutClubInput {
+  create: [ReportCreateWithoutClubInput!]
+  connectOrCreate: [ReportCreateOrConnectWithoutClubInput!]
+  createMany: ReportCreateManyClubInputEnvelope
+  connect: [ReportWhereUniqueInput!]
+}
+
+input ReportCreateWithoutClubInput {
+  title: String!
+  text: String!
+  date: DateTime!
+  time: String!
+  opponent: String
+  myScore: Int
+  opponentScore: Int
+  category: Int!
+  createdAt: DateTime
+  updatedAt: DateTime
+  uploadUser: UserCreateNestedOneWithoutReportsInput!
+  reportComments: ReportCommentCreateNestedManyWithoutReportInput
+}
+
+input ReportCommentCreateNestedManyWithoutReportInput {
+  create: [ReportCommentCreateWithoutReportInput!]
+  connectOrCreate: [ReportCommentCreateOrConnectWithoutReportInput!]
+  createMany: ReportCommentCreateManyReportInputEnvelope
+  connect: [ReportCommentWhereUniqueInput!]
+}
+
+input ReportCommentCreateWithoutReportInput {
+  comment: String!
+  createdAt: DateTime
+  updatedAt: DateTime
+  user: UserCreateNestedOneWithoutReportCommentsInput!
+}
+
+input UserCreateNestedOneWithoutReportCommentsInput {
+  create: UserCreateWithoutReportCommentsInput
+  connectOrCreate: UserCreateOrConnectWithoutReportCommentsInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateWithoutReportCommentsInput {
+  email: String!
+  name: String!
+  password: String!
+  role: Int
+  club: ClubCreateNestedOneWithoutUsersInput!
+  score: Int
+  assist: Int
+  countTool: Int
+  absence: Int
+  lateness: Int
+  contactLate: Int
+  countPicture: Int
+  countReport: Int
+  commentLate: Int
+  insurance: Int
+  member: MemberCreateNestedOneWithoutUserInput
+  pictureReports: PictureReportCreateNestedManyWithoutUploadUserInput
+  reports: ReportCreateNestedManyWithoutUploadUserInput
+  tools: ToolOwnerCreateNestedManyWithoutUserInput
+  uniformOwners: UniformOwnerCreateNestedManyWithoutUserInput
+  postSledComments: SledCommentCreateNestedManyWithoutUserInput
+  updateSledComments: SledCommentCreateNestedManyWithoutUpdateUserInput
+  eventFees: EventFeeCreateNestedManyWithoutUserInput
+  membershipFees: MembershipFeeCreateNestedManyWithoutUserInput
+}
+
+input UniformOwnerCreateNestedManyWithoutUserInput {
+  create: [UniformOwnerCreateWithoutUserInput!]
+  connectOrCreate: [UniformOwnerCreateOrConnectWithoutUserInput!]
+  createMany: UniformOwnerCreateManyUserInputEnvelope
+  connect: [UniformOwnerWhereUniqueInput!]
+}
+
+input UniformOwnerCreateWithoutUserInput {
+  number: Int!
+  createdAt: DateTime
+  updatedAt: DateTime
+  club: ClubCreateNestedOneWithoutUniformOwnersInput!
+}
+
+input ClubCreateNestedOneWithoutUniformOwnersInput {
+  create: ClubCreateWithoutUniformOwnersInput
+  connectOrCreate: ClubCreateOrConnectWithoutUniformOwnersInput
+  connect: ClubWhereUniqueInput
+}
+
+input ClubCreateWithoutUniformOwnersInput {
+  name: String!
+  rankName: String!
+  rankUnit: String!
+  createdAt: DateTime
+  updatedAt: DateTime
+  users: UserCreateNestedManyWithoutClubInput
+  schedules: ScheduleCreateNestedManyWithoutClubInput
+  members: MemberCreateNestedManyWithoutClubInput
+  pictureReports: PictureReportCreateNestedManyWithoutClubInput
+  reports: ReportCreateNestedManyWithoutClubInput
+  tools: ToolCreateNestedManyWithoutClubInput
+  sleds: SledCreateNestedManyWithoutClubInput
+  eventFees: EventFeeCreateNestedManyWithoutClubInput
+  membershipFees: MembershipFeeCreateNestedManyWithoutClubInput
+}
+
+input SledCreateNestedManyWithoutClubInput {
+  create: [SledCreateWithoutClubInput!]
+  connectOrCreate: [SledCreateOrConnectWithoutClubInput!]
+  createMany: SledCreateManyClubInputEnvelope
+  connect: [SledWhereUniqueInput!]
+}
+
+input SledCreateWithoutClubInput {
+  name: String!
+  topic: String!
+  createdAt: DateTime
+  updatedAt: DateTime
+  sledComments: SledCommentCreateNestedManyWithoutSledInput
+}
+
+input SledCommentCreateNestedManyWithoutSledInput {
+  create: [SledCommentCreateWithoutSledInput!]
+  connectOrCreate: [SledCommentCreateOrConnectWithoutSledInput!]
+  createMany: SledCommentCreateManySledInputEnvelope
+  connect: [SledCommentWhereUniqueInput!]
+}
+
+input SledCommentCreateWithoutSledInput {
+  comment: String!
+  createdAt: DateTime
+  updatedAt: DateTime
+  user: UserCreateNestedOneWithoutPostSledCommentsInput!
+  updateUser: UserCreateNestedOneWithoutUpdateSledCommentsInput
+}
+
+input UserCreateNestedOneWithoutPostSledCommentsInput {
+  create: UserCreateWithoutPostSledCommentsInput
+  connectOrCreate: UserCreateOrConnectWithoutPostSledCommentsInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateWithoutPostSledCommentsInput {
+  email: String!
+  name: String!
+  password: String!
+  role: Int
+  club: ClubCreateNestedOneWithoutUsersInput!
+  score: Int
+  assist: Int
+  countTool: Int
+  absence: Int
+  lateness: Int
+  contactLate: Int
+  countPicture: Int
+  countReport: Int
+  commentLate: Int
+  insurance: Int
+  member: MemberCreateNestedOneWithoutUserInput
+  pictureReports: PictureReportCreateNestedManyWithoutUploadUserInput
+  reports: ReportCreateNestedManyWithoutUploadUserInput
+  reportComments: ReportCommentCreateNestedManyWithoutUserInput
+  tools: ToolOwnerCreateNestedManyWithoutUserInput
+  uniformOwners: UniformOwnerCreateNestedManyWithoutUserInput
+  updateSledComments: SledCommentCreateNestedManyWithoutUpdateUserInput
+  eventFees: EventFeeCreateNestedManyWithoutUserInput
+  membershipFees: MembershipFeeCreateNestedManyWithoutUserInput
+}
+
+input SledCommentCreateNestedManyWithoutUpdateUserInput {
+  create: [SledCommentCreateWithoutUpdateUserInput!]
+  connectOrCreate: [SledCommentCreateOrConnectWithoutUpdateUserInput!]
+  createMany: SledCommentCreateManyUpdateUserInputEnvelope
+  connect: [SledCommentWhereUniqueInput!]
+}
+
+input SledCommentCreateWithoutUpdateUserInput {
+  comment: String!
+  createdAt: DateTime
+  updatedAt: DateTime
+  sled: SledCreateNestedOneWithoutSledCommentsInput!
+  user: UserCreateNestedOneWithoutPostSledCommentsInput!
+}
+
+input SledCreateNestedOneWithoutSledCommentsInput {
+  create: SledCreateWithoutSledCommentsInput
+  connectOrCreate: SledCreateOrConnectWithoutSledCommentsInput
+  connect: SledWhereUniqueInput
+}
+
+input SledCreateWithoutSledCommentsInput {
+  name: String!
+  topic: String!
+  createdAt: DateTime
+  updatedAt: DateTime
+  club: ClubCreateNestedOneWithoutSledsInput!
+}
+
+input ClubCreateNestedOneWithoutSledsInput {
+  create: ClubCreateWithoutSledsInput
+  connectOrCreate: ClubCreateOrConnectWithoutSledsInput
+  connect: ClubWhereUniqueInput
+}
+
+input ClubCreateWithoutSledsInput {
+  name: String!
+  rankName: String!
+  rankUnit: String!
+  createdAt: DateTime
+  updatedAt: DateTime
+  users: UserCreateNestedManyWithoutClubInput
+  schedules: ScheduleCreateNestedManyWithoutClubInput
+  members: MemberCreateNestedManyWithoutClubInput
+  pictureReports: PictureReportCreateNestedManyWithoutClubInput
+  reports: ReportCreateNestedManyWithoutClubInput
+  tools: ToolCreateNestedManyWithoutClubInput
+  uniformOwners: UniformOwnerCreateNestedManyWithoutClubInput
+  eventFees: EventFeeCreateNestedManyWithoutClubInput
+  membershipFees: MembershipFeeCreateNestedManyWithoutClubInput
+}
+
+input UniformOwnerCreateNestedManyWithoutClubInput {
+  create: [UniformOwnerCreateWithoutClubInput!]
+  connectOrCreate: [UniformOwnerCreateOrConnectWithoutClubInput!]
+  createMany: UniformOwnerCreateManyClubInputEnvelope
+  connect: [UniformOwnerWhereUniqueInput!]
+}
+
+input UniformOwnerCreateWithoutClubInput {
+  number: Int!
+  createdAt: DateTime
+  updatedAt: DateTime
+  user: UserCreateNestedOneWithoutUniformOwnersInput!
+}
+
+input UserCreateNestedOneWithoutUniformOwnersInput {
+  create: UserCreateWithoutUniformOwnersInput
+  connectOrCreate: UserCreateOrConnectWithoutUniformOwnersInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateWithoutUniformOwnersInput {
+  email: String!
+  name: String!
+  password: String!
+  role: Int
+  club: ClubCreateNestedOneWithoutUsersInput!
+  score: Int
+  assist: Int
+  countTool: Int
+  absence: Int
+  lateness: Int
+  contactLate: Int
+  countPicture: Int
+  countReport: Int
+  commentLate: Int
+  insurance: Int
+  member: MemberCreateNestedOneWithoutUserInput
+  pictureReports: PictureReportCreateNestedManyWithoutUploadUserInput
+  reports: ReportCreateNestedManyWithoutUploadUserInput
+  reportComments: ReportCommentCreateNestedManyWithoutUserInput
+  tools: ToolOwnerCreateNestedManyWithoutUserInput
+  postSledComments: SledCommentCreateNestedManyWithoutUserInput
+  updateSledComments: SledCommentCreateNestedManyWithoutUpdateUserInput
+  eventFees: EventFeeCreateNestedManyWithoutUserInput
+  membershipFees: MembershipFeeCreateNestedManyWithoutUserInput
+}
+
+input SledCommentCreateNestedManyWithoutUserInput {
+  create: [SledCommentCreateWithoutUserInput!]
+  connectOrCreate: [SledCommentCreateOrConnectWithoutUserInput!]
+  createMany: SledCommentCreateManyUserInputEnvelope
+  connect: [SledCommentWhereUniqueInput!]
+}
+
+input SledCommentCreateWithoutUserInput {
+  comment: String!
+  createdAt: DateTime
+  updatedAt: DateTime
+  sled: SledCreateNestedOneWithoutSledCommentsInput!
+  updateUser: UserCreateNestedOneWithoutUpdateSledCommentsInput
+}
+
+input UserCreateNestedOneWithoutUpdateSledCommentsInput {
+  create: UserCreateWithoutUpdateSledCommentsInput
+  connectOrCreate: UserCreateOrConnectWithoutUpdateSledCommentsInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateWithoutUpdateSledCommentsInput {
+  email: String!
+  name: String!
+  password: String!
+  role: Int
+  club: ClubCreateNestedOneWithoutUsersInput!
+  score: Int
+  assist: Int
+  countTool: Int
+  absence: Int
+  lateness: Int
+  contactLate: Int
+  countPicture: Int
+  countReport: Int
+  commentLate: Int
+  insurance: Int
+  member: MemberCreateNestedOneWithoutUserInput
+  pictureReports: PictureReportCreateNestedManyWithoutUploadUserInput
+  reports: ReportCreateNestedManyWithoutUploadUserInput
+  reportComments: ReportCommentCreateNestedManyWithoutUserInput
+  tools: ToolOwnerCreateNestedManyWithoutUserInput
+  uniformOwners: UniformOwnerCreateNestedManyWithoutUserInput
+  postSledComments: SledCommentCreateNestedManyWithoutUserInput
+  eventFees: EventFeeCreateNestedManyWithoutUserInput
+  membershipFees: MembershipFeeCreateNestedManyWithoutUserInput
+}
+
+input EventFeeCreateNestedManyWithoutUserInput {
+  create: [EventFeeCreateWithoutUserInput!]
+  connectOrCreate: [EventFeeCreateOrConnectWithoutUserInput!]
+  createMany: EventFeeCreateManyUserInputEnvelope
+  connect: [EventFeeWhereUniqueInput!]
+}
+
+input EventFeeCreateWithoutUserInput {
+  january: Boolean!
+  february: Boolean!
+  march: Boolean!
+  april: Boolean!
+  may: Boolean!
+  june: Boolean!
+  july: Boolean!
+  august: Boolean!
+  september: Boolean!
+  october: Boolean!
+  november: Boolean!
+  december: Boolean!
+  createdAt: DateTime
+  updatedAt: DateTime
+  club: ClubCreateNestedOneWithoutEventFeesInput!
+}
+
+input ClubCreateNestedOneWithoutEventFeesInput {
+  create: ClubCreateWithoutEventFeesInput
+  connectOrCreate: ClubCreateOrConnectWithoutEventFeesInput
+  connect: ClubWhereUniqueInput
+}
+
+input ClubCreateWithoutEventFeesInput {
+  name: String!
+  rankName: String!
+  rankUnit: String!
+  createdAt: DateTime
+  updatedAt: DateTime
+  users: UserCreateNestedManyWithoutClubInput
+  schedules: ScheduleCreateNestedManyWithoutClubInput
+  members: MemberCreateNestedManyWithoutClubInput
+  pictureReports: PictureReportCreateNestedManyWithoutClubInput
+  reports: ReportCreateNestedManyWithoutClubInput
+  tools: ToolCreateNestedManyWithoutClubInput
+  uniformOwners: UniformOwnerCreateNestedManyWithoutClubInput
+  sleds: SledCreateNestedManyWithoutClubInput
+  membershipFees: MembershipFeeCreateNestedManyWithoutClubInput
+}
+
+input MembershipFeeCreateNestedManyWithoutClubInput {
+  create: [MembershipFeeCreateWithoutClubInput!]
+  connectOrCreate: [MembershipFeeCreateOrConnectWithoutClubInput!]
+  createMany: MembershipFeeCreateManyClubInputEnvelope
+  connect: [MembershipFeeWhereUniqueInput!]
+}
+
+input MembershipFeeCreateWithoutClubInput {
+  january: Boolean!
+  february: Boolean!
+  march: Boolean!
+  april: Boolean!
+  may: Boolean!
+  june: Boolean!
+  july: Boolean!
+  august: Boolean!
+  september: Boolean!
+  october: Boolean!
+  november: Boolean!
+  december: Boolean!
+  createdAt: DateTime
+  updatedAt: DateTime
+  user: UserCreateNestedOneWithoutMembershipFeesInput!
+}
+
+input UserCreateNestedOneWithoutMembershipFeesInput {
+  create: UserCreateWithoutMembershipFeesInput
+  connectOrCreate: UserCreateOrConnectWithoutMembershipFeesInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateWithoutMembershipFeesInput {
+  email: String!
+  name: String!
+  password: String!
+  role: Int
+  club: ClubCreateNestedOneWithoutUsersInput!
+  score: Int
+  assist: Int
+  countTool: Int
+  absence: Int
+  lateness: Int
+  contactLate: Int
+  countPicture: Int
+  countReport: Int
+  commentLate: Int
+  insurance: Int
+  member: MemberCreateNestedOneWithoutUserInput
+  pictureReports: PictureReportCreateNestedManyWithoutUploadUserInput
+  reports: ReportCreateNestedManyWithoutUploadUserInput
+  reportComments: ReportCommentCreateNestedManyWithoutUserInput
+  tools: ToolOwnerCreateNestedManyWithoutUserInput
+  uniformOwners: UniformOwnerCreateNestedManyWithoutUserInput
+  postSledComments: SledCommentCreateNestedManyWithoutUserInput
+  updateSledComments: SledCommentCreateNestedManyWithoutUpdateUserInput
+  eventFees: EventFeeCreateNestedManyWithoutUserInput
+}
+
+input UserCreateOrConnectWithoutMembershipFeesInput {
+  where: UserWhereUniqueInput!
+  create: UserCreateWithoutMembershipFeesInput!
+}
+
+input MembershipFeeCreateOrConnectWithoutClubInput {
+  where: MembershipFeeWhereUniqueInput!
+  create: MembershipFeeCreateWithoutClubInput!
+}
+
+input MembershipFeeCreateManyClubInputEnvelope {
+  data: [MembershipFeeCreateManyClubInput!]!
+  skipDuplicates: Boolean
+}
+
+input MembershipFeeCreateManyClubInput {
+  id: Int
+  january: Boolean!
+  february: Boolean!
+  march: Boolean!
+  april: Boolean!
+  may: Boolean!
+  june: Boolean!
+  july: Boolean!
+  august: Boolean!
+  september: Boolean!
+  october: Boolean!
+  november: Boolean!
+  december: Boolean!
+  createdAt: DateTime
+  updatedAt: DateTime
+  userId: Int!
+}
+
+input ClubCreateOrConnectWithoutEventFeesInput {
+  where: ClubWhereUniqueInput!
+  create: ClubCreateWithoutEventFeesInput!
+}
+
+input EventFeeCreateOrConnectWithoutUserInput {
+  where: EventFeeWhereUniqueInput!
+  create: EventFeeCreateWithoutUserInput!
+}
+
+input EventFeeCreateManyUserInputEnvelope {
+  data: [EventFeeCreateManyUserInput!]!
+  skipDuplicates: Boolean
+}
+
+input EventFeeCreateManyUserInput {
+  id: Int
+  january: Boolean!
+  february: Boolean!
+  march: Boolean!
+  april: Boolean!
+  may: Boolean!
+  june: Boolean!
+  july: Boolean!
+  august: Boolean!
+  september: Boolean!
+  october: Boolean!
+  november: Boolean!
+  december: Boolean!
+  createdAt: DateTime
+  updatedAt: DateTime
+  clubId: Int!
+}
+
+input MembershipFeeCreateNestedManyWithoutUserInput {
+  create: [MembershipFeeCreateWithoutUserInput!]
+  connectOrCreate: [MembershipFeeCreateOrConnectWithoutUserInput!]
+  createMany: MembershipFeeCreateManyUserInputEnvelope
+  connect: [MembershipFeeWhereUniqueInput!]
+}
+
+input MembershipFeeCreateWithoutUserInput {
+  january: Boolean!
+  february: Boolean!
+  march: Boolean!
+  april: Boolean!
+  may: Boolean!
+  june: Boolean!
+  july: Boolean!
+  august: Boolean!
+  september: Boolean!
+  october: Boolean!
+  november: Boolean!
+  december: Boolean!
+  createdAt: DateTime
+  updatedAt: DateTime
+  club: ClubCreateNestedOneWithoutMembershipFeesInput!
+}
+
+input ClubCreateNestedOneWithoutMembershipFeesInput {
+  create: ClubCreateWithoutMembershipFeesInput
+  connectOrCreate: ClubCreateOrConnectWithoutMembershipFeesInput
+  connect: ClubWhereUniqueInput
+}
+
+input ClubCreateWithoutMembershipFeesInput {
+  name: String!
+  rankName: String!
+  rankUnit: String!
+  createdAt: DateTime
+  updatedAt: DateTime
+  users: UserCreateNestedManyWithoutClubInput
+  schedules: ScheduleCreateNestedManyWithoutClubInput
+  members: MemberCreateNestedManyWithoutClubInput
+  pictureReports: PictureReportCreateNestedManyWithoutClubInput
+  reports: ReportCreateNestedManyWithoutClubInput
+  tools: ToolCreateNestedManyWithoutClubInput
+  uniformOwners: UniformOwnerCreateNestedManyWithoutClubInput
+  sleds: SledCreateNestedManyWithoutClubInput
+  eventFees: EventFeeCreateNestedManyWithoutClubInput
+}
+
+input EventFeeCreateNestedManyWithoutClubInput {
+  create: [EventFeeCreateWithoutClubInput!]
+  connectOrCreate: [EventFeeCreateOrConnectWithoutClubInput!]
+  createMany: EventFeeCreateManyClubInputEnvelope
+  connect: [EventFeeWhereUniqueInput!]
+}
+
+input EventFeeCreateWithoutClubInput {
+  january: Boolean!
+  february: Boolean!
+  march: Boolean!
+  april: Boolean!
+  may: Boolean!
+  june: Boolean!
+  july: Boolean!
+  august: Boolean!
+  september: Boolean!
+  october: Boolean!
+  november: Boolean!
+  december: Boolean!
+  createdAt: DateTime
+  updatedAt: DateTime
+  user: UserCreateNestedOneWithoutEventFeesInput!
+}
+
+input UserCreateNestedOneWithoutEventFeesInput {
+  create: UserCreateWithoutEventFeesInput
+  connectOrCreate: UserCreateOrConnectWithoutEventFeesInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateWithoutEventFeesInput {
+  email: String!
+  name: String!
+  password: String!
+  role: Int
+  club: ClubCreateNestedOneWithoutUsersInput!
+  score: Int
+  assist: Int
+  countTool: Int
+  absence: Int
+  lateness: Int
+  contactLate: Int
+  countPicture: Int
+  countReport: Int
+  commentLate: Int
+  insurance: Int
+  member: MemberCreateNestedOneWithoutUserInput
+  pictureReports: PictureReportCreateNestedManyWithoutUploadUserInput
+  reports: ReportCreateNestedManyWithoutUploadUserInput
+  reportComments: ReportCommentCreateNestedManyWithoutUserInput
+  tools: ToolOwnerCreateNestedManyWithoutUserInput
+  uniformOwners: UniformOwnerCreateNestedManyWithoutUserInput
+  postSledComments: SledCommentCreateNestedManyWithoutUserInput
+  updateSledComments: SledCommentCreateNestedManyWithoutUpdateUserInput
+  membershipFees: MembershipFeeCreateNestedManyWithoutUserInput
+}
+
+input UserCreateOrConnectWithoutEventFeesInput {
+  where: UserWhereUniqueInput!
+  create: UserCreateWithoutEventFeesInput!
+}
+
+input EventFeeCreateOrConnectWithoutClubInput {
+  where: EventFeeWhereUniqueInput!
+  create: EventFeeCreateWithoutClubInput!
+}
+
+input EventFeeCreateManyClubInputEnvelope {
+  data: [EventFeeCreateManyClubInput!]!
+  skipDuplicates: Boolean
+}
+
+input EventFeeCreateManyClubInput {
+  id: Int
+  january: Boolean!
+  february: Boolean!
+  march: Boolean!
+  april: Boolean!
+  may: Boolean!
+  june: Boolean!
+  july: Boolean!
+  august: Boolean!
+  september: Boolean!
+  october: Boolean!
+  november: Boolean!
+  december: Boolean!
+  createdAt: DateTime
+  updatedAt: DateTime
+  userId: Int!
+}
+
+input ClubCreateOrConnectWithoutMembershipFeesInput {
+  where: ClubWhereUniqueInput!
+  create: ClubCreateWithoutMembershipFeesInput!
+}
+
+input MembershipFeeCreateOrConnectWithoutUserInput {
+  where: MembershipFeeWhereUniqueInput!
+  create: MembershipFeeCreateWithoutUserInput!
+}
+
+input MembershipFeeCreateManyUserInputEnvelope {
+  data: [MembershipFeeCreateManyUserInput!]!
+  skipDuplicates: Boolean
+}
+
+input MembershipFeeCreateManyUserInput {
+  id: Int
+  january: Boolean!
+  february: Boolean!
+  march: Boolean!
+  april: Boolean!
+  may: Boolean!
+  june: Boolean!
+  july: Boolean!
+  august: Boolean!
+  september: Boolean!
+  october: Boolean!
+  november: Boolean!
+  december: Boolean!
+  createdAt: DateTime
+  updatedAt: DateTime
+  clubId: Int!
+}
+
+input UserCreateOrConnectWithoutUpdateSledCommentsInput {
+  where: UserWhereUniqueInput!
+  create: UserCreateWithoutUpdateSledCommentsInput!
+}
+
+input SledCommentCreateOrConnectWithoutUserInput {
+  where: SledCommentWhereUniqueInput!
+  create: SledCommentCreateWithoutUserInput!
+}
+
+input SledCommentCreateManyUserInputEnvelope {
+  data: [SledCommentCreateManyUserInput!]!
+  skipDuplicates: Boolean
+}
+
+input SledCommentCreateManyUserInput {
+  id: Int
+  comment: String!
+  createdAt: DateTime
+  updatedAt: DateTime
+  sledId: Int!
+  updateUserId: Int
+}
+
+input UserCreateOrConnectWithoutUniformOwnersInput {
+  where: UserWhereUniqueInput!
+  create: UserCreateWithoutUniformOwnersInput!
+}
+
+input UniformOwnerCreateOrConnectWithoutClubInput {
+  where: UniformOwnerWhereUniqueInput!
+  create: UniformOwnerCreateWithoutClubInput!
+}
+
+input UniformOwnerCreateManyClubInputEnvelope {
+  data: [UniformOwnerCreateManyClubInput!]!
+  skipDuplicates: Boolean
+}
+
+input UniformOwnerCreateManyClubInput {
+  id: Int
+  number: Int!
+  createdAt: DateTime
+  updatedAt: DateTime
+  userId: Int!
+}
+
+input ClubCreateOrConnectWithoutSledsInput {
+  where: ClubWhereUniqueInput!
+  create: ClubCreateWithoutSledsInput!
+}
+
+input SledCreateOrConnectWithoutSledCommentsInput {
+  where: SledWhereUniqueInput!
+  create: SledCreateWithoutSledCommentsInput!
+}
+
+input SledCommentCreateOrConnectWithoutUpdateUserInput {
+  where: SledCommentWhereUniqueInput!
+  create: SledCommentCreateWithoutUpdateUserInput!
+}
+
+input SledCommentCreateManyUpdateUserInputEnvelope {
+  data: [SledCommentCreateManyUpdateUserInput!]!
+  skipDuplicates: Boolean
+}
+
+input SledCommentCreateManyUpdateUserInput {
+  id: Int
+  comment: String!
+  createdAt: DateTime
+  updatedAt: DateTime
+  sledId: Int!
+  userId: Int!
+}
+
+input UserCreateOrConnectWithoutPostSledCommentsInput {
+  where: UserWhereUniqueInput!
+  create: UserCreateWithoutPostSledCommentsInput!
+}
+
+input SledCommentCreateOrConnectWithoutSledInput {
+  where: SledCommentWhereUniqueInput!
+  create: SledCommentCreateWithoutSledInput!
+}
+
+input SledCommentCreateManySledInputEnvelope {
+  data: [SledCommentCreateManySledInput!]!
+  skipDuplicates: Boolean
+}
+
+input SledCommentCreateManySledInput {
+  id: Int
+  comment: String!
+  createdAt: DateTime
+  updatedAt: DateTime
+  userId: Int!
+  updateUserId: Int
+}
+
+input SledCreateOrConnectWithoutClubInput {
+  where: SledWhereUniqueInput!
+  create: SledCreateWithoutClubInput!
+}
+
+input SledCreateManyClubInputEnvelope {
+  data: [SledCreateManyClubInput!]!
+  skipDuplicates: Boolean
+}
+
+input SledCreateManyClubInput {
+  id: Int
+  name: String!
+  topic: String!
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+input ClubCreateOrConnectWithoutUniformOwnersInput {
+  where: ClubWhereUniqueInput!
+  create: ClubCreateWithoutUniformOwnersInput!
+}
+
+input UniformOwnerCreateOrConnectWithoutUserInput {
+  where: UniformOwnerWhereUniqueInput!
+  create: UniformOwnerCreateWithoutUserInput!
+}
+
+input UniformOwnerCreateManyUserInputEnvelope {
+  data: [UniformOwnerCreateManyUserInput!]!
+  skipDuplicates: Boolean
+}
+
+input UniformOwnerCreateManyUserInput {
+  id: Int
+  number: Int!
+  createdAt: DateTime
+  updatedAt: DateTime
+  clubId: Int!
+}
+
+input UserCreateOrConnectWithoutReportCommentsInput {
+  where: UserWhereUniqueInput!
+  create: UserCreateWithoutReportCommentsInput!
+}
+
+input ReportCommentCreateOrConnectWithoutReportInput {
+  where: ReportCommentWhereUniqueInput!
+  create: ReportCommentCreateWithoutReportInput!
+}
+
+input ReportCommentCreateManyReportInputEnvelope {
+  data: [ReportCommentCreateManyReportInput!]!
+  skipDuplicates: Boolean
+}
+
+input ReportCommentCreateManyReportInput {
+  id: Int
+  comment: String!
+  createdAt: DateTime
+  updatedAt: DateTime
+  userId: Int!
+}
+
+input ReportCreateOrConnectWithoutClubInput {
+  where: ReportWhereUniqueInput!
+  create: ReportCreateWithoutClubInput!
+}
+
+input ReportCreateManyClubInputEnvelope {
+  data: [ReportCreateManyClubInput!]!
+  skipDuplicates: Boolean
+}
+
+input ReportCreateManyClubInput {
+  id: Int
+  title: String!
+  text: String!
+  date: DateTime!
+  time: String!
+  opponent: String
+  myScore: Int
+  opponentScore: Int
+  category: Int!
+  createdAt: DateTime
+  updatedAt: DateTime
+  uploadUserId: Int!
+}
+
+input ClubCreateOrConnectWithoutToolsInput {
+  where: ClubWhereUniqueInput!
+  create: ClubCreateWithoutToolsInput!
+}
+
+input ToolCreateOrConnectWithoutToolOwnersInput {
+  where: ToolWhereUniqueInput!
+  create: ToolCreateWithoutToolOwnersInput!
+}
+
+input ToolOwnerCreateOrConnectWithoutUserInput {
+  where: ToolOwnerWhereUniqueInput!
+  create: ToolOwnerCreateWithoutUserInput!
+}
+
+input ToolOwnerCreateManyUserInputEnvelope {
+  data: [ToolOwnerCreateManyUserInput!]!
+  skipDuplicates: Boolean
+}
+
+input ToolOwnerCreateManyUserInput {
+  id: Int
+  createdAt: DateTime
+  updatedAt: DateTime
+  toolId: Int!
+}
+
+input UserCreateOrConnectWithoutReportsInput {
+  where: UserWhereUniqueInput!
+  create: UserCreateWithoutReportsInput!
+}
+
+input ReportCreateOrConnectWithoutReportCommentsInput {
+  where: ReportWhereUniqueInput!
+  create: ReportCreateWithoutReportCommentsInput!
+}
+
+input ReportCommentCreateOrConnectWithoutUserInput {
+  where: ReportCommentWhereUniqueInput!
+  create: ReportCommentCreateWithoutUserInput!
+}
+
+input ReportCommentCreateManyUserInputEnvelope {
+  data: [ReportCommentCreateManyUserInput!]!
+  skipDuplicates: Boolean
+}
+
+input ReportCommentCreateManyUserInput {
+  id: Int
+  comment: String!
+  createdAt: DateTime
+  updatedAt: DateTime
+  reportId: Int!
+}
+
+input UserCreateOrConnectWithoutToolsInput {
+  where: UserWhereUniqueInput!
+  create: UserCreateWithoutToolsInput!
+}
+
+input ToolOwnerCreateOrConnectWithoutToolInput {
+  where: ToolOwnerWhereUniqueInput!
+  create: ToolOwnerCreateWithoutToolInput!
+}
+
+input ToolOwnerCreateManyToolInputEnvelope {
+  data: [ToolOwnerCreateManyToolInput!]!
+  skipDuplicates: Boolean
+}
+
+input ToolOwnerCreateManyToolInput {
+  id: Int
+  createdAt: DateTime
+  updatedAt: DateTime
+  userId: Int!
+}
+
+input ToolCreateOrConnectWithoutClubInput {
+  where: ToolWhereUniqueInput!
+  create: ToolCreateWithoutClubInput!
+}
+
+input ToolCreateManyClubInputEnvelope {
+  data: [ToolCreateManyClubInput!]!
+  skipDuplicates: Boolean
+}
+
+input ToolCreateManyClubInput {
+  id: Int
+  name: String!
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+input ClubCreateOrConnectWithoutReportsInput {
+  where: ClubWhereUniqueInput!
+  create: ClubCreateWithoutReportsInput!
+}
+
+input ReportCreateOrConnectWithoutUploadUserInput {
+  where: ReportWhereUniqueInput!
+  create: ReportCreateWithoutUploadUserInput!
+}
+
+input ReportCreateManyUploadUserInputEnvelope {
+  data: [ReportCreateManyUploadUserInput!]!
+  skipDuplicates: Boolean
+}
+
+input ReportCreateManyUploadUserInput {
+  id: Int
+  title: String!
+  text: String!
+  date: DateTime!
+  time: String!
+  opponent: String
+  myScore: Int
+  opponentScore: Int
+  category: Int!
+  createdAt: DateTime
+  updatedAt: DateTime
+  clubId: Int!
+}
+
+input UserCreateOrConnectWithoutPictureReportsInput {
+  where: UserWhereUniqueInput!
+  create: UserCreateWithoutPictureReportsInput!
+}
+
+input PictureCreateNestedManyWithoutPictureReportInput {
+  create: [PictureCreateWithoutPictureReportInput!]
+  connectOrCreate: [PictureCreateOrConnectWithoutPictureReportInput!]
+  createMany: PictureCreateManyPictureReportInputEnvelope
+  connect: [PictureWhereUniqueInput!]
+}
+
+input PictureCreateWithoutPictureReportInput {
+  base64: String!
+  mainFlag: Boolean!
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+input PictureCreateOrConnectWithoutPictureReportInput {
+  where: PictureWhereUniqueInput!
+  create: PictureCreateWithoutPictureReportInput!
+}
+
+input PictureCreateManyPictureReportInputEnvelope {
+  data: [PictureCreateManyPictureReportInput!]!
+  skipDuplicates: Boolean
+}
+
+input PictureCreateManyPictureReportInput {
+  id: Int
+  base64: String!
+  mainFlag: Boolean!
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+input PictureReportCreateOrConnectWithoutClubInput {
+  where: PictureReportWhereUniqueInput!
+  create: PictureReportCreateWithoutClubInput!
+}
+
+input PictureReportCreateManyClubInputEnvelope {
+  data: [PictureReportCreateManyClubInput!]!
+  skipDuplicates: Boolean
+}
+
+input PictureReportCreateManyClubInput {
+  id: Int
+  name: String!
+  date: DateTime!
+  createdAt: DateTime
+  updatedAt: DateTime
+  uploadUserId: Int!
+}
+
+input ClubCreateOrConnectWithoutMembersInput {
+  where: ClubWhereUniqueInput!
+  create: ClubCreateWithoutMembersInput!
+}
+
+input MemberCreateOrConnectWithoutUserInput {
+  where: MemberWhereUniqueInput!
+  create: MemberCreateWithoutUserInput!
+}
+
+input UserCreateOrConnectWithoutClubInput {
+  where: UserWhereUniqueInput!
+  create: UserCreateWithoutClubInput!
+}
+
+input UserCreateManyClubInputEnvelope {
+  data: [UserCreateManyClubInput!]!
+  skipDuplicates: Boolean
+}
+
+input UserCreateManyClubInput {
+  id: Int
+  email: String!
+  name: String!
+  password: String!
+  role: Int
+  score: Int
+  assist: Int
+  countTool: Int
+  absence: Int
+  lateness: Int
+  contactLate: Int
+  countPicture: Int
+  countReport: Int
+  commentLate: Int
+  insurance: Int
+}
+
+input ClubCreateOrConnectWithoutPictureReportsInput {
+  where: ClubWhereUniqueInput!
+  create: ClubCreateWithoutPictureReportsInput!
+}
+
+input PictureReportCreateOrConnectWithoutUploadUserInput {
+  where: PictureReportWhereUniqueInput!
+  create: PictureReportCreateWithoutUploadUserInput!
+}
+
+input PictureReportCreateManyUploadUserInputEnvelope {
+  data: [PictureReportCreateManyUploadUserInput!]!
+  skipDuplicates: Boolean
+}
+
+input PictureReportCreateManyUploadUserInput {
+  id: Int
+  name: String!
+  date: DateTime!
+  createdAt: DateTime
+  updatedAt: DateTime
+  clubId: Int!
+}
+
+input UserCreateOrConnectWithoutMemberInput {
+  where: UserWhereUniqueInput!
+  create: UserCreateWithoutMemberInput!
+}
+
+input MemberCreateOrConnectWithoutClubInput {
+  where: MemberWhereUniqueInput!
+  create: MemberCreateWithoutClubInput!
+}
+
+input MemberCreateManyClubInputEnvelope {
+  data: [MemberCreateManyClubInput!]!
+  skipDuplicates: Boolean
+}
+
+input MemberCreateManyClubInput {
+  id: Int
+  name: String!
+  englishName: String
+  number: Int
+  position: String
+  birthday: String
+  height: String
+  weight: String
+  strongerSide: String
+  from: String
+  occupation: String
+  hobby: String
+  skill: String
+  startBelong: String
+  startSport: String
+  chance: String
+  dream: String
+  goal: String
+  image: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  userId: Int!
+}
+
+input ClubUpsertWithoutUsersInput {
+  update: ClubUpdateWithoutUsersInput!
+  create: ClubCreateWithoutUsersInput!
+}
+
+input ClubUpdateWithoutUsersInput {
+  name: StringFieldUpdateOperationsInput
+  rankName: StringFieldUpdateOperationsInput
+  rankUnit: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: NullableDateTimeFieldUpdateOperationsInput
+  schedules: ScheduleUpdateManyWithoutClubInput
+  members: MemberUpdateManyWithoutClubInput
+  pictureReports: PictureReportUpdateManyWithoutClubInput
+  reports: ReportUpdateManyWithoutClubInput
+  tools: ToolUpdateManyWithoutClubInput
+  uniformOwners: UniformOwnerUpdateManyWithoutClubInput
+  sleds: SledUpdateManyWithoutClubInput
+  eventFees: EventFeeUpdateManyWithoutClubInput
+  membershipFees: MembershipFeeUpdateManyWithoutClubInput
+}
+
+input DateTimeFieldUpdateOperationsInput {
+  set: DateTime
+}
+
+input NullableDateTimeFieldUpdateOperationsInput {
+  set: DateTime
+}
+
+input ScheduleUpdateManyWithoutClubInput {
+  create: [ScheduleCreateWithoutClubInput!]
+  connectOrCreate: [ScheduleCreateOrConnectWithoutClubInput!]
+  upsert: [ScheduleUpsertWithWhereUniqueWithoutClubInput!]
+  createMany: ScheduleCreateManyClubInputEnvelope
+  set: [ScheduleWhereUniqueInput!]
+  disconnect: [ScheduleWhereUniqueInput!]
+  delete: [ScheduleWhereUniqueInput!]
+  connect: [ScheduleWhereUniqueInput!]
+  update: [ScheduleUpdateWithWhereUniqueWithoutClubInput!]
+  updateMany: [ScheduleUpdateManyWithWhereWithoutClubInput!]
+  deleteMany: [ScheduleScalarWhereInput!]
+}
+
+input ScheduleUpsertWithWhereUniqueWithoutClubInput {
+  where: ScheduleWhereUniqueInput!
+  update: ScheduleUpdateWithoutClubInput!
+  create: ScheduleCreateWithoutClubInput!
+}
+
+input ScheduleUpdateWithoutClubInput {
+  activityDay: DateTimeFieldUpdateOperationsInput
+  time: StringFieldUpdateOperationsInput
+  category: IntFieldUpdateOperationsInput
+  place: StringFieldUpdateOperationsInput
+  address: NullableStringFieldUpdateOperationsInput
+  meetingTime: StringFieldUpdateOperationsInput
+  opponent: NullableStringFieldUpdateOperationsInput
+  matchTime: NullableStringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: NullableDateTimeFieldUpdateOperationsInput
+  attendances: AttendanceUpdateManyWithoutScheduleInput
+}
+
+input NullableStringFieldUpdateOperationsInput {
+  set: String
+}
+
+input AttendanceUpdateManyWithoutScheduleInput {
+  create: [AttendanceCreateWithoutScheduleInput!]
+  connectOrCreate: [AttendanceCreateOrConnectWithoutScheduleInput!]
+  upsert: [AttendanceUpsertWithWhereUniqueWithoutScheduleInput!]
+  createMany: AttendanceCreateManyScheduleInputEnvelope
+  set: [AttendanceWhereUniqueInput!]
+  disconnect: [AttendanceWhereUniqueInput!]
+  delete: [AttendanceWhereUniqueInput!]
+  connect: [AttendanceWhereUniqueInput!]
+  update: [AttendanceUpdateWithWhereUniqueWithoutScheduleInput!]
+  updateMany: [AttendanceUpdateManyWithWhereWithoutScheduleInput!]
+  deleteMany: [AttendanceScalarWhereInput!]
+}
+
+input AttendanceUpsertWithWhereUniqueWithoutScheduleInput {
+  where: AttendanceWhereUniqueInput!
+  update: AttendanceUpdateWithoutScheduleInput!
+  create: AttendanceCreateWithoutScheduleInput!
+}
+
+input AttendanceUpdateWithoutScheduleInput {
+  text: StringFieldUpdateOperationsInput
+  status: IntFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: NullableDateTimeFieldUpdateOperationsInput
+}
+
+input AttendanceUpdateWithWhereUniqueWithoutScheduleInput {
+  where: AttendanceWhereUniqueInput!
+  data: AttendanceUpdateWithoutScheduleInput!
+}
+
+input AttendanceUpdateManyWithWhereWithoutScheduleInput {
+  where: AttendanceScalarWhereInput!
+  data: AttendanceUpdateManyMutationInput!
+}
+
+input AttendanceScalarWhereInput {
+  AND: [AttendanceScalarWhereInput!]
+  OR: [AttendanceScalarWhereInput!]
+  NOT: [AttendanceScalarWhereInput!]
+  id: IntFilter
+  text: StringFilter
+  status: IntFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeNullableFilter
+  scheduleId: IntFilter
+}
+
+input AttendanceUpdateManyMutationInput {
+  text: StringFieldUpdateOperationsInput
+  status: IntFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: NullableDateTimeFieldUpdateOperationsInput
+}
+
+input ScheduleUpdateWithWhereUniqueWithoutClubInput {
+  where: ScheduleWhereUniqueInput!
+  data: ScheduleUpdateWithoutClubInput!
+}
+
+input ScheduleUpdateManyWithWhereWithoutClubInput {
+  where: ScheduleScalarWhereInput!
+  data: ScheduleUpdateManyMutationInput!
+}
+
+input ScheduleScalarWhereInput {
+  AND: [ScheduleScalarWhereInput!]
+  OR: [ScheduleScalarWhereInput!]
+  NOT: [ScheduleScalarWhereInput!]
+  id: IntFilter
+  activityDay: DateTimeFilter
+  time: StringFilter
+  category: IntFilter
+  place: StringFilter
+  address: StringNullableFilter
+  meetingTime: StringFilter
+  opponent: StringNullableFilter
+  matchTime: StringNullableFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeNullableFilter
+  clubId: IntFilter
+}
+
+input ScheduleUpdateManyMutationInput {
+  activityDay: DateTimeFieldUpdateOperationsInput
+  time: StringFieldUpdateOperationsInput
+  category: IntFieldUpdateOperationsInput
+  place: StringFieldUpdateOperationsInput
+  address: NullableStringFieldUpdateOperationsInput
+  meetingTime: StringFieldUpdateOperationsInput
+  opponent: NullableStringFieldUpdateOperationsInput
+  matchTime: NullableStringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: NullableDateTimeFieldUpdateOperationsInput
+}
+
+input MemberUpdateManyWithoutClubInput {
+  create: [MemberCreateWithoutClubInput!]
+  connectOrCreate: [MemberCreateOrConnectWithoutClubInput!]
+  upsert: [MemberUpsertWithWhereUniqueWithoutClubInput!]
+  createMany: MemberCreateManyClubInputEnvelope
+  set: [MemberWhereUniqueInput!]
+  disconnect: [MemberWhereUniqueInput!]
+  delete: [MemberWhereUniqueInput!]
+  connect: [MemberWhereUniqueInput!]
+  update: [MemberUpdateWithWhereUniqueWithoutClubInput!]
+  updateMany: [MemberUpdateManyWithWhereWithoutClubInput!]
+  deleteMany: [MemberScalarWhereInput!]
+}
+
+input MemberUpsertWithWhereUniqueWithoutClubInput {
+  where: MemberWhereUniqueInput!
+  update: MemberUpdateWithoutClubInput!
+  create: MemberCreateWithoutClubInput!
+}
+
+input MemberUpdateWithoutClubInput {
+  name: StringFieldUpdateOperationsInput
+  englishName: NullableStringFieldUpdateOperationsInput
+  number: NullableIntFieldUpdateOperationsInput
+  position: NullableStringFieldUpdateOperationsInput
+  birthday: NullableStringFieldUpdateOperationsInput
+  height: NullableStringFieldUpdateOperationsInput
+  weight: NullableStringFieldUpdateOperationsInput
+  strongerSide: NullableStringFieldUpdateOperationsInput
+  from: NullableStringFieldUpdateOperationsInput
+  occupation: NullableStringFieldUpdateOperationsInput
+  hobby: NullableStringFieldUpdateOperationsInput
+  skill: NullableStringFieldUpdateOperationsInput
+  startBelong: NullableStringFieldUpdateOperationsInput
+  startSport: NullableStringFieldUpdateOperationsInput
+  chance: NullableStringFieldUpdateOperationsInput
+  dream: NullableStringFieldUpdateOperationsInput
+  goal: NullableStringFieldUpdateOperationsInput
+  image: NullableStringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: NullableDateTimeFieldUpdateOperationsInput
+  user: UserUpdateOneRequiredWithoutMemberInput
+}
+
+input NullableIntFieldUpdateOperationsInput {
+  set: Int
+  increment: Int
+  decrement: Int
+  multiply: Int
+  divide: Int
+}
+
+input UserUpdateOneRequiredWithoutMemberInput {
+  create: UserCreateWithoutMemberInput
+  connectOrCreate: UserCreateOrConnectWithoutMemberInput
+  upsert: UserUpsertWithoutMemberInput
+  connect: UserWhereUniqueInput
+  update: UserUpdateWithoutMemberInput
+}
+
+input UserUpsertWithoutMemberInput {
+  update: UserUpdateWithoutMemberInput!
+  create: UserCreateWithoutMemberInput!
+}
+
+input UserUpdateWithoutMemberInput {
+  email: StringFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  password: StringFieldUpdateOperationsInput
+  role: IntFieldUpdateOperationsInput
+  club: ClubUpdateOneRequiredWithoutUsersInput
+  score: IntFieldUpdateOperationsInput
+  assist: IntFieldUpdateOperationsInput
+  countTool: IntFieldUpdateOperationsInput
+  absence: IntFieldUpdateOperationsInput
+  lateness: IntFieldUpdateOperationsInput
+  contactLate: IntFieldUpdateOperationsInput
+  countPicture: IntFieldUpdateOperationsInput
+  countReport: IntFieldUpdateOperationsInput
+  commentLate: IntFieldUpdateOperationsInput
+  insurance: IntFieldUpdateOperationsInput
+  pictureReports: PictureReportUpdateManyWithoutUploadUserInput
+  reports: ReportUpdateManyWithoutUploadUserInput
+  reportComments: ReportCommentUpdateManyWithoutUserInput
+  tools: ToolOwnerUpdateManyWithoutUserInput
+  uniformOwners: UniformOwnerUpdateManyWithoutUserInput
+  postSledComments: SledCommentUpdateManyWithoutUserInput
+  updateSledComments: SledCommentUpdateManyWithoutUpdateUserInput
+  eventFees: EventFeeUpdateManyWithoutUserInput
+  membershipFees: MembershipFeeUpdateManyWithoutUserInput
+}
+
+input PictureReportUpdateManyWithoutUploadUserInput {
+  create: [PictureReportCreateWithoutUploadUserInput!]
+  connectOrCreate: [PictureReportCreateOrConnectWithoutUploadUserInput!]
+  upsert: [PictureReportUpsertWithWhereUniqueWithoutUploadUserInput!]
+  createMany: PictureReportCreateManyUploadUserInputEnvelope
+  set: [PictureReportWhereUniqueInput!]
+  disconnect: [PictureReportWhereUniqueInput!]
+  delete: [PictureReportWhereUniqueInput!]
+  connect: [PictureReportWhereUniqueInput!]
+  update: [PictureReportUpdateWithWhereUniqueWithoutUploadUserInput!]
+  updateMany: [PictureReportUpdateManyWithWhereWithoutUploadUserInput!]
+  deleteMany: [PictureReportScalarWhereInput!]
+}
+
+input PictureReportUpsertWithWhereUniqueWithoutUploadUserInput {
+  where: PictureReportWhereUniqueInput!
+  update: PictureReportUpdateWithoutUploadUserInput!
+  create: PictureReportCreateWithoutUploadUserInput!
+}
+
+input PictureReportUpdateWithoutUploadUserInput {
+  name: StringFieldUpdateOperationsInput
+  date: DateTimeFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: NullableDateTimeFieldUpdateOperationsInput
+  club: ClubUpdateOneRequiredWithoutPictureReportsInput
+  pictures: PictureUpdateManyWithoutPictureReportInput
+}
+
+input ClubUpdateOneRequiredWithoutPictureReportsInput {
+  create: ClubCreateWithoutPictureReportsInput
+  connectOrCreate: ClubCreateOrConnectWithoutPictureReportsInput
+  upsert: ClubUpsertWithoutPictureReportsInput
+  connect: ClubWhereUniqueInput
+  update: ClubUpdateWithoutPictureReportsInput
+}
+
+input ClubUpsertWithoutPictureReportsInput {
+  update: ClubUpdateWithoutPictureReportsInput!
+  create: ClubCreateWithoutPictureReportsInput!
+}
+
+input ClubUpdateWithoutPictureReportsInput {
+  name: StringFieldUpdateOperationsInput
+  rankName: StringFieldUpdateOperationsInput
+  rankUnit: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: NullableDateTimeFieldUpdateOperationsInput
+  users: UserUpdateManyWithoutClubInput
+  schedules: ScheduleUpdateManyWithoutClubInput
+  members: MemberUpdateManyWithoutClubInput
+  reports: ReportUpdateManyWithoutClubInput
+  tools: ToolUpdateManyWithoutClubInput
+  uniformOwners: UniformOwnerUpdateManyWithoutClubInput
+  sleds: SledUpdateManyWithoutClubInput
+  eventFees: EventFeeUpdateManyWithoutClubInput
+  membershipFees: MembershipFeeUpdateManyWithoutClubInput
+}
+
+input UserUpdateManyWithoutClubInput {
+  create: [UserCreateWithoutClubInput!]
+  connectOrCreate: [UserCreateOrConnectWithoutClubInput!]
+  upsert: [UserUpsertWithWhereUniqueWithoutClubInput!]
+  createMany: UserCreateManyClubInputEnvelope
+  set: [UserWhereUniqueInput!]
+  disconnect: [UserWhereUniqueInput!]
+  delete: [UserWhereUniqueInput!]
+  connect: [UserWhereUniqueInput!]
+  update: [UserUpdateWithWhereUniqueWithoutClubInput!]
+  updateMany: [UserUpdateManyWithWhereWithoutClubInput!]
+  deleteMany: [UserScalarWhereInput!]
+}
+
+input UserUpsertWithWhereUniqueWithoutClubInput {
+  where: UserWhereUniqueInput!
+  update: UserUpdateWithoutClubInput!
+  create: UserCreateWithoutClubInput!
+}
+
+input UserUpdateWithoutClubInput {
+  email: StringFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  password: StringFieldUpdateOperationsInput
+  role: IntFieldUpdateOperationsInput
+  score: IntFieldUpdateOperationsInput
+  assist: IntFieldUpdateOperationsInput
+  countTool: IntFieldUpdateOperationsInput
+  absence: IntFieldUpdateOperationsInput
+  lateness: IntFieldUpdateOperationsInput
+  contactLate: IntFieldUpdateOperationsInput
+  countPicture: IntFieldUpdateOperationsInput
+  countReport: IntFieldUpdateOperationsInput
+  commentLate: IntFieldUpdateOperationsInput
+  insurance: IntFieldUpdateOperationsInput
+  member: MemberUpdateOneWithoutUserInput
+  pictureReports: PictureReportUpdateManyWithoutUploadUserInput
+  reports: ReportUpdateManyWithoutUploadUserInput
+  reportComments: ReportCommentUpdateManyWithoutUserInput
+  tools: ToolOwnerUpdateManyWithoutUserInput
+  uniformOwners: UniformOwnerUpdateManyWithoutUserInput
+  postSledComments: SledCommentUpdateManyWithoutUserInput
+  updateSledComments: SledCommentUpdateManyWithoutUpdateUserInput
+  eventFees: EventFeeUpdateManyWithoutUserInput
+  membershipFees: MembershipFeeUpdateManyWithoutUserInput
+}
+
+input MemberUpdateOneWithoutUserInput {
+  create: MemberCreateWithoutUserInput
+  connectOrCreate: MemberCreateOrConnectWithoutUserInput
+  upsert: MemberUpsertWithoutUserInput
+  disconnect: Boolean
+  delete: Boolean
+  connect: MemberWhereUniqueInput
+  update: MemberUpdateWithoutUserInput
+}
+
+input MemberUpsertWithoutUserInput {
+  update: MemberUpdateWithoutUserInput!
+  create: MemberCreateWithoutUserInput!
+}
+
+input MemberUpdateWithoutUserInput {
+  name: StringFieldUpdateOperationsInput
+  englishName: NullableStringFieldUpdateOperationsInput
+  number: NullableIntFieldUpdateOperationsInput
+  position: NullableStringFieldUpdateOperationsInput
+  birthday: NullableStringFieldUpdateOperationsInput
+  height: NullableStringFieldUpdateOperationsInput
+  weight: NullableStringFieldUpdateOperationsInput
+  strongerSide: NullableStringFieldUpdateOperationsInput
+  from: NullableStringFieldUpdateOperationsInput
+  occupation: NullableStringFieldUpdateOperationsInput
+  hobby: NullableStringFieldUpdateOperationsInput
+  skill: NullableStringFieldUpdateOperationsInput
+  startBelong: NullableStringFieldUpdateOperationsInput
+  startSport: NullableStringFieldUpdateOperationsInput
+  chance: NullableStringFieldUpdateOperationsInput
+  dream: NullableStringFieldUpdateOperationsInput
+  goal: NullableStringFieldUpdateOperationsInput
+  image: NullableStringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: NullableDateTimeFieldUpdateOperationsInput
+  club: ClubUpdateOneRequiredWithoutMembersInput
+}
+
+input ClubUpdateOneRequiredWithoutMembersInput {
+  create: ClubCreateWithoutMembersInput
+  connectOrCreate: ClubCreateOrConnectWithoutMembersInput
+  upsert: ClubUpsertWithoutMembersInput
+  connect: ClubWhereUniqueInput
+  update: ClubUpdateWithoutMembersInput
+}
+
+input ClubUpsertWithoutMembersInput {
+  update: ClubUpdateWithoutMembersInput!
+  create: ClubCreateWithoutMembersInput!
+}
+
+input ClubUpdateWithoutMembersInput {
+  name: StringFieldUpdateOperationsInput
+  rankName: StringFieldUpdateOperationsInput
+  rankUnit: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: NullableDateTimeFieldUpdateOperationsInput
+  users: UserUpdateManyWithoutClubInput
+  schedules: ScheduleUpdateManyWithoutClubInput
+  pictureReports: PictureReportUpdateManyWithoutClubInput
+  reports: ReportUpdateManyWithoutClubInput
+  tools: ToolUpdateManyWithoutClubInput
+  uniformOwners: UniformOwnerUpdateManyWithoutClubInput
+  sleds: SledUpdateManyWithoutClubInput
+  eventFees: EventFeeUpdateManyWithoutClubInput
+  membershipFees: MembershipFeeUpdateManyWithoutClubInput
+}
+
+input PictureReportUpdateManyWithoutClubInput {
+  create: [PictureReportCreateWithoutClubInput!]
+  connectOrCreate: [PictureReportCreateOrConnectWithoutClubInput!]
+  upsert: [PictureReportUpsertWithWhereUniqueWithoutClubInput!]
+  createMany: PictureReportCreateManyClubInputEnvelope
+  set: [PictureReportWhereUniqueInput!]
+  disconnect: [PictureReportWhereUniqueInput!]
+  delete: [PictureReportWhereUniqueInput!]
+  connect: [PictureReportWhereUniqueInput!]
+  update: [PictureReportUpdateWithWhereUniqueWithoutClubInput!]
+  updateMany: [PictureReportUpdateManyWithWhereWithoutClubInput!]
+  deleteMany: [PictureReportScalarWhereInput!]
+}
+
+input PictureReportUpsertWithWhereUniqueWithoutClubInput {
+  where: PictureReportWhereUniqueInput!
+  update: PictureReportUpdateWithoutClubInput!
+  create: PictureReportCreateWithoutClubInput!
+}
+
+input PictureReportUpdateWithoutClubInput {
+  name: StringFieldUpdateOperationsInput
+  date: DateTimeFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: NullableDateTimeFieldUpdateOperationsInput
+  uploadUser: UserUpdateOneRequiredWithoutPictureReportsInput
+  pictures: PictureUpdateManyWithoutPictureReportInput
+}
+
+input UserUpdateOneRequiredWithoutPictureReportsInput {
+  create: UserCreateWithoutPictureReportsInput
+  connectOrCreate: UserCreateOrConnectWithoutPictureReportsInput
+  upsert: UserUpsertWithoutPictureReportsInput
+  connect: UserWhereUniqueInput
+  update: UserUpdateWithoutPictureReportsInput
+}
+
+input UserUpsertWithoutPictureReportsInput {
+  update: UserUpdateWithoutPictureReportsInput!
+  create: UserCreateWithoutPictureReportsInput!
+}
+
+input UserUpdateWithoutPictureReportsInput {
+  email: StringFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  password: StringFieldUpdateOperationsInput
+  role: IntFieldUpdateOperationsInput
+  club: ClubUpdateOneRequiredWithoutUsersInput
+  score: IntFieldUpdateOperationsInput
+  assist: IntFieldUpdateOperationsInput
+  countTool: IntFieldUpdateOperationsInput
+  absence: IntFieldUpdateOperationsInput
+  lateness: IntFieldUpdateOperationsInput
+  contactLate: IntFieldUpdateOperationsInput
+  countPicture: IntFieldUpdateOperationsInput
+  countReport: IntFieldUpdateOperationsInput
+  commentLate: IntFieldUpdateOperationsInput
+  insurance: IntFieldUpdateOperationsInput
+  member: MemberUpdateOneWithoutUserInput
+  reports: ReportUpdateManyWithoutUploadUserInput
+  reportComments: ReportCommentUpdateManyWithoutUserInput
+  tools: ToolOwnerUpdateManyWithoutUserInput
+  uniformOwners: UniformOwnerUpdateManyWithoutUserInput
+  postSledComments: SledCommentUpdateManyWithoutUserInput
+  updateSledComments: SledCommentUpdateManyWithoutUpdateUserInput
+  eventFees: EventFeeUpdateManyWithoutUserInput
+  membershipFees: MembershipFeeUpdateManyWithoutUserInput
+}
+
+input ReportUpdateManyWithoutUploadUserInput {
+  create: [ReportCreateWithoutUploadUserInput!]
+  connectOrCreate: [ReportCreateOrConnectWithoutUploadUserInput!]
+  upsert: [ReportUpsertWithWhereUniqueWithoutUploadUserInput!]
+  createMany: ReportCreateManyUploadUserInputEnvelope
+  set: [ReportWhereUniqueInput!]
+  disconnect: [ReportWhereUniqueInput!]
+  delete: [ReportWhereUniqueInput!]
+  connect: [ReportWhereUniqueInput!]
+  update: [ReportUpdateWithWhereUniqueWithoutUploadUserInput!]
+  updateMany: [ReportUpdateManyWithWhereWithoutUploadUserInput!]
+  deleteMany: [ReportScalarWhereInput!]
+}
+
+input ReportUpsertWithWhereUniqueWithoutUploadUserInput {
+  where: ReportWhereUniqueInput!
+  update: ReportUpdateWithoutUploadUserInput!
+  create: ReportCreateWithoutUploadUserInput!
+}
+
+input ReportUpdateWithoutUploadUserInput {
+  title: StringFieldUpdateOperationsInput
+  text: StringFieldUpdateOperationsInput
+  date: DateTimeFieldUpdateOperationsInput
+  time: StringFieldUpdateOperationsInput
+  opponent: NullableStringFieldUpdateOperationsInput
+  myScore: IntFieldUpdateOperationsInput
+  opponentScore: IntFieldUpdateOperationsInput
+  category: IntFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: NullableDateTimeFieldUpdateOperationsInput
+  club: ClubUpdateOneRequiredWithoutReportsInput
+  reportComments: ReportCommentUpdateManyWithoutReportInput
+}
+
+input ClubUpdateOneRequiredWithoutReportsInput {
+  create: ClubCreateWithoutReportsInput
+  connectOrCreate: ClubCreateOrConnectWithoutReportsInput
+  upsert: ClubUpsertWithoutReportsInput
+  connect: ClubWhereUniqueInput
+  update: ClubUpdateWithoutReportsInput
+}
+
+input ClubUpsertWithoutReportsInput {
+  update: ClubUpdateWithoutReportsInput!
+  create: ClubCreateWithoutReportsInput!
+}
+
+input ClubUpdateWithoutReportsInput {
+  name: StringFieldUpdateOperationsInput
+  rankName: StringFieldUpdateOperationsInput
+  rankUnit: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: NullableDateTimeFieldUpdateOperationsInput
+  users: UserUpdateManyWithoutClubInput
+  schedules: ScheduleUpdateManyWithoutClubInput
+  members: MemberUpdateManyWithoutClubInput
+  pictureReports: PictureReportUpdateManyWithoutClubInput
+  tools: ToolUpdateManyWithoutClubInput
+  uniformOwners: UniformOwnerUpdateManyWithoutClubInput
+  sleds: SledUpdateManyWithoutClubInput
+  eventFees: EventFeeUpdateManyWithoutClubInput
+  membershipFees: MembershipFeeUpdateManyWithoutClubInput
+}
+
+input ToolUpdateManyWithoutClubInput {
+  create: [ToolCreateWithoutClubInput!]
+  connectOrCreate: [ToolCreateOrConnectWithoutClubInput!]
+  upsert: [ToolUpsertWithWhereUniqueWithoutClubInput!]
+  createMany: ToolCreateManyClubInputEnvelope
+  set: [ToolWhereUniqueInput!]
+  disconnect: [ToolWhereUniqueInput!]
+  delete: [ToolWhereUniqueInput!]
+  connect: [ToolWhereUniqueInput!]
+  update: [ToolUpdateWithWhereUniqueWithoutClubInput!]
+  updateMany: [ToolUpdateManyWithWhereWithoutClubInput!]
+  deleteMany: [ToolScalarWhereInput!]
+}
+
+input ToolUpsertWithWhereUniqueWithoutClubInput {
+  where: ToolWhereUniqueInput!
+  update: ToolUpdateWithoutClubInput!
+  create: ToolCreateWithoutClubInput!
+}
+
+input ToolUpdateWithoutClubInput {
+  name: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: NullableDateTimeFieldUpdateOperationsInput
+  toolOwners: ToolOwnerUpdateManyWithoutToolInput
+}
+
+input ToolOwnerUpdateManyWithoutToolInput {
+  create: [ToolOwnerCreateWithoutToolInput!]
+  connectOrCreate: [ToolOwnerCreateOrConnectWithoutToolInput!]
+  upsert: [ToolOwnerUpsertWithWhereUniqueWithoutToolInput!]
+  createMany: ToolOwnerCreateManyToolInputEnvelope
+  set: [ToolOwnerWhereUniqueInput!]
+  disconnect: [ToolOwnerWhereUniqueInput!]
+  delete: [ToolOwnerWhereUniqueInput!]
+  connect: [ToolOwnerWhereUniqueInput!]
+  update: [ToolOwnerUpdateWithWhereUniqueWithoutToolInput!]
+  updateMany: [ToolOwnerUpdateManyWithWhereWithoutToolInput!]
+  deleteMany: [ToolOwnerScalarWhereInput!]
+}
+
+input ToolOwnerUpsertWithWhereUniqueWithoutToolInput {
+  where: ToolOwnerWhereUniqueInput!
+  update: ToolOwnerUpdateWithoutToolInput!
+  create: ToolOwnerCreateWithoutToolInput!
+}
+
+input ToolOwnerUpdateWithoutToolInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: NullableDateTimeFieldUpdateOperationsInput
+  user: UserUpdateOneRequiredWithoutToolsInput
+}
+
+input UserUpdateOneRequiredWithoutToolsInput {
+  create: UserCreateWithoutToolsInput
+  connectOrCreate: UserCreateOrConnectWithoutToolsInput
+  upsert: UserUpsertWithoutToolsInput
+  connect: UserWhereUniqueInput
+  update: UserUpdateWithoutToolsInput
+}
+
+input UserUpsertWithoutToolsInput {
+  update: UserUpdateWithoutToolsInput!
+  create: UserCreateWithoutToolsInput!
+}
+
+input UserUpdateWithoutToolsInput {
+  email: StringFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  password: StringFieldUpdateOperationsInput
+  role: IntFieldUpdateOperationsInput
+  club: ClubUpdateOneRequiredWithoutUsersInput
+  score: IntFieldUpdateOperationsInput
+  assist: IntFieldUpdateOperationsInput
+  countTool: IntFieldUpdateOperationsInput
+  absence: IntFieldUpdateOperationsInput
+  lateness: IntFieldUpdateOperationsInput
+  contactLate: IntFieldUpdateOperationsInput
+  countPicture: IntFieldUpdateOperationsInput
+  countReport: IntFieldUpdateOperationsInput
+  commentLate: IntFieldUpdateOperationsInput
+  insurance: IntFieldUpdateOperationsInput
+  member: MemberUpdateOneWithoutUserInput
+  pictureReports: PictureReportUpdateManyWithoutUploadUserInput
+  reports: ReportUpdateManyWithoutUploadUserInput
+  reportComments: ReportCommentUpdateManyWithoutUserInput
+  uniformOwners: UniformOwnerUpdateManyWithoutUserInput
+  postSledComments: SledCommentUpdateManyWithoutUserInput
+  updateSledComments: SledCommentUpdateManyWithoutUpdateUserInput
+  eventFees: EventFeeUpdateManyWithoutUserInput
+  membershipFees: MembershipFeeUpdateManyWithoutUserInput
+}
+
+input ReportCommentUpdateManyWithoutUserInput {
+  create: [ReportCommentCreateWithoutUserInput!]
+  connectOrCreate: [ReportCommentCreateOrConnectWithoutUserInput!]
+  upsert: [ReportCommentUpsertWithWhereUniqueWithoutUserInput!]
+  createMany: ReportCommentCreateManyUserInputEnvelope
+  set: [ReportCommentWhereUniqueInput!]
+  disconnect: [ReportCommentWhereUniqueInput!]
+  delete: [ReportCommentWhereUniqueInput!]
+  connect: [ReportCommentWhereUniqueInput!]
+  update: [ReportCommentUpdateWithWhereUniqueWithoutUserInput!]
+  updateMany: [ReportCommentUpdateManyWithWhereWithoutUserInput!]
+  deleteMany: [ReportCommentScalarWhereInput!]
+}
+
+input ReportCommentUpsertWithWhereUniqueWithoutUserInput {
+  where: ReportCommentWhereUniqueInput!
+  update: ReportCommentUpdateWithoutUserInput!
+  create: ReportCommentCreateWithoutUserInput!
+}
+
+input ReportCommentUpdateWithoutUserInput {
+  comment: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: NullableDateTimeFieldUpdateOperationsInput
+  report: ReportUpdateOneRequiredWithoutReportCommentsInput
+}
+
+input ReportUpdateOneRequiredWithoutReportCommentsInput {
+  create: ReportCreateWithoutReportCommentsInput
+  connectOrCreate: ReportCreateOrConnectWithoutReportCommentsInput
+  upsert: ReportUpsertWithoutReportCommentsInput
+  connect: ReportWhereUniqueInput
+  update: ReportUpdateWithoutReportCommentsInput
+}
+
+input ReportUpsertWithoutReportCommentsInput {
+  update: ReportUpdateWithoutReportCommentsInput!
+  create: ReportCreateWithoutReportCommentsInput!
+}
+
+input ReportUpdateWithoutReportCommentsInput {
+  title: StringFieldUpdateOperationsInput
+  text: StringFieldUpdateOperationsInput
+  date: DateTimeFieldUpdateOperationsInput
+  time: StringFieldUpdateOperationsInput
+  opponent: NullableStringFieldUpdateOperationsInput
+  myScore: IntFieldUpdateOperationsInput
+  opponentScore: IntFieldUpdateOperationsInput
+  category: IntFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: NullableDateTimeFieldUpdateOperationsInput
+  club: ClubUpdateOneRequiredWithoutReportsInput
+  uploadUser: UserUpdateOneRequiredWithoutReportsInput
+}
+
+input UserUpdateOneRequiredWithoutReportsInput {
+  create: UserCreateWithoutReportsInput
+  connectOrCreate: UserCreateOrConnectWithoutReportsInput
+  upsert: UserUpsertWithoutReportsInput
+  connect: UserWhereUniqueInput
+  update: UserUpdateWithoutReportsInput
+}
+
+input UserUpsertWithoutReportsInput {
+  update: UserUpdateWithoutReportsInput!
+  create: UserCreateWithoutReportsInput!
+}
+
+input UserUpdateWithoutReportsInput {
+  email: StringFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  password: StringFieldUpdateOperationsInput
+  role: IntFieldUpdateOperationsInput
+  club: ClubUpdateOneRequiredWithoutUsersInput
+  score: IntFieldUpdateOperationsInput
+  assist: IntFieldUpdateOperationsInput
+  countTool: IntFieldUpdateOperationsInput
+  absence: IntFieldUpdateOperationsInput
+  lateness: IntFieldUpdateOperationsInput
+  contactLate: IntFieldUpdateOperationsInput
+  countPicture: IntFieldUpdateOperationsInput
+  countReport: IntFieldUpdateOperationsInput
+  commentLate: IntFieldUpdateOperationsInput
+  insurance: IntFieldUpdateOperationsInput
+  member: MemberUpdateOneWithoutUserInput
+  pictureReports: PictureReportUpdateManyWithoutUploadUserInput
+  reportComments: ReportCommentUpdateManyWithoutUserInput
+  tools: ToolOwnerUpdateManyWithoutUserInput
+  uniformOwners: UniformOwnerUpdateManyWithoutUserInput
+  postSledComments: SledCommentUpdateManyWithoutUserInput
+  updateSledComments: SledCommentUpdateManyWithoutUpdateUserInput
+  eventFees: EventFeeUpdateManyWithoutUserInput
+  membershipFees: MembershipFeeUpdateManyWithoutUserInput
+}
+
+input ToolOwnerUpdateManyWithoutUserInput {
+  create: [ToolOwnerCreateWithoutUserInput!]
+  connectOrCreate: [ToolOwnerCreateOrConnectWithoutUserInput!]
+  upsert: [ToolOwnerUpsertWithWhereUniqueWithoutUserInput!]
+  createMany: ToolOwnerCreateManyUserInputEnvelope
+  set: [ToolOwnerWhereUniqueInput!]
+  disconnect: [ToolOwnerWhereUniqueInput!]
+  delete: [ToolOwnerWhereUniqueInput!]
+  connect: [ToolOwnerWhereUniqueInput!]
+  update: [ToolOwnerUpdateWithWhereUniqueWithoutUserInput!]
+  updateMany: [ToolOwnerUpdateManyWithWhereWithoutUserInput!]
+  deleteMany: [ToolOwnerScalarWhereInput!]
+}
+
+input ToolOwnerUpsertWithWhereUniqueWithoutUserInput {
+  where: ToolOwnerWhereUniqueInput!
+  update: ToolOwnerUpdateWithoutUserInput!
+  create: ToolOwnerCreateWithoutUserInput!
+}
+
+input ToolOwnerUpdateWithoutUserInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: NullableDateTimeFieldUpdateOperationsInput
+  tool: ToolUpdateOneRequiredWithoutToolOwnersInput
+}
+
+input ToolUpdateOneRequiredWithoutToolOwnersInput {
+  create: ToolCreateWithoutToolOwnersInput
+  connectOrCreate: ToolCreateOrConnectWithoutToolOwnersInput
+  upsert: ToolUpsertWithoutToolOwnersInput
+  connect: ToolWhereUniqueInput
+  update: ToolUpdateWithoutToolOwnersInput
+}
+
+input ToolUpsertWithoutToolOwnersInput {
+  update: ToolUpdateWithoutToolOwnersInput!
+  create: ToolCreateWithoutToolOwnersInput!
+}
+
+input ToolUpdateWithoutToolOwnersInput {
+  name: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: NullableDateTimeFieldUpdateOperationsInput
+  club: ClubUpdateOneRequiredWithoutToolsInput
+}
+
+input ClubUpdateOneRequiredWithoutToolsInput {
+  create: ClubCreateWithoutToolsInput
+  connectOrCreate: ClubCreateOrConnectWithoutToolsInput
+  upsert: ClubUpsertWithoutToolsInput
+  connect: ClubWhereUniqueInput
+  update: ClubUpdateWithoutToolsInput
+}
+
+input ClubUpsertWithoutToolsInput {
+  update: ClubUpdateWithoutToolsInput!
+  create: ClubCreateWithoutToolsInput!
+}
+
+input ClubUpdateWithoutToolsInput {
+  name: StringFieldUpdateOperationsInput
+  rankName: StringFieldUpdateOperationsInput
+  rankUnit: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: NullableDateTimeFieldUpdateOperationsInput
+  users: UserUpdateManyWithoutClubInput
+  schedules: ScheduleUpdateManyWithoutClubInput
+  members: MemberUpdateManyWithoutClubInput
+  pictureReports: PictureReportUpdateManyWithoutClubInput
+  reports: ReportUpdateManyWithoutClubInput
+  uniformOwners: UniformOwnerUpdateManyWithoutClubInput
+  sleds: SledUpdateManyWithoutClubInput
+  eventFees: EventFeeUpdateManyWithoutClubInput
+  membershipFees: MembershipFeeUpdateManyWithoutClubInput
+}
+
+input ReportUpdateManyWithoutClubInput {
+  create: [ReportCreateWithoutClubInput!]
+  connectOrCreate: [ReportCreateOrConnectWithoutClubInput!]
+  upsert: [ReportUpsertWithWhereUniqueWithoutClubInput!]
+  createMany: ReportCreateManyClubInputEnvelope
+  set: [ReportWhereUniqueInput!]
+  disconnect: [ReportWhereUniqueInput!]
+  delete: [ReportWhereUniqueInput!]
+  connect: [ReportWhereUniqueInput!]
+  update: [ReportUpdateWithWhereUniqueWithoutClubInput!]
+  updateMany: [ReportUpdateManyWithWhereWithoutClubInput!]
+  deleteMany: [ReportScalarWhereInput!]
+}
+
+input ReportUpsertWithWhereUniqueWithoutClubInput {
+  where: ReportWhereUniqueInput!
+  update: ReportUpdateWithoutClubInput!
+  create: ReportCreateWithoutClubInput!
+}
+
+input ReportUpdateWithoutClubInput {
+  title: StringFieldUpdateOperationsInput
+  text: StringFieldUpdateOperationsInput
+  date: DateTimeFieldUpdateOperationsInput
+  time: StringFieldUpdateOperationsInput
+  opponent: NullableStringFieldUpdateOperationsInput
+  myScore: IntFieldUpdateOperationsInput
+  opponentScore: IntFieldUpdateOperationsInput
+  category: IntFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: NullableDateTimeFieldUpdateOperationsInput
+  uploadUser: UserUpdateOneRequiredWithoutReportsInput
+  reportComments: ReportCommentUpdateManyWithoutReportInput
+}
+
+input ReportCommentUpdateManyWithoutReportInput {
+  create: [ReportCommentCreateWithoutReportInput!]
+  connectOrCreate: [ReportCommentCreateOrConnectWithoutReportInput!]
+  upsert: [ReportCommentUpsertWithWhereUniqueWithoutReportInput!]
+  createMany: ReportCommentCreateManyReportInputEnvelope
+  set: [ReportCommentWhereUniqueInput!]
+  disconnect: [ReportCommentWhereUniqueInput!]
+  delete: [ReportCommentWhereUniqueInput!]
+  connect: [ReportCommentWhereUniqueInput!]
+  update: [ReportCommentUpdateWithWhereUniqueWithoutReportInput!]
+  updateMany: [ReportCommentUpdateManyWithWhereWithoutReportInput!]
+  deleteMany: [ReportCommentScalarWhereInput!]
+}
+
+input ReportCommentUpsertWithWhereUniqueWithoutReportInput {
+  where: ReportCommentWhereUniqueInput!
+  update: ReportCommentUpdateWithoutReportInput!
+  create: ReportCommentCreateWithoutReportInput!
+}
+
+input ReportCommentUpdateWithoutReportInput {
+  comment: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: NullableDateTimeFieldUpdateOperationsInput
+  user: UserUpdateOneRequiredWithoutReportCommentsInput
+}
+
+input UserUpdateOneRequiredWithoutReportCommentsInput {
+  create: UserCreateWithoutReportCommentsInput
+  connectOrCreate: UserCreateOrConnectWithoutReportCommentsInput
+  upsert: UserUpsertWithoutReportCommentsInput
+  connect: UserWhereUniqueInput
+  update: UserUpdateWithoutReportCommentsInput
+}
+
+input UserUpsertWithoutReportCommentsInput {
+  update: UserUpdateWithoutReportCommentsInput!
+  create: UserCreateWithoutReportCommentsInput!
+}
+
+input UserUpdateWithoutReportCommentsInput {
+  email: StringFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  password: StringFieldUpdateOperationsInput
+  role: IntFieldUpdateOperationsInput
+  club: ClubUpdateOneRequiredWithoutUsersInput
+  score: IntFieldUpdateOperationsInput
+  assist: IntFieldUpdateOperationsInput
+  countTool: IntFieldUpdateOperationsInput
+  absence: IntFieldUpdateOperationsInput
+  lateness: IntFieldUpdateOperationsInput
+  contactLate: IntFieldUpdateOperationsInput
+  countPicture: IntFieldUpdateOperationsInput
+  countReport: IntFieldUpdateOperationsInput
+  commentLate: IntFieldUpdateOperationsInput
+  insurance: IntFieldUpdateOperationsInput
+  member: MemberUpdateOneWithoutUserInput
+  pictureReports: PictureReportUpdateManyWithoutUploadUserInput
+  reports: ReportUpdateManyWithoutUploadUserInput
+  tools: ToolOwnerUpdateManyWithoutUserInput
+  uniformOwners: UniformOwnerUpdateManyWithoutUserInput
+  postSledComments: SledCommentUpdateManyWithoutUserInput
+  updateSledComments: SledCommentUpdateManyWithoutUpdateUserInput
+  eventFees: EventFeeUpdateManyWithoutUserInput
+  membershipFees: MembershipFeeUpdateManyWithoutUserInput
+}
+
+input UniformOwnerUpdateManyWithoutUserInput {
+  create: [UniformOwnerCreateWithoutUserInput!]
+  connectOrCreate: [UniformOwnerCreateOrConnectWithoutUserInput!]
+  upsert: [UniformOwnerUpsertWithWhereUniqueWithoutUserInput!]
+  createMany: UniformOwnerCreateManyUserInputEnvelope
+  set: [UniformOwnerWhereUniqueInput!]
+  disconnect: [UniformOwnerWhereUniqueInput!]
+  delete: [UniformOwnerWhereUniqueInput!]
+  connect: [UniformOwnerWhereUniqueInput!]
+  update: [UniformOwnerUpdateWithWhereUniqueWithoutUserInput!]
+  updateMany: [UniformOwnerUpdateManyWithWhereWithoutUserInput!]
+  deleteMany: [UniformOwnerScalarWhereInput!]
+}
+
+input UniformOwnerUpsertWithWhereUniqueWithoutUserInput {
+  where: UniformOwnerWhereUniqueInput!
+  update: UniformOwnerUpdateWithoutUserInput!
+  create: UniformOwnerCreateWithoutUserInput!
+}
+
+input UniformOwnerUpdateWithoutUserInput {
+  number: IntFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: NullableDateTimeFieldUpdateOperationsInput
+  club: ClubUpdateOneRequiredWithoutUniformOwnersInput
+}
+
+input ClubUpdateOneRequiredWithoutUniformOwnersInput {
+  create: ClubCreateWithoutUniformOwnersInput
+  connectOrCreate: ClubCreateOrConnectWithoutUniformOwnersInput
+  upsert: ClubUpsertWithoutUniformOwnersInput
+  connect: ClubWhereUniqueInput
+  update: ClubUpdateWithoutUniformOwnersInput
+}
+
+input ClubUpsertWithoutUniformOwnersInput {
+  update: ClubUpdateWithoutUniformOwnersInput!
+  create: ClubCreateWithoutUniformOwnersInput!
+}
+
+input ClubUpdateWithoutUniformOwnersInput {
+  name: StringFieldUpdateOperationsInput
+  rankName: StringFieldUpdateOperationsInput
+  rankUnit: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: NullableDateTimeFieldUpdateOperationsInput
+  users: UserUpdateManyWithoutClubInput
+  schedules: ScheduleUpdateManyWithoutClubInput
+  members: MemberUpdateManyWithoutClubInput
+  pictureReports: PictureReportUpdateManyWithoutClubInput
+  reports: ReportUpdateManyWithoutClubInput
+  tools: ToolUpdateManyWithoutClubInput
+  sleds: SledUpdateManyWithoutClubInput
+  eventFees: EventFeeUpdateManyWithoutClubInput
+  membershipFees: MembershipFeeUpdateManyWithoutClubInput
+}
+
+input SledUpdateManyWithoutClubInput {
+  create: [SledCreateWithoutClubInput!]
+  connectOrCreate: [SledCreateOrConnectWithoutClubInput!]
+  upsert: [SledUpsertWithWhereUniqueWithoutClubInput!]
+  createMany: SledCreateManyClubInputEnvelope
+  set: [SledWhereUniqueInput!]
+  disconnect: [SledWhereUniqueInput!]
+  delete: [SledWhereUniqueInput!]
+  connect: [SledWhereUniqueInput!]
+  update: [SledUpdateWithWhereUniqueWithoutClubInput!]
+  updateMany: [SledUpdateManyWithWhereWithoutClubInput!]
+  deleteMany: [SledScalarWhereInput!]
+}
+
+input SledUpsertWithWhereUniqueWithoutClubInput {
+  where: SledWhereUniqueInput!
+  update: SledUpdateWithoutClubInput!
+  create: SledCreateWithoutClubInput!
+}
+
+input SledUpdateWithoutClubInput {
+  name: StringFieldUpdateOperationsInput
+  topic: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: NullableDateTimeFieldUpdateOperationsInput
+  sledComments: SledCommentUpdateManyWithoutSledInput
+}
+
+input SledCommentUpdateManyWithoutSledInput {
+  create: [SledCommentCreateWithoutSledInput!]
+  connectOrCreate: [SledCommentCreateOrConnectWithoutSledInput!]
+  upsert: [SledCommentUpsertWithWhereUniqueWithoutSledInput!]
+  createMany: SledCommentCreateManySledInputEnvelope
+  set: [SledCommentWhereUniqueInput!]
+  disconnect: [SledCommentWhereUniqueInput!]
+  delete: [SledCommentWhereUniqueInput!]
+  connect: [SledCommentWhereUniqueInput!]
+  update: [SledCommentUpdateWithWhereUniqueWithoutSledInput!]
+  updateMany: [SledCommentUpdateManyWithWhereWithoutSledInput!]
+  deleteMany: [SledCommentScalarWhereInput!]
+}
+
+input SledCommentUpsertWithWhereUniqueWithoutSledInput {
+  where: SledCommentWhereUniqueInput!
+  update: SledCommentUpdateWithoutSledInput!
+  create: SledCommentCreateWithoutSledInput!
+}
+
+input SledCommentUpdateWithoutSledInput {
+  comment: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: NullableDateTimeFieldUpdateOperationsInput
+  user: UserUpdateOneRequiredWithoutPostSledCommentsInput
+  updateUser: UserUpdateOneWithoutUpdateSledCommentsInput
+}
+
+input UserUpdateOneRequiredWithoutPostSledCommentsInput {
+  create: UserCreateWithoutPostSledCommentsInput
+  connectOrCreate: UserCreateOrConnectWithoutPostSledCommentsInput
+  upsert: UserUpsertWithoutPostSledCommentsInput
+  connect: UserWhereUniqueInput
+  update: UserUpdateWithoutPostSledCommentsInput
+}
+
+input UserUpsertWithoutPostSledCommentsInput {
+  update: UserUpdateWithoutPostSledCommentsInput!
+  create: UserCreateWithoutPostSledCommentsInput!
+}
+
+input UserUpdateWithoutPostSledCommentsInput {
+  email: StringFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  password: StringFieldUpdateOperationsInput
+  role: IntFieldUpdateOperationsInput
+  club: ClubUpdateOneRequiredWithoutUsersInput
+  score: IntFieldUpdateOperationsInput
+  assist: IntFieldUpdateOperationsInput
+  countTool: IntFieldUpdateOperationsInput
+  absence: IntFieldUpdateOperationsInput
+  lateness: IntFieldUpdateOperationsInput
+  contactLate: IntFieldUpdateOperationsInput
+  countPicture: IntFieldUpdateOperationsInput
+  countReport: IntFieldUpdateOperationsInput
+  commentLate: IntFieldUpdateOperationsInput
+  insurance: IntFieldUpdateOperationsInput
+  member: MemberUpdateOneWithoutUserInput
+  pictureReports: PictureReportUpdateManyWithoutUploadUserInput
+  reports: ReportUpdateManyWithoutUploadUserInput
+  reportComments: ReportCommentUpdateManyWithoutUserInput
+  tools: ToolOwnerUpdateManyWithoutUserInput
+  uniformOwners: UniformOwnerUpdateManyWithoutUserInput
+  updateSledComments: SledCommentUpdateManyWithoutUpdateUserInput
+  eventFees: EventFeeUpdateManyWithoutUserInput
+  membershipFees: MembershipFeeUpdateManyWithoutUserInput
+}
+
+input SledCommentUpdateManyWithoutUpdateUserInput {
+  create: [SledCommentCreateWithoutUpdateUserInput!]
+  connectOrCreate: [SledCommentCreateOrConnectWithoutUpdateUserInput!]
+  upsert: [SledCommentUpsertWithWhereUniqueWithoutUpdateUserInput!]
+  createMany: SledCommentCreateManyUpdateUserInputEnvelope
+  set: [SledCommentWhereUniqueInput!]
+  disconnect: [SledCommentWhereUniqueInput!]
+  delete: [SledCommentWhereUniqueInput!]
+  connect: [SledCommentWhereUniqueInput!]
+  update: [SledCommentUpdateWithWhereUniqueWithoutUpdateUserInput!]
+  updateMany: [SledCommentUpdateManyWithWhereWithoutUpdateUserInput!]
+  deleteMany: [SledCommentScalarWhereInput!]
+}
+
+input SledCommentUpsertWithWhereUniqueWithoutUpdateUserInput {
+  where: SledCommentWhereUniqueInput!
+  update: SledCommentUpdateWithoutUpdateUserInput!
+  create: SledCommentCreateWithoutUpdateUserInput!
+}
+
+input SledCommentUpdateWithoutUpdateUserInput {
+  comment: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: NullableDateTimeFieldUpdateOperationsInput
+  sled: SledUpdateOneRequiredWithoutSledCommentsInput
+  user: UserUpdateOneRequiredWithoutPostSledCommentsInput
+}
+
+input SledUpdateOneRequiredWithoutSledCommentsInput {
+  create: SledCreateWithoutSledCommentsInput
+  connectOrCreate: SledCreateOrConnectWithoutSledCommentsInput
+  upsert: SledUpsertWithoutSledCommentsInput
+  connect: SledWhereUniqueInput
+  update: SledUpdateWithoutSledCommentsInput
+}
+
+input SledUpsertWithoutSledCommentsInput {
+  update: SledUpdateWithoutSledCommentsInput!
+  create: SledCreateWithoutSledCommentsInput!
+}
+
+input SledUpdateWithoutSledCommentsInput {
+  name: StringFieldUpdateOperationsInput
+  topic: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: NullableDateTimeFieldUpdateOperationsInput
+  club: ClubUpdateOneRequiredWithoutSledsInput
+}
+
+input ClubUpdateOneRequiredWithoutSledsInput {
+  create: ClubCreateWithoutSledsInput
+  connectOrCreate: ClubCreateOrConnectWithoutSledsInput
+  upsert: ClubUpsertWithoutSledsInput
+  connect: ClubWhereUniqueInput
+  update: ClubUpdateWithoutSledsInput
+}
+
+input ClubUpsertWithoutSledsInput {
+  update: ClubUpdateWithoutSledsInput!
+  create: ClubCreateWithoutSledsInput!
+}
+
+input ClubUpdateWithoutSledsInput {
+  name: StringFieldUpdateOperationsInput
+  rankName: StringFieldUpdateOperationsInput
+  rankUnit: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: NullableDateTimeFieldUpdateOperationsInput
+  users: UserUpdateManyWithoutClubInput
+  schedules: ScheduleUpdateManyWithoutClubInput
+  members: MemberUpdateManyWithoutClubInput
+  pictureReports: PictureReportUpdateManyWithoutClubInput
+  reports: ReportUpdateManyWithoutClubInput
+  tools: ToolUpdateManyWithoutClubInput
+  uniformOwners: UniformOwnerUpdateManyWithoutClubInput
+  eventFees: EventFeeUpdateManyWithoutClubInput
+  membershipFees: MembershipFeeUpdateManyWithoutClubInput
+}
+
+input UniformOwnerUpdateManyWithoutClubInput {
+  create: [UniformOwnerCreateWithoutClubInput!]
+  connectOrCreate: [UniformOwnerCreateOrConnectWithoutClubInput!]
+  upsert: [UniformOwnerUpsertWithWhereUniqueWithoutClubInput!]
+  createMany: UniformOwnerCreateManyClubInputEnvelope
+  set: [UniformOwnerWhereUniqueInput!]
+  disconnect: [UniformOwnerWhereUniqueInput!]
+  delete: [UniformOwnerWhereUniqueInput!]
+  connect: [UniformOwnerWhereUniqueInput!]
+  update: [UniformOwnerUpdateWithWhereUniqueWithoutClubInput!]
+  updateMany: [UniformOwnerUpdateManyWithWhereWithoutClubInput!]
+  deleteMany: [UniformOwnerScalarWhereInput!]
+}
+
+input UniformOwnerUpsertWithWhereUniqueWithoutClubInput {
+  where: UniformOwnerWhereUniqueInput!
+  update: UniformOwnerUpdateWithoutClubInput!
+  create: UniformOwnerCreateWithoutClubInput!
+}
+
+input UniformOwnerUpdateWithoutClubInput {
+  number: IntFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: NullableDateTimeFieldUpdateOperationsInput
+  user: UserUpdateOneRequiredWithoutUniformOwnersInput
+}
+
+input UserUpdateOneRequiredWithoutUniformOwnersInput {
+  create: UserCreateWithoutUniformOwnersInput
+  connectOrCreate: UserCreateOrConnectWithoutUniformOwnersInput
+  upsert: UserUpsertWithoutUniformOwnersInput
+  connect: UserWhereUniqueInput
+  update: UserUpdateWithoutUniformOwnersInput
+}
+
+input UserUpsertWithoutUniformOwnersInput {
+  update: UserUpdateWithoutUniformOwnersInput!
+  create: UserCreateWithoutUniformOwnersInput!
+}
+
+input UserUpdateWithoutUniformOwnersInput {
+  email: StringFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  password: StringFieldUpdateOperationsInput
+  role: IntFieldUpdateOperationsInput
+  club: ClubUpdateOneRequiredWithoutUsersInput
+  score: IntFieldUpdateOperationsInput
+  assist: IntFieldUpdateOperationsInput
+  countTool: IntFieldUpdateOperationsInput
+  absence: IntFieldUpdateOperationsInput
+  lateness: IntFieldUpdateOperationsInput
+  contactLate: IntFieldUpdateOperationsInput
+  countPicture: IntFieldUpdateOperationsInput
+  countReport: IntFieldUpdateOperationsInput
+  commentLate: IntFieldUpdateOperationsInput
+  insurance: IntFieldUpdateOperationsInput
+  member: MemberUpdateOneWithoutUserInput
+  pictureReports: PictureReportUpdateManyWithoutUploadUserInput
+  reports: ReportUpdateManyWithoutUploadUserInput
+  reportComments: ReportCommentUpdateManyWithoutUserInput
+  tools: ToolOwnerUpdateManyWithoutUserInput
+  postSledComments: SledCommentUpdateManyWithoutUserInput
+  updateSledComments: SledCommentUpdateManyWithoutUpdateUserInput
+  eventFees: EventFeeUpdateManyWithoutUserInput
+  membershipFees: MembershipFeeUpdateManyWithoutUserInput
+}
+
+input SledCommentUpdateManyWithoutUserInput {
+  create: [SledCommentCreateWithoutUserInput!]
+  connectOrCreate: [SledCommentCreateOrConnectWithoutUserInput!]
+  upsert: [SledCommentUpsertWithWhereUniqueWithoutUserInput!]
+  createMany: SledCommentCreateManyUserInputEnvelope
+  set: [SledCommentWhereUniqueInput!]
+  disconnect: [SledCommentWhereUniqueInput!]
+  delete: [SledCommentWhereUniqueInput!]
+  connect: [SledCommentWhereUniqueInput!]
+  update: [SledCommentUpdateWithWhereUniqueWithoutUserInput!]
+  updateMany: [SledCommentUpdateManyWithWhereWithoutUserInput!]
+  deleteMany: [SledCommentScalarWhereInput!]
+}
+
+input SledCommentUpsertWithWhereUniqueWithoutUserInput {
+  where: SledCommentWhereUniqueInput!
+  update: SledCommentUpdateWithoutUserInput!
+  create: SledCommentCreateWithoutUserInput!
+}
+
+input SledCommentUpdateWithoutUserInput {
+  comment: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: NullableDateTimeFieldUpdateOperationsInput
+  sled: SledUpdateOneRequiredWithoutSledCommentsInput
+  updateUser: UserUpdateOneWithoutUpdateSledCommentsInput
+}
+
+input UserUpdateOneWithoutUpdateSledCommentsInput {
+  create: UserCreateWithoutUpdateSledCommentsInput
+  connectOrCreate: UserCreateOrConnectWithoutUpdateSledCommentsInput
+  upsert: UserUpsertWithoutUpdateSledCommentsInput
+  disconnect: Boolean
+  delete: Boolean
+  connect: UserWhereUniqueInput
+  update: UserUpdateWithoutUpdateSledCommentsInput
+}
+
+input UserUpsertWithoutUpdateSledCommentsInput {
+  update: UserUpdateWithoutUpdateSledCommentsInput!
+  create: UserCreateWithoutUpdateSledCommentsInput!
+}
+
+input UserUpdateWithoutUpdateSledCommentsInput {
+  email: StringFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  password: StringFieldUpdateOperationsInput
+  role: IntFieldUpdateOperationsInput
+  club: ClubUpdateOneRequiredWithoutUsersInput
+  score: IntFieldUpdateOperationsInput
+  assist: IntFieldUpdateOperationsInput
+  countTool: IntFieldUpdateOperationsInput
+  absence: IntFieldUpdateOperationsInput
+  lateness: IntFieldUpdateOperationsInput
+  contactLate: IntFieldUpdateOperationsInput
+  countPicture: IntFieldUpdateOperationsInput
+  countReport: IntFieldUpdateOperationsInput
+  commentLate: IntFieldUpdateOperationsInput
+  insurance: IntFieldUpdateOperationsInput
+  member: MemberUpdateOneWithoutUserInput
+  pictureReports: PictureReportUpdateManyWithoutUploadUserInput
+  reports: ReportUpdateManyWithoutUploadUserInput
+  reportComments: ReportCommentUpdateManyWithoutUserInput
+  tools: ToolOwnerUpdateManyWithoutUserInput
+  uniformOwners: UniformOwnerUpdateManyWithoutUserInput
+  postSledComments: SledCommentUpdateManyWithoutUserInput
+  eventFees: EventFeeUpdateManyWithoutUserInput
+  membershipFees: MembershipFeeUpdateManyWithoutUserInput
+}
+
+input EventFeeUpdateManyWithoutUserInput {
+  create: [EventFeeCreateWithoutUserInput!]
+  connectOrCreate: [EventFeeCreateOrConnectWithoutUserInput!]
+  upsert: [EventFeeUpsertWithWhereUniqueWithoutUserInput!]
+  createMany: EventFeeCreateManyUserInputEnvelope
+  set: [EventFeeWhereUniqueInput!]
+  disconnect: [EventFeeWhereUniqueInput!]
+  delete: [EventFeeWhereUniqueInput!]
+  connect: [EventFeeWhereUniqueInput!]
+  update: [EventFeeUpdateWithWhereUniqueWithoutUserInput!]
+  updateMany: [EventFeeUpdateManyWithWhereWithoutUserInput!]
+  deleteMany: [EventFeeScalarWhereInput!]
+}
+
+input EventFeeUpsertWithWhereUniqueWithoutUserInput {
+  where: EventFeeWhereUniqueInput!
+  update: EventFeeUpdateWithoutUserInput!
+  create: EventFeeCreateWithoutUserInput!
+}
+
+input EventFeeUpdateWithoutUserInput {
+  january: BoolFieldUpdateOperationsInput
+  february: BoolFieldUpdateOperationsInput
+  march: BoolFieldUpdateOperationsInput
+  april: BoolFieldUpdateOperationsInput
+  may: BoolFieldUpdateOperationsInput
+  june: BoolFieldUpdateOperationsInput
+  july: BoolFieldUpdateOperationsInput
+  august: BoolFieldUpdateOperationsInput
+  september: BoolFieldUpdateOperationsInput
+  october: BoolFieldUpdateOperationsInput
+  november: BoolFieldUpdateOperationsInput
+  december: BoolFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: NullableDateTimeFieldUpdateOperationsInput
+  club: ClubUpdateOneRequiredWithoutEventFeesInput
+}
+
+input BoolFieldUpdateOperationsInput {
+  set: Boolean
+}
+
+input ClubUpdateOneRequiredWithoutEventFeesInput {
+  create: ClubCreateWithoutEventFeesInput
+  connectOrCreate: ClubCreateOrConnectWithoutEventFeesInput
+  upsert: ClubUpsertWithoutEventFeesInput
+  connect: ClubWhereUniqueInput
+  update: ClubUpdateWithoutEventFeesInput
+}
+
+input ClubUpsertWithoutEventFeesInput {
+  update: ClubUpdateWithoutEventFeesInput!
+  create: ClubCreateWithoutEventFeesInput!
+}
+
+input ClubUpdateWithoutEventFeesInput {
+  name: StringFieldUpdateOperationsInput
+  rankName: StringFieldUpdateOperationsInput
+  rankUnit: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: NullableDateTimeFieldUpdateOperationsInput
+  users: UserUpdateManyWithoutClubInput
+  schedules: ScheduleUpdateManyWithoutClubInput
+  members: MemberUpdateManyWithoutClubInput
+  pictureReports: PictureReportUpdateManyWithoutClubInput
+  reports: ReportUpdateManyWithoutClubInput
+  tools: ToolUpdateManyWithoutClubInput
+  uniformOwners: UniformOwnerUpdateManyWithoutClubInput
+  sleds: SledUpdateManyWithoutClubInput
+  membershipFees: MembershipFeeUpdateManyWithoutClubInput
+}
+
+input MembershipFeeUpdateManyWithoutClubInput {
+  create: [MembershipFeeCreateWithoutClubInput!]
+  connectOrCreate: [MembershipFeeCreateOrConnectWithoutClubInput!]
+  upsert: [MembershipFeeUpsertWithWhereUniqueWithoutClubInput!]
+  createMany: MembershipFeeCreateManyClubInputEnvelope
+  set: [MembershipFeeWhereUniqueInput!]
+  disconnect: [MembershipFeeWhereUniqueInput!]
+  delete: [MembershipFeeWhereUniqueInput!]
+  connect: [MembershipFeeWhereUniqueInput!]
+  update: [MembershipFeeUpdateWithWhereUniqueWithoutClubInput!]
+  updateMany: [MembershipFeeUpdateManyWithWhereWithoutClubInput!]
+  deleteMany: [MembershipFeeScalarWhereInput!]
+}
+
+input MembershipFeeUpsertWithWhereUniqueWithoutClubInput {
+  where: MembershipFeeWhereUniqueInput!
+  update: MembershipFeeUpdateWithoutClubInput!
+  create: MembershipFeeCreateWithoutClubInput!
+}
+
+input MembershipFeeUpdateWithoutClubInput {
+  january: BoolFieldUpdateOperationsInput
+  february: BoolFieldUpdateOperationsInput
+  march: BoolFieldUpdateOperationsInput
+  april: BoolFieldUpdateOperationsInput
+  may: BoolFieldUpdateOperationsInput
+  june: BoolFieldUpdateOperationsInput
+  july: BoolFieldUpdateOperationsInput
+  august: BoolFieldUpdateOperationsInput
+  september: BoolFieldUpdateOperationsInput
+  october: BoolFieldUpdateOperationsInput
+  november: BoolFieldUpdateOperationsInput
+  december: BoolFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: NullableDateTimeFieldUpdateOperationsInput
+  user: UserUpdateOneRequiredWithoutMembershipFeesInput
+}
+
+input UserUpdateOneRequiredWithoutMembershipFeesInput {
+  create: UserCreateWithoutMembershipFeesInput
+  connectOrCreate: UserCreateOrConnectWithoutMembershipFeesInput
+  upsert: UserUpsertWithoutMembershipFeesInput
+  connect: UserWhereUniqueInput
+  update: UserUpdateWithoutMembershipFeesInput
+}
+
+input UserUpsertWithoutMembershipFeesInput {
+  update: UserUpdateWithoutMembershipFeesInput!
+  create: UserCreateWithoutMembershipFeesInput!
+}
+
+input UserUpdateWithoutMembershipFeesInput {
+  email: StringFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  password: StringFieldUpdateOperationsInput
+  role: IntFieldUpdateOperationsInput
+  club: ClubUpdateOneRequiredWithoutUsersInput
+  score: IntFieldUpdateOperationsInput
+  assist: IntFieldUpdateOperationsInput
+  countTool: IntFieldUpdateOperationsInput
+  absence: IntFieldUpdateOperationsInput
+  lateness: IntFieldUpdateOperationsInput
+  contactLate: IntFieldUpdateOperationsInput
+  countPicture: IntFieldUpdateOperationsInput
+  countReport: IntFieldUpdateOperationsInput
+  commentLate: IntFieldUpdateOperationsInput
+  insurance: IntFieldUpdateOperationsInput
+  member: MemberUpdateOneWithoutUserInput
+  pictureReports: PictureReportUpdateManyWithoutUploadUserInput
+  reports: ReportUpdateManyWithoutUploadUserInput
+  reportComments: ReportCommentUpdateManyWithoutUserInput
+  tools: ToolOwnerUpdateManyWithoutUserInput
+  uniformOwners: UniformOwnerUpdateManyWithoutUserInput
+  postSledComments: SledCommentUpdateManyWithoutUserInput
+  updateSledComments: SledCommentUpdateManyWithoutUpdateUserInput
+  eventFees: EventFeeUpdateManyWithoutUserInput
+}
+
+input MembershipFeeUpdateWithWhereUniqueWithoutClubInput {
+  where: MembershipFeeWhereUniqueInput!
+  data: MembershipFeeUpdateWithoutClubInput!
+}
+
+input MembershipFeeUpdateManyWithWhereWithoutClubInput {
+  where: MembershipFeeScalarWhereInput!
+  data: MembershipFeeUpdateManyMutationInput!
+}
+
+input MembershipFeeScalarWhereInput {
+  AND: [MembershipFeeScalarWhereInput!]
+  OR: [MembershipFeeScalarWhereInput!]
+  NOT: [MembershipFeeScalarWhereInput!]
+  id: IntFilter
+  january: BoolFilter
+  february: BoolFilter
+  march: BoolFilter
+  april: BoolFilter
+  may: BoolFilter
+  june: BoolFilter
+  july: BoolFilter
+  august: BoolFilter
+  september: BoolFilter
+  october: BoolFilter
+  november: BoolFilter
+  december: BoolFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeNullableFilter
+  userId: IntFilter
+  clubId: IntFilter
+}
+
+input MembershipFeeUpdateManyMutationInput {
+  january: BoolFieldUpdateOperationsInput
+  february: BoolFieldUpdateOperationsInput
+  march: BoolFieldUpdateOperationsInput
+  april: BoolFieldUpdateOperationsInput
+  may: BoolFieldUpdateOperationsInput
+  june: BoolFieldUpdateOperationsInput
+  july: BoolFieldUpdateOperationsInput
+  august: BoolFieldUpdateOperationsInput
+  september: BoolFieldUpdateOperationsInput
+  october: BoolFieldUpdateOperationsInput
+  november: BoolFieldUpdateOperationsInput
+  december: BoolFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: NullableDateTimeFieldUpdateOperationsInput
+}
+
+input EventFeeUpdateWithWhereUniqueWithoutUserInput {
+  where: EventFeeWhereUniqueInput!
+  data: EventFeeUpdateWithoutUserInput!
+}
+
+input EventFeeUpdateManyWithWhereWithoutUserInput {
+  where: EventFeeScalarWhereInput!
+  data: EventFeeUpdateManyMutationInput!
+}
+
+input EventFeeScalarWhereInput {
+  AND: [EventFeeScalarWhereInput!]
+  OR: [EventFeeScalarWhereInput!]
+  NOT: [EventFeeScalarWhereInput!]
+  id: IntFilter
+  january: BoolFilter
+  february: BoolFilter
+  march: BoolFilter
+  april: BoolFilter
+  may: BoolFilter
+  june: BoolFilter
+  july: BoolFilter
+  august: BoolFilter
+  september: BoolFilter
+  october: BoolFilter
+  november: BoolFilter
+  december: BoolFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeNullableFilter
+  userId: IntFilter
+  clubId: IntFilter
+}
+
+input EventFeeUpdateManyMutationInput {
+  january: BoolFieldUpdateOperationsInput
+  february: BoolFieldUpdateOperationsInput
+  march: BoolFieldUpdateOperationsInput
+  april: BoolFieldUpdateOperationsInput
+  may: BoolFieldUpdateOperationsInput
+  june: BoolFieldUpdateOperationsInput
+  july: BoolFieldUpdateOperationsInput
+  august: BoolFieldUpdateOperationsInput
+  september: BoolFieldUpdateOperationsInput
+  october: BoolFieldUpdateOperationsInput
+  november: BoolFieldUpdateOperationsInput
+  december: BoolFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: NullableDateTimeFieldUpdateOperationsInput
+}
+
+input MembershipFeeUpdateManyWithoutUserInput {
+  create: [MembershipFeeCreateWithoutUserInput!]
+  connectOrCreate: [MembershipFeeCreateOrConnectWithoutUserInput!]
+  upsert: [MembershipFeeUpsertWithWhereUniqueWithoutUserInput!]
+  createMany: MembershipFeeCreateManyUserInputEnvelope
+  set: [MembershipFeeWhereUniqueInput!]
+  disconnect: [MembershipFeeWhereUniqueInput!]
+  delete: [MembershipFeeWhereUniqueInput!]
+  connect: [MembershipFeeWhereUniqueInput!]
+  update: [MembershipFeeUpdateWithWhereUniqueWithoutUserInput!]
+  updateMany: [MembershipFeeUpdateManyWithWhereWithoutUserInput!]
+  deleteMany: [MembershipFeeScalarWhereInput!]
+}
+
+input MembershipFeeUpsertWithWhereUniqueWithoutUserInput {
+  where: MembershipFeeWhereUniqueInput!
+  update: MembershipFeeUpdateWithoutUserInput!
+  create: MembershipFeeCreateWithoutUserInput!
+}
+
+input MembershipFeeUpdateWithoutUserInput {
+  january: BoolFieldUpdateOperationsInput
+  february: BoolFieldUpdateOperationsInput
+  march: BoolFieldUpdateOperationsInput
+  april: BoolFieldUpdateOperationsInput
+  may: BoolFieldUpdateOperationsInput
+  june: BoolFieldUpdateOperationsInput
+  july: BoolFieldUpdateOperationsInput
+  august: BoolFieldUpdateOperationsInput
+  september: BoolFieldUpdateOperationsInput
+  october: BoolFieldUpdateOperationsInput
+  november: BoolFieldUpdateOperationsInput
+  december: BoolFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: NullableDateTimeFieldUpdateOperationsInput
+  club: ClubUpdateOneRequiredWithoutMembershipFeesInput
+}
+
+input ClubUpdateOneRequiredWithoutMembershipFeesInput {
+  create: ClubCreateWithoutMembershipFeesInput
+  connectOrCreate: ClubCreateOrConnectWithoutMembershipFeesInput
+  upsert: ClubUpsertWithoutMembershipFeesInput
+  connect: ClubWhereUniqueInput
+  update: ClubUpdateWithoutMembershipFeesInput
+}
+
+input ClubUpsertWithoutMembershipFeesInput {
+  update: ClubUpdateWithoutMembershipFeesInput!
+  create: ClubCreateWithoutMembershipFeesInput!
+}
+
+input ClubUpdateWithoutMembershipFeesInput {
+  name: StringFieldUpdateOperationsInput
+  rankName: StringFieldUpdateOperationsInput
+  rankUnit: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: NullableDateTimeFieldUpdateOperationsInput
+  users: UserUpdateManyWithoutClubInput
+  schedules: ScheduleUpdateManyWithoutClubInput
+  members: MemberUpdateManyWithoutClubInput
+  pictureReports: PictureReportUpdateManyWithoutClubInput
+  reports: ReportUpdateManyWithoutClubInput
+  tools: ToolUpdateManyWithoutClubInput
+  uniformOwners: UniformOwnerUpdateManyWithoutClubInput
+  sleds: SledUpdateManyWithoutClubInput
+  eventFees: EventFeeUpdateManyWithoutClubInput
+}
+
+input EventFeeUpdateManyWithoutClubInput {
+  create: [EventFeeCreateWithoutClubInput!]
+  connectOrCreate: [EventFeeCreateOrConnectWithoutClubInput!]
+  upsert: [EventFeeUpsertWithWhereUniqueWithoutClubInput!]
+  createMany: EventFeeCreateManyClubInputEnvelope
+  set: [EventFeeWhereUniqueInput!]
+  disconnect: [EventFeeWhereUniqueInput!]
+  delete: [EventFeeWhereUniqueInput!]
+  connect: [EventFeeWhereUniqueInput!]
+  update: [EventFeeUpdateWithWhereUniqueWithoutClubInput!]
+  updateMany: [EventFeeUpdateManyWithWhereWithoutClubInput!]
+  deleteMany: [EventFeeScalarWhereInput!]
+}
+
+input EventFeeUpsertWithWhereUniqueWithoutClubInput {
+  where: EventFeeWhereUniqueInput!
+  update: EventFeeUpdateWithoutClubInput!
+  create: EventFeeCreateWithoutClubInput!
+}
+
+input EventFeeUpdateWithoutClubInput {
+  january: BoolFieldUpdateOperationsInput
+  february: BoolFieldUpdateOperationsInput
+  march: BoolFieldUpdateOperationsInput
+  april: BoolFieldUpdateOperationsInput
+  may: BoolFieldUpdateOperationsInput
+  june: BoolFieldUpdateOperationsInput
+  july: BoolFieldUpdateOperationsInput
+  august: BoolFieldUpdateOperationsInput
+  september: BoolFieldUpdateOperationsInput
+  october: BoolFieldUpdateOperationsInput
+  november: BoolFieldUpdateOperationsInput
+  december: BoolFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: NullableDateTimeFieldUpdateOperationsInput
+  user: UserUpdateOneRequiredWithoutEventFeesInput
+}
+
+input UserUpdateOneRequiredWithoutEventFeesInput {
+  create: UserCreateWithoutEventFeesInput
+  connectOrCreate: UserCreateOrConnectWithoutEventFeesInput
+  upsert: UserUpsertWithoutEventFeesInput
+  connect: UserWhereUniqueInput
+  update: UserUpdateWithoutEventFeesInput
+}
+
+input UserUpsertWithoutEventFeesInput {
+  update: UserUpdateWithoutEventFeesInput!
+  create: UserCreateWithoutEventFeesInput!
+}
+
+input UserUpdateWithoutEventFeesInput {
+  email: StringFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  password: StringFieldUpdateOperationsInput
+  role: IntFieldUpdateOperationsInput
+  club: ClubUpdateOneRequiredWithoutUsersInput
+  score: IntFieldUpdateOperationsInput
+  assist: IntFieldUpdateOperationsInput
+  countTool: IntFieldUpdateOperationsInput
+  absence: IntFieldUpdateOperationsInput
+  lateness: IntFieldUpdateOperationsInput
+  contactLate: IntFieldUpdateOperationsInput
+  countPicture: IntFieldUpdateOperationsInput
+  countReport: IntFieldUpdateOperationsInput
+  commentLate: IntFieldUpdateOperationsInput
+  insurance: IntFieldUpdateOperationsInput
+  member: MemberUpdateOneWithoutUserInput
+  pictureReports: PictureReportUpdateManyWithoutUploadUserInput
+  reports: ReportUpdateManyWithoutUploadUserInput
+  reportComments: ReportCommentUpdateManyWithoutUserInput
+  tools: ToolOwnerUpdateManyWithoutUserInput
+  uniformOwners: UniformOwnerUpdateManyWithoutUserInput
+  postSledComments: SledCommentUpdateManyWithoutUserInput
+  updateSledComments: SledCommentUpdateManyWithoutUpdateUserInput
+  membershipFees: MembershipFeeUpdateManyWithoutUserInput
+}
+
+input EventFeeUpdateWithWhereUniqueWithoutClubInput {
+  where: EventFeeWhereUniqueInput!
+  data: EventFeeUpdateWithoutClubInput!
+}
+
+input EventFeeUpdateManyWithWhereWithoutClubInput {
+  where: EventFeeScalarWhereInput!
+  data: EventFeeUpdateManyMutationInput!
+}
+
+input MembershipFeeUpdateWithWhereUniqueWithoutUserInput {
+  where: MembershipFeeWhereUniqueInput!
+  data: MembershipFeeUpdateWithoutUserInput!
+}
+
+input MembershipFeeUpdateManyWithWhereWithoutUserInput {
+  where: MembershipFeeScalarWhereInput!
+  data: MembershipFeeUpdateManyMutationInput!
+}
+
+input SledCommentUpdateWithWhereUniqueWithoutUserInput {
+  where: SledCommentWhereUniqueInput!
+  data: SledCommentUpdateWithoutUserInput!
+}
+
+input SledCommentUpdateManyWithWhereWithoutUserInput {
+  where: SledCommentScalarWhereInput!
+  data: SledCommentUpdateManyMutationInput!
+}
+
+input SledCommentScalarWhereInput {
+  AND: [SledCommentScalarWhereInput!]
+  OR: [SledCommentScalarWhereInput!]
+  NOT: [SledCommentScalarWhereInput!]
+  id: IntFilter
+  comment: StringFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeNullableFilter
+  sledId: IntFilter
+  userId: IntFilter
+  updateUserId: IntNullableFilter
+}
+
+input SledCommentUpdateManyMutationInput {
+  comment: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: NullableDateTimeFieldUpdateOperationsInput
+}
+
+input UniformOwnerUpdateWithWhereUniqueWithoutClubInput {
+  where: UniformOwnerWhereUniqueInput!
+  data: UniformOwnerUpdateWithoutClubInput!
+}
+
+input UniformOwnerUpdateManyWithWhereWithoutClubInput {
+  where: UniformOwnerScalarWhereInput!
+  data: UniformOwnerUpdateManyMutationInput!
+}
+
+input UniformOwnerScalarWhereInput {
+  AND: [UniformOwnerScalarWhereInput!]
+  OR: [UniformOwnerScalarWhereInput!]
+  NOT: [UniformOwnerScalarWhereInput!]
+  id: IntFilter
+  number: IntFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeNullableFilter
+  userId: IntFilter
+  clubId: IntFilter
+}
+
+input UniformOwnerUpdateManyMutationInput {
+  number: IntFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: NullableDateTimeFieldUpdateOperationsInput
+}
+
+input SledCommentUpdateWithWhereUniqueWithoutUpdateUserInput {
+  where: SledCommentWhereUniqueInput!
+  data: SledCommentUpdateWithoutUpdateUserInput!
+}
+
+input SledCommentUpdateManyWithWhereWithoutUpdateUserInput {
+  where: SledCommentScalarWhereInput!
+  data: SledCommentUpdateManyMutationInput!
+}
+
+input SledCommentUpdateWithWhereUniqueWithoutSledInput {
+  where: SledCommentWhereUniqueInput!
+  data: SledCommentUpdateWithoutSledInput!
+}
+
+input SledCommentUpdateManyWithWhereWithoutSledInput {
+  where: SledCommentScalarWhereInput!
+  data: SledCommentUpdateManyMutationInput!
+}
+
+input SledUpdateWithWhereUniqueWithoutClubInput {
+  where: SledWhereUniqueInput!
+  data: SledUpdateWithoutClubInput!
+}
+
+input SledUpdateManyWithWhereWithoutClubInput {
+  where: SledScalarWhereInput!
+  data: SledUpdateManyMutationInput!
+}
+
+input SledScalarWhereInput {
+  AND: [SledScalarWhereInput!]
+  OR: [SledScalarWhereInput!]
+  NOT: [SledScalarWhereInput!]
+  id: IntFilter
+  name: StringFilter
+  topic: StringFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeNullableFilter
+  clubId: IntFilter
+}
+
+input SledUpdateManyMutationInput {
+  name: StringFieldUpdateOperationsInput
+  topic: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: NullableDateTimeFieldUpdateOperationsInput
+}
+
+input UniformOwnerUpdateWithWhereUniqueWithoutUserInput {
+  where: UniformOwnerWhereUniqueInput!
+  data: UniformOwnerUpdateWithoutUserInput!
+}
+
+input UniformOwnerUpdateManyWithWhereWithoutUserInput {
+  where: UniformOwnerScalarWhereInput!
+  data: UniformOwnerUpdateManyMutationInput!
+}
+
+input ReportCommentUpdateWithWhereUniqueWithoutReportInput {
+  where: ReportCommentWhereUniqueInput!
+  data: ReportCommentUpdateWithoutReportInput!
+}
+
+input ReportCommentUpdateManyWithWhereWithoutReportInput {
+  where: ReportCommentScalarWhereInput!
+  data: ReportCommentUpdateManyMutationInput!
+}
+
+input ReportCommentScalarWhereInput {
+  AND: [ReportCommentScalarWhereInput!]
+  OR: [ReportCommentScalarWhereInput!]
+  NOT: [ReportCommentScalarWhereInput!]
+  id: IntFilter
+  comment: StringFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeNullableFilter
+  userId: IntFilter
+  reportId: IntFilter
+}
+
+input ReportCommentUpdateManyMutationInput {
+  comment: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: NullableDateTimeFieldUpdateOperationsInput
+}
+
+input ReportUpdateWithWhereUniqueWithoutClubInput {
+  where: ReportWhereUniqueInput!
+  data: ReportUpdateWithoutClubInput!
+}
+
+input ReportUpdateManyWithWhereWithoutClubInput {
+  where: ReportScalarWhereInput!
+  data: ReportUpdateManyMutationInput!
+}
+
+input ReportScalarWhereInput {
+  AND: [ReportScalarWhereInput!]
+  OR: [ReportScalarWhereInput!]
+  NOT: [ReportScalarWhereInput!]
+  id: IntFilter
+  title: StringFilter
+  text: StringFilter
+  date: DateTimeFilter
+  time: StringFilter
+  opponent: StringNullableFilter
+  myScore: IntFilter
+  opponentScore: IntFilter
+  category: IntFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeNullableFilter
+  clubId: IntFilter
+  uploadUserId: IntFilter
+}
+
+input ReportUpdateManyMutationInput {
+  title: StringFieldUpdateOperationsInput
+  text: StringFieldUpdateOperationsInput
+  date: DateTimeFieldUpdateOperationsInput
+  time: StringFieldUpdateOperationsInput
+  opponent: NullableStringFieldUpdateOperationsInput
+  myScore: IntFieldUpdateOperationsInput
+  opponentScore: IntFieldUpdateOperationsInput
+  category: IntFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: NullableDateTimeFieldUpdateOperationsInput
+}
+
+input ToolOwnerUpdateWithWhereUniqueWithoutUserInput {
+  where: ToolOwnerWhereUniqueInput!
+  data: ToolOwnerUpdateWithoutUserInput!
+}
+
+input ToolOwnerUpdateManyWithWhereWithoutUserInput {
+  where: ToolOwnerScalarWhereInput!
+  data: ToolOwnerUpdateManyMutationInput!
+}
+
+input ToolOwnerScalarWhereInput {
+  AND: [ToolOwnerScalarWhereInput!]
+  OR: [ToolOwnerScalarWhereInput!]
+  NOT: [ToolOwnerScalarWhereInput!]
+  id: IntFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeNullableFilter
+  toolId: IntFilter
+  userId: IntFilter
+}
+
+input ToolOwnerUpdateManyMutationInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: NullableDateTimeFieldUpdateOperationsInput
+}
+
+input ReportCommentUpdateWithWhereUniqueWithoutUserInput {
+  where: ReportCommentWhereUniqueInput!
+  data: ReportCommentUpdateWithoutUserInput!
+}
+
+input ReportCommentUpdateManyWithWhereWithoutUserInput {
+  where: ReportCommentScalarWhereInput!
+  data: ReportCommentUpdateManyMutationInput!
+}
+
+input ToolOwnerUpdateWithWhereUniqueWithoutToolInput {
+  where: ToolOwnerWhereUniqueInput!
+  data: ToolOwnerUpdateWithoutToolInput!
+}
+
+input ToolOwnerUpdateManyWithWhereWithoutToolInput {
+  where: ToolOwnerScalarWhereInput!
+  data: ToolOwnerUpdateManyMutationInput!
+}
+
+input ToolUpdateWithWhereUniqueWithoutClubInput {
+  where: ToolWhereUniqueInput!
+  data: ToolUpdateWithoutClubInput!
+}
+
+input ToolUpdateManyWithWhereWithoutClubInput {
+  where: ToolScalarWhereInput!
+  data: ToolUpdateManyMutationInput!
+}
+
+input ToolScalarWhereInput {
+  AND: [ToolScalarWhereInput!]
+  OR: [ToolScalarWhereInput!]
+  NOT: [ToolScalarWhereInput!]
+  id: IntFilter
+  name: StringFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeNullableFilter
+  clubId: IntFilter
+}
+
+input ToolUpdateManyMutationInput {
+  name: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: NullableDateTimeFieldUpdateOperationsInput
+}
+
+input ReportUpdateWithWhereUniqueWithoutUploadUserInput {
+  where: ReportWhereUniqueInput!
+  data: ReportUpdateWithoutUploadUserInput!
+}
+
+input ReportUpdateManyWithWhereWithoutUploadUserInput {
+  where: ReportScalarWhereInput!
+  data: ReportUpdateManyMutationInput!
+}
+
+input PictureUpdateManyWithoutPictureReportInput {
+  create: [PictureCreateWithoutPictureReportInput!]
+  connectOrCreate: [PictureCreateOrConnectWithoutPictureReportInput!]
+  upsert: [PictureUpsertWithWhereUniqueWithoutPictureReportInput!]
+  createMany: PictureCreateManyPictureReportInputEnvelope
+  set: [PictureWhereUniqueInput!]
+  disconnect: [PictureWhereUniqueInput!]
+  delete: [PictureWhereUniqueInput!]
+  connect: [PictureWhereUniqueInput!]
+  update: [PictureUpdateWithWhereUniqueWithoutPictureReportInput!]
+  updateMany: [PictureUpdateManyWithWhereWithoutPictureReportInput!]
+  deleteMany: [PictureScalarWhereInput!]
+}
+
+input PictureUpsertWithWhereUniqueWithoutPictureReportInput {
+  where: PictureWhereUniqueInput!
+  update: PictureUpdateWithoutPictureReportInput!
+  create: PictureCreateWithoutPictureReportInput!
+}
+
+input PictureUpdateWithoutPictureReportInput {
+  base64: StringFieldUpdateOperationsInput
+  mainFlag: BoolFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: NullableDateTimeFieldUpdateOperationsInput
+}
+
+input PictureUpdateWithWhereUniqueWithoutPictureReportInput {
+  where: PictureWhereUniqueInput!
+  data: PictureUpdateWithoutPictureReportInput!
+}
+
+input PictureUpdateManyWithWhereWithoutPictureReportInput {
+  where: PictureScalarWhereInput!
+  data: PictureUpdateManyMutationInput!
+}
+
+input PictureScalarWhereInput {
+  AND: [PictureScalarWhereInput!]
+  OR: [PictureScalarWhereInput!]
+  NOT: [PictureScalarWhereInput!]
+  id: IntFilter
+  base64: StringFilter
+  mainFlag: BoolFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeNullableFilter
+  pictureReportId: IntFilter
+}
+
+input PictureUpdateManyMutationInput {
+  base64: StringFieldUpdateOperationsInput
+  mainFlag: BoolFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: NullableDateTimeFieldUpdateOperationsInput
+}
+
+input PictureReportUpdateWithWhereUniqueWithoutClubInput {
+  where: PictureReportWhereUniqueInput!
+  data: PictureReportUpdateWithoutClubInput!
+}
+
+input PictureReportUpdateManyWithWhereWithoutClubInput {
+  where: PictureReportScalarWhereInput!
+  data: PictureReportUpdateManyMutationInput!
+}
+
+input PictureReportScalarWhereInput {
+  AND: [PictureReportScalarWhereInput!]
+  OR: [PictureReportScalarWhereInput!]
+  NOT: [PictureReportScalarWhereInput!]
+  id: IntFilter
+  name: StringFilter
+  date: DateTimeFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeNullableFilter
+  clubId: IntFilter
+  uploadUserId: IntFilter
+}
+
+input PictureReportUpdateManyMutationInput {
+  name: StringFieldUpdateOperationsInput
+  date: DateTimeFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: NullableDateTimeFieldUpdateOperationsInput
+}
+
+input UserUpdateWithWhereUniqueWithoutClubInput {
+  where: UserWhereUniqueInput!
+  data: UserUpdateWithoutClubInput!
+}
+
+input UserUpdateManyWithWhereWithoutClubInput {
+  where: UserScalarWhereInput!
+  data: UserUpdateManyMutationInput!
+}
+
+input UserScalarWhereInput {
+  AND: [UserScalarWhereInput!]
+  OR: [UserScalarWhereInput!]
+  NOT: [UserScalarWhereInput!]
+  id: IntFilter
+  email: StringFilter
+  name: StringFilter
+  password: StringFilter
+  role: IntFilter
+  clubId: IntFilter
+  score: IntFilter
+  assist: IntFilter
+  countTool: IntFilter
+  absence: IntFilter
+  lateness: IntFilter
+  contactLate: IntFilter
+  countPicture: IntFilter
+  countReport: IntFilter
+  commentLate: IntFilter
+  insurance: IntFilter
+}
+
+input UserUpdateManyMutationInput {
+  email: StringFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  password: StringFieldUpdateOperationsInput
+  role: IntFieldUpdateOperationsInput
+  score: IntFieldUpdateOperationsInput
+  assist: IntFieldUpdateOperationsInput
+  countTool: IntFieldUpdateOperationsInput
+  absence: IntFieldUpdateOperationsInput
+  lateness: IntFieldUpdateOperationsInput
+  contactLate: IntFieldUpdateOperationsInput
+  countPicture: IntFieldUpdateOperationsInput
+  countReport: IntFieldUpdateOperationsInput
+  commentLate: IntFieldUpdateOperationsInput
+  insurance: IntFieldUpdateOperationsInput
+}
+
+input PictureReportUpdateWithWhereUniqueWithoutUploadUserInput {
+  where: PictureReportWhereUniqueInput!
+  data: PictureReportUpdateWithoutUploadUserInput!
+}
+
+input PictureReportUpdateManyWithWhereWithoutUploadUserInput {
+  where: PictureReportScalarWhereInput!
+  data: PictureReportUpdateManyMutationInput!
+}
+
+input MemberUpdateWithWhereUniqueWithoutClubInput {
+  where: MemberWhereUniqueInput!
+  data: MemberUpdateWithoutClubInput!
+}
+
+input MemberUpdateManyWithWhereWithoutClubInput {
+  where: MemberScalarWhereInput!
+  data: MemberUpdateManyMutationInput!
+}
+
+input MemberScalarWhereInput {
+  AND: [MemberScalarWhereInput!]
+  OR: [MemberScalarWhereInput!]
+  NOT: [MemberScalarWhereInput!]
+  id: IntFilter
+  name: StringFilter
+  englishName: StringNullableFilter
+  number: IntNullableFilter
+  position: StringNullableFilter
+  birthday: StringNullableFilter
+  height: StringNullableFilter
+  weight: StringNullableFilter
+  strongerSide: StringNullableFilter
+  from: StringNullableFilter
+  occupation: StringNullableFilter
+  hobby: StringNullableFilter
+  skill: StringNullableFilter
+  startBelong: StringNullableFilter
+  startSport: StringNullableFilter
+  chance: StringNullableFilter
+  dream: StringNullableFilter
+  goal: StringNullableFilter
+  image: StringNullableFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeNullableFilter
+  userId: IntFilter
+  clubId: IntFilter
+}
+
+input MemberUpdateManyMutationInput {
+  name: StringFieldUpdateOperationsInput
+  englishName: NullableStringFieldUpdateOperationsInput
+  number: NullableIntFieldUpdateOperationsInput
+  position: NullableStringFieldUpdateOperationsInput
+  birthday: NullableStringFieldUpdateOperationsInput
+  height: NullableStringFieldUpdateOperationsInput
+  weight: NullableStringFieldUpdateOperationsInput
+  strongerSide: NullableStringFieldUpdateOperationsInput
+  from: NullableStringFieldUpdateOperationsInput
+  occupation: NullableStringFieldUpdateOperationsInput
+  hobby: NullableStringFieldUpdateOperationsInput
+  skill: NullableStringFieldUpdateOperationsInput
+  startBelong: NullableStringFieldUpdateOperationsInput
+  startSport: NullableStringFieldUpdateOperationsInput
+  chance: NullableStringFieldUpdateOperationsInput
+  dream: NullableStringFieldUpdateOperationsInput
+  goal: NullableStringFieldUpdateOperationsInput
+  image: NullableStringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: NullableDateTimeFieldUpdateOperationsInput
+}
+
+input ClubCreateInput {
+  name: String!
+  rankName: String!
+  rankUnit: String!
+  createdAt: DateTime
+  updatedAt: DateTime
+  users: UserCreateNestedManyWithoutClubInput
+  schedules: ScheduleCreateNestedManyWithoutClubInput
+  members: MemberCreateNestedManyWithoutClubInput
+  pictureReports: PictureReportCreateNestedManyWithoutClubInput
+  reports: ReportCreateNestedManyWithoutClubInput
+  tools: ToolCreateNestedManyWithoutClubInput
+  uniformOwners: UniformOwnerCreateNestedManyWithoutClubInput
+  sleds: SledCreateNestedManyWithoutClubInput
+  eventFees: EventFeeCreateNestedManyWithoutClubInput
+  membershipFees: MembershipFeeCreateNestedManyWithoutClubInput
+}
+
+input ClubUpdateInput {
+  name: StringFieldUpdateOperationsInput
+  rankName: StringFieldUpdateOperationsInput
+  rankUnit: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: NullableDateTimeFieldUpdateOperationsInput
+  users: UserUpdateManyWithoutClubInput
+  schedules: ScheduleUpdateManyWithoutClubInput
+  members: MemberUpdateManyWithoutClubInput
+  pictureReports: PictureReportUpdateManyWithoutClubInput
+  reports: ReportUpdateManyWithoutClubInput
+  tools: ToolUpdateManyWithoutClubInput
+  uniformOwners: UniformOwnerUpdateManyWithoutClubInput
+  sleds: SledUpdateManyWithoutClubInput
+  eventFees: EventFeeUpdateManyWithoutClubInput
+  membershipFees: MembershipFeeUpdateManyWithoutClubInput
+}
+
+input ReportCreateInput {
+  title: String!
+  text: String!
+  date: DateTime!
+  time: String!
+  opponent: String
+  myScore: Int
+  opponentScore: Int
+  category: Int!
+  createdAt: DateTime
+  updatedAt: DateTime
+  club: ClubCreateNestedOneWithoutReportsInput!
+  uploadUser: UserCreateNestedOneWithoutReportsInput!
+  reportComments: ReportCommentCreateNestedManyWithoutReportInput
+}
+
+input ReportUpdateInput {
+  title: StringFieldUpdateOperationsInput
+  text: StringFieldUpdateOperationsInput
+  date: DateTimeFieldUpdateOperationsInput
+  time: StringFieldUpdateOperationsInput
+  opponent: NullableStringFieldUpdateOperationsInput
+  myScore: IntFieldUpdateOperationsInput
+  opponentScore: IntFieldUpdateOperationsInput
+  category: IntFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: NullableDateTimeFieldUpdateOperationsInput
+  club: ClubUpdateOneRequiredWithoutReportsInput
+  uploadUser: UserUpdateOneRequiredWithoutReportsInput
+  reportComments: ReportCommentUpdateManyWithoutReportInput
+}
+
+input ScheduleCreateInput {
+  activityDay: DateTime!
+  time: String!
+  category: Int!
+  place: String!
+  address: String
+  meetingTime: String!
+  opponent: String
+  matchTime: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  club: ClubCreateNestedOneWithoutSchedulesInput!
+  attendances: AttendanceCreateNestedManyWithoutScheduleInput
+}
+
+input ClubCreateNestedOneWithoutSchedulesInput {
+  create: ClubCreateWithoutSchedulesInput
+  connectOrCreate: ClubCreateOrConnectWithoutSchedulesInput
+  connect: ClubWhereUniqueInput
+}
+
+input ClubCreateWithoutSchedulesInput {
+  name: String!
+  rankName: String!
+  rankUnit: String!
+  createdAt: DateTime
+  updatedAt: DateTime
+  users: UserCreateNestedManyWithoutClubInput
+  members: MemberCreateNestedManyWithoutClubInput
+  pictureReports: PictureReportCreateNestedManyWithoutClubInput
+  reports: ReportCreateNestedManyWithoutClubInput
+  tools: ToolCreateNestedManyWithoutClubInput
+  uniformOwners: UniformOwnerCreateNestedManyWithoutClubInput
+  sleds: SledCreateNestedManyWithoutClubInput
+  eventFees: EventFeeCreateNestedManyWithoutClubInput
+  membershipFees: MembershipFeeCreateNestedManyWithoutClubInput
+}
+
+input ClubCreateOrConnectWithoutSchedulesInput {
+  where: ClubWhereUniqueInput!
+  create: ClubCreateWithoutSchedulesInput!
+}
+
+input ScheduleUpdateInput {
+  activityDay: DateTimeFieldUpdateOperationsInput
+  time: StringFieldUpdateOperationsInput
+  category: IntFieldUpdateOperationsInput
+  place: StringFieldUpdateOperationsInput
+  address: NullableStringFieldUpdateOperationsInput
+  meetingTime: StringFieldUpdateOperationsInput
+  opponent: NullableStringFieldUpdateOperationsInput
+  matchTime: NullableStringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: NullableDateTimeFieldUpdateOperationsInput
+  club: ClubUpdateOneRequiredWithoutSchedulesInput
+  attendances: AttendanceUpdateManyWithoutScheduleInput
+}
+
+input ClubUpdateOneRequiredWithoutSchedulesInput {
+  create: ClubCreateWithoutSchedulesInput
+  connectOrCreate: ClubCreateOrConnectWithoutSchedulesInput
+  upsert: ClubUpsertWithoutSchedulesInput
+  connect: ClubWhereUniqueInput
+  update: ClubUpdateWithoutSchedulesInput
+}
+
+input ClubUpsertWithoutSchedulesInput {
+  update: ClubUpdateWithoutSchedulesInput!
+  create: ClubCreateWithoutSchedulesInput!
+}
+
+input ClubUpdateWithoutSchedulesInput {
+  name: StringFieldUpdateOperationsInput
+  rankName: StringFieldUpdateOperationsInput
+  rankUnit: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: NullableDateTimeFieldUpdateOperationsInput
+  users: UserUpdateManyWithoutClubInput
+  members: MemberUpdateManyWithoutClubInput
+  pictureReports: PictureReportUpdateManyWithoutClubInput
+  reports: ReportUpdateManyWithoutClubInput
+  tools: ToolUpdateManyWithoutClubInput
+  uniformOwners: UniformOwnerUpdateManyWithoutClubInput
+  sleds: SledUpdateManyWithoutClubInput
+  eventFees: EventFeeUpdateManyWithoutClubInput
+  membershipFees: MembershipFeeUpdateManyWithoutClubInput
+}
+
+input AttendanceCreateInput {
+  text: String!
+  status: Int!
+  createdAt: DateTime
+  updatedAt: DateTime
+  schedule: ScheduleCreateNestedOneWithoutAttendancesInput!
+}
+
+input ScheduleCreateNestedOneWithoutAttendancesInput {
+  create: ScheduleCreateWithoutAttendancesInput
+  connectOrCreate: ScheduleCreateOrConnectWithoutAttendancesInput
+  connect: ScheduleWhereUniqueInput
+}
+
+input ScheduleCreateWithoutAttendancesInput {
+  activityDay: DateTime!
+  time: String!
+  category: Int!
+  place: String!
+  address: String
+  meetingTime: String!
+  opponent: String
+  matchTime: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  club: ClubCreateNestedOneWithoutSchedulesInput!
+}
+
+input ScheduleCreateOrConnectWithoutAttendancesInput {
+  where: ScheduleWhereUniqueInput!
+  create: ScheduleCreateWithoutAttendancesInput!
+}
+
+input AttendanceUpdateInput {
+  text: StringFieldUpdateOperationsInput
+  status: IntFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: NullableDateTimeFieldUpdateOperationsInput
+  schedule: ScheduleUpdateOneRequiredWithoutAttendancesInput
+}
+
+input ScheduleUpdateOneRequiredWithoutAttendancesInput {
+  create: ScheduleCreateWithoutAttendancesInput
+  connectOrCreate: ScheduleCreateOrConnectWithoutAttendancesInput
+  upsert: ScheduleUpsertWithoutAttendancesInput
+  connect: ScheduleWhereUniqueInput
+  update: ScheduleUpdateWithoutAttendancesInput
+}
+
+input ScheduleUpsertWithoutAttendancesInput {
+  update: ScheduleUpdateWithoutAttendancesInput!
+  create: ScheduleCreateWithoutAttendancesInput!
+}
+
+input ScheduleUpdateWithoutAttendancesInput {
+  activityDay: DateTimeFieldUpdateOperationsInput
+  time: StringFieldUpdateOperationsInput
+  category: IntFieldUpdateOperationsInput
+  place: StringFieldUpdateOperationsInput
+  address: NullableStringFieldUpdateOperationsInput
+  meetingTime: StringFieldUpdateOperationsInput
+  opponent: NullableStringFieldUpdateOperationsInput
+  matchTime: NullableStringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: NullableDateTimeFieldUpdateOperationsInput
+  club: ClubUpdateOneRequiredWithoutSchedulesInput
+}
+
+input MemberCreateInput {
+  name: String!
+  englishName: String
+  number: Int
+  position: String
+  birthday: String
+  height: String
+  weight: String
+  strongerSide: String
+  from: String
+  occupation: String
+  hobby: String
+  skill: String
+  startBelong: String
+  startSport: String
+  chance: String
+  dream: String
+  goal: String
+  image: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  user: UserCreateNestedOneWithoutMemberInput!
+  club: ClubCreateNestedOneWithoutMembersInput!
+}
+
+input MemberUpdateInput {
+  name: StringFieldUpdateOperationsInput
+  englishName: NullableStringFieldUpdateOperationsInput
+  number: NullableIntFieldUpdateOperationsInput
+  position: NullableStringFieldUpdateOperationsInput
+  birthday: NullableStringFieldUpdateOperationsInput
+  height: NullableStringFieldUpdateOperationsInput
+  weight: NullableStringFieldUpdateOperationsInput
+  strongerSide: NullableStringFieldUpdateOperationsInput
+  from: NullableStringFieldUpdateOperationsInput
+  occupation: NullableStringFieldUpdateOperationsInput
+  hobby: NullableStringFieldUpdateOperationsInput
+  skill: NullableStringFieldUpdateOperationsInput
+  startBelong: NullableStringFieldUpdateOperationsInput
+  startSport: NullableStringFieldUpdateOperationsInput
+  chance: NullableStringFieldUpdateOperationsInput
+  dream: NullableStringFieldUpdateOperationsInput
+  goal: NullableStringFieldUpdateOperationsInput
+  image: NullableStringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: NullableDateTimeFieldUpdateOperationsInput
+  user: UserUpdateOneRequiredWithoutMemberInput
+  club: ClubUpdateOneRequiredWithoutMembersInput
+}
+
+input ToolCreateInput {
+  name: String!
+  createdAt: DateTime
+  updatedAt: DateTime
+  club: ClubCreateNestedOneWithoutToolsInput!
+  toolOwners: ToolOwnerCreateNestedManyWithoutToolInput
+}
+
+input ToolOwnerCreateInput {
+  createdAt: DateTime
+  updatedAt: DateTime
+  tool: ToolCreateNestedOneWithoutToolOwnersInput!
+  user: UserCreateNestedOneWithoutToolsInput!
+}
+
+input ToolOwnerUpdateInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: NullableDateTimeFieldUpdateOperationsInput
+  tool: ToolUpdateOneRequiredWithoutToolOwnersInput
+  user: UserUpdateOneRequiredWithoutToolsInput
+}
+
+input EventFeeCreateInput {
+  january: Boolean!
+  february: Boolean!
+  march: Boolean!
+  april: Boolean!
+  may: Boolean!
+  june: Boolean!
+  july: Boolean!
+  august: Boolean!
+  september: Boolean!
+  october: Boolean!
+  november: Boolean!
+  december: Boolean!
+  createdAt: DateTime
+  updatedAt: DateTime
+  user: UserCreateNestedOneWithoutEventFeesInput!
+  club: ClubCreateNestedOneWithoutEventFeesInput!
+}
+
+input EventFeeUpdateInput {
+  january: BoolFieldUpdateOperationsInput
+  february: BoolFieldUpdateOperationsInput
+  march: BoolFieldUpdateOperationsInput
+  april: BoolFieldUpdateOperationsInput
+  may: BoolFieldUpdateOperationsInput
+  june: BoolFieldUpdateOperationsInput
+  july: BoolFieldUpdateOperationsInput
+  august: BoolFieldUpdateOperationsInput
+  september: BoolFieldUpdateOperationsInput
+  october: BoolFieldUpdateOperationsInput
+  november: BoolFieldUpdateOperationsInput
+  december: BoolFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: NullableDateTimeFieldUpdateOperationsInput
+  user: UserUpdateOneRequiredWithoutEventFeesInput
+  club: ClubUpdateOneRequiredWithoutEventFeesInput
+}
+
+input MembershipFeeCreateInput {
+  january: Boolean!
+  february: Boolean!
+  march: Boolean!
+  april: Boolean!
+  may: Boolean!
+  june: Boolean!
+  july: Boolean!
+  august: Boolean!
+  september: Boolean!
+  october: Boolean!
+  november: Boolean!
+  december: Boolean!
+  createdAt: DateTime
+  updatedAt: DateTime
+  user: UserCreateNestedOneWithoutMembershipFeesInput!
+  club: ClubCreateNestedOneWithoutMembershipFeesInput!
+}
+
+input MembershipFeeUpdateInput {
+  january: BoolFieldUpdateOperationsInput
+  february: BoolFieldUpdateOperationsInput
+  march: BoolFieldUpdateOperationsInput
+  april: BoolFieldUpdateOperationsInput
+  may: BoolFieldUpdateOperationsInput
+  june: BoolFieldUpdateOperationsInput
+  july: BoolFieldUpdateOperationsInput
+  august: BoolFieldUpdateOperationsInput
+  september: BoolFieldUpdateOperationsInput
+  october: BoolFieldUpdateOperationsInput
+  november: BoolFieldUpdateOperationsInput
+  december: BoolFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: NullableDateTimeFieldUpdateOperationsInput
+  user: UserUpdateOneRequiredWithoutMembershipFeesInput
+  club: ClubUpdateOneRequiredWithoutMembershipFeesInput
+}
+
+input UniformOwnerCreateInput {
+  number: Int!
+  createdAt: DateTime
+  updatedAt: DateTime
+  user: UserCreateNestedOneWithoutUniformOwnersInput!
+  club: ClubCreateNestedOneWithoutUniformOwnersInput!
+}
+
+input UniformOwnerUpdateInput {
+  number: IntFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: NullableDateTimeFieldUpdateOperationsInput
+  user: UserUpdateOneRequiredWithoutUniformOwnersInput
+  club: ClubUpdateOneRequiredWithoutUniformOwnersInput
+}
+
+input SledCreateInput {
+  name: String!
+  topic: String!
+  createdAt: DateTime
+  updatedAt: DateTime
+  club: ClubCreateNestedOneWithoutSledsInput!
+  sledComments: SledCommentCreateNestedManyWithoutSledInput
+}
+
+input SledUpdateInput {
+  name: StringFieldUpdateOperationsInput
+  topic: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: NullableDateTimeFieldUpdateOperationsInput
+  club: ClubUpdateOneRequiredWithoutSledsInput
+  sledComments: SledCommentUpdateManyWithoutSledInput
+}
+
+input SledCommentCreateInput {
+  comment: String!
+  createdAt: DateTime
+  updatedAt: DateTime
+  sled: SledCreateNestedOneWithoutSledCommentsInput!
+  user: UserCreateNestedOneWithoutPostSledCommentsInput!
+  updateUser: UserCreateNestedOneWithoutUpdateSledCommentsInput
+}
+
+input SledCommentUpdateInput {
+  comment: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: NullableDateTimeFieldUpdateOperationsInput
+  sled: SledUpdateOneRequiredWithoutSledCommentsInput
+  user: UserUpdateOneRequiredWithoutPostSledCommentsInput
+  updateUser: UserUpdateOneWithoutUpdateSledCommentsInput
+}
+
+input PictureReportCreateInput {
+  name: String!
+  date: DateTime!
+  createdAt: DateTime
+  updatedAt: DateTime
+  club: ClubCreateNestedOneWithoutPictureReportsInput!
+  uploadUser: UserCreateNestedOneWithoutPictureReportsInput!
+  pictures: PictureCreateNestedManyWithoutPictureReportInput
+}
+
+input PictureReportUpdateInput {
+  name: StringFieldUpdateOperationsInput
+  date: DateTimeFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: NullableDateTimeFieldUpdateOperationsInput
+  club: ClubUpdateOneRequiredWithoutPictureReportsInput
+  uploadUser: UserUpdateOneRequiredWithoutPictureReportsInput
+  pictures: PictureUpdateManyWithoutPictureReportInput
+}
+
+input PictureCreateInput {
+  base64: String!
+  mainFlag: Boolean!
+  createdAt: DateTime
+  updatedAt: DateTime
+  pictureReport: PictureReportCreateNestedOneWithoutPicturesInput!
+}
+
+input PictureReportCreateNestedOneWithoutPicturesInput {
+  create: PictureReportCreateWithoutPicturesInput
+  connectOrCreate: PictureReportCreateOrConnectWithoutPicturesInput
+  connect: PictureReportWhereUniqueInput
+}
+
+input PictureReportCreateWithoutPicturesInput {
+  name: String!
+  date: DateTime!
+  createdAt: DateTime
+  updatedAt: DateTime
+  club: ClubCreateNestedOneWithoutPictureReportsInput!
+  uploadUser: UserCreateNestedOneWithoutPictureReportsInput!
+}
+
+input PictureReportCreateOrConnectWithoutPicturesInput {
+  where: PictureReportWhereUniqueInput!
+  create: PictureReportCreateWithoutPicturesInput!
+}
+
+input PictureUpdateInput {
+  base64: StringFieldUpdateOperationsInput
+  mainFlag: BoolFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: NullableDateTimeFieldUpdateOperationsInput
+  pictureReport: PictureReportUpdateOneRequiredWithoutPicturesInput
+}
+
+input PictureReportUpdateOneRequiredWithoutPicturesInput {
+  create: PictureReportCreateWithoutPicturesInput
+  connectOrCreate: PictureReportCreateOrConnectWithoutPicturesInput
+  upsert: PictureReportUpsertWithoutPicturesInput
+  connect: PictureReportWhereUniqueInput
+  update: PictureReportUpdateWithoutPicturesInput
+}
+
+input PictureReportUpsertWithoutPicturesInput {
+  update: PictureReportUpdateWithoutPicturesInput!
+  create: PictureReportCreateWithoutPicturesInput!
+}
+
+input PictureReportUpdateWithoutPicturesInput {
+  name: StringFieldUpdateOperationsInput
+  date: DateTimeFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: NullableDateTimeFieldUpdateOperationsInput
+  club: ClubUpdateOneRequiredWithoutPictureReportsInput
+  uploadUser: UserUpdateOneRequiredWithoutPictureReportsInput
+}
+
+input ReportCommentCreateInput {
+  comment: String!
+  createdAt: DateTime
+  updatedAt: DateTime
+  user: UserCreateNestedOneWithoutReportCommentsInput!
+  report: ReportCreateNestedOneWithoutReportCommentsInput!
+}
+
+input ReportCommentUpdateInput {
+  comment: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: NullableDateTimeFieldUpdateOperationsInput
+  user: UserUpdateOneRequiredWithoutReportCommentsInput
+  report: ReportUpdateOneRequiredWithoutReportCommentsInput
+}

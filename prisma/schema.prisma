@@ -1,0 +1,359 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  binaryTargets = ["native", "linux-musl"]
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+ generator nestgraphql {
+   provider = "node node_modules/prisma-nestjs-graphql"
+   output = "../src/@generated/prisma-nestjs-graphql"
+   fields_Validator_from = "class-validator"
+   fields_Validator_input = true
+   decorate_1_type        = "CreateOne*Args"
+   decorate_1_field       = data
+   decorate_1_name        = ValidateNested
+   decorate_1_from        = "class-validator"
+   decorate_1_arguments   = "[]"
+   decorate_2_type        = "CreateOne*Args"
+   decorate_2_field       = data
+   decorate_2_from        = "class-transformer"
+   decorate_2_arguments   = "['() => {propertyType.0}']"
+   decorate_2_name        = Type
+ }
+
+
+ model User {
+  id            Int       @id @default(autoincrement())
+
+  /// @Validator.IsNotEmpty()
+  /// @Validator.@IsEmail()
+  /// @Validator.MaxLength(100)
+  email         String
+
+  /// @Validator.IsNotEmpty()
+  /// @Validator.MaxLength(100)
+  name          String
+
+  /// @Validator.IsNotEmpty()
+  /// @HideField()
+  /// @Validator.Length(8, 100)
+  password      String
+
+  role          Int       @db.UnsignedTinyInt @default(1)
+  /// @HideField({ input: true, output: true })
+  createdAt     DateTime  @default(now())
+  /// @HideField({ input: true, output: true })
+  updatedAt     DateTime? @updatedAt
+
+  club          Club      @relation(fields: [clubId], references: [id], onDelete: Cascade)
+  clubId        Int
+  score         Int       @default(0)
+  assist        Int       @default(0)
+  countTool     Int       @default(0)
+  absence       Int       @default(0)
+  lateness      Int       @default(0)
+  contactLate   Int       @default(0)
+  countPicture  Int       @default(0)
+  countReport   Int       @default(0)
+  commentLate   Int       @default(0)
+  insurance     Int       @default(0)
+
+  member              Member?
+  pictureReports      PictureReport[]
+  reports             Report[]
+  reportComments      ReportComment[]
+  tools               ToolOwner[]
+  uniformOwners       UniformOwner[]
+  postSledComments    SledComment[]       @relation("postSledComments")
+  updateSledComments  SledComment[]       @relation("updateSledComments")
+  eventFees            EventFee[]
+  membershipFees       MembershipFee[]
+  @@unique([email, clubId])
+}
+
+model Club {
+  id                  Int       @id @default(autoincrement())
+  /// @Validator.IsNotEmpty()
+  /// @Validator.MaxLength(100)
+  name                String
+  /// @Validator.IsNotEmpty()
+  /// @Validator.MaxLength(100)
+  rankName                String
+  /// @Validator.IsNotEmpty()
+  /// @Validator.MaxLength(100)
+  rankUnit                String
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime? @updatedAt
+
+  users               User[]
+  schedules           Schedule[]
+  members             Member[]
+  pictureReports      PictureReport[]
+  reports             Report[]
+  tools               Tool[]
+  uniformOwners       UniformOwner[]
+  sleds               Sled[]
+  eventFees           EventFee[]
+  membershipFees      MembershipFee[]
+}
+
+model Schedule {
+  id                  Int       @id @default(autoincrement())
+  activityDay         DateTime  @db.Date
+  /// @Validator.MaxLength(100)
+  time                String
+  category            Int       @db.UnsignedTinyInt
+  /// @Validator.MaxLength(100)
+  place               String
+  /// @Validator.MaxLength(100)
+  address             String?
+  /// @Validator.MaxLength(100)
+  meetingTime         String
+  /// @Validator.IsOptional()
+  /// @Validator.MaxLength(100)
+  opponent            String?
+  /// @Validator.IsOptional()
+  /// @Validator.MaxLength(100)
+  matchTime           String?
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime? @updatedAt
+
+  club                Club      @relation(fields: [clubId], references: [id], onDelete: Cascade)
+  clubId              Int
+  attendances         Attendance[]
+}
+
+model Attendance {
+  id                  Int       @id @default(autoincrement())
+  /// @Validator.MaxLength(100)
+  text                String
+  status              Int       @db.UnsignedTinyInt
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime? @updatedAt
+
+  schedule            Schedule  @relation(fields: [scheduleId], references: [id], onDelete: Cascade)
+  scheduleId          Int
+}
+
+model PictureReport {
+  id                  Int       @id @default(autoincrement())
+  name                String
+  date                DateTime
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime? @updatedAt
+
+  club                Club      @relation(fields: [clubId], references: [id], onDelete: Cascade)
+  clubId              Int
+  uploadUser          User      @relation(fields: [uploadUserId], references: [id])
+  uploadUserId        Int
+  pictures            Picture[]
+}
+
+model Picture {
+  id                  Int       @id @default(autoincrement())
+  base64              String    @db.LongText
+  mainFlag            Boolean
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime? @updatedAt
+
+  pictureReport       PictureReport   @relation(fields: [pictureReportId], references: [id], onDelete: Cascade)
+  pictureReportId     Int
+}
+
+model Report {
+  id                  Int       @id @default(autoincrement())
+  title               String
+  text                String    @db.LongText
+  date                DateTime
+  time                String
+  opponent            String?
+  myScore             Int       @default(0)
+  opponentScore       Int       @default(0)
+  category            Int
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime? @updatedAt
+
+  club                Club      @relation(fields: [clubId], references: [id], onDelete: Cascade)
+  clubId              Int
+  uploadUser          User      @relation(fields: [uploadUserId], references: [id])
+  uploadUserId        Int
+  reportComments      ReportComment[]
+}
+
+model ReportComment {
+  id                  Int       @id @default(autoincrement())
+  comment             String    @db.LongText
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime? @updatedAt
+
+  user                User      @relation(fields: [userId], references: [id])
+  userId              Int
+  report              Report    @relation(fields: [reportId], references: [id], onDelete: Cascade)
+  reportId            Int
+}
+
+model Tool {
+  id                  Int       @id @default(autoincrement())
+  /// @Validator.MaxLength(100)
+  name                String
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime? @updatedAt
+
+  club                Club      @relation(fields: [clubId], references: [id], onDelete: Cascade)
+  clubId              Int
+  toolOwners          ToolOwner[]
+}
+
+model ToolOwner {
+  id                  Int       @id @default(autoincrement())
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime? @updatedAt
+
+  tool                Tool      @relation(fields: [toolId], references: [id], onDelete: Cascade)
+  toolId              Int
+  user                User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId              Int
+}
+
+model Sled {
+  id                  Int       @id @default(autoincrement())
+  /// @Validator.MaxLength(100)
+  name                String
+  topic               String    @db.LongText
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime? @updatedAt
+
+  club                Club      @relation(fields: [clubId], references: [id], onDelete: Cascade)
+  clubId              Int
+  sledComments        SledComment[]
+}
+
+model SledComment {
+  id                  Int       @id @default(autoincrement())
+  comment             String    @db.LongText
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime? @updatedAt
+
+  sled                Sled      @relation(fields: [sledId], references: [id], onDelete: Cascade)
+  sledId              Int
+  user                User      @relation("postSledComments", fields: [userId], references: [id])
+  userId              Int
+  updateUser          User?     @relation("updateSledComments", fields: [updateUserId], references: [id])
+  updateUserId        Int?
+}
+
+model Member {
+  id                  Int       @id @default(autoincrement())
+  /// @Validator.MaxLength(100)
+  name                String
+  /// @Validator.MaxLength(100)
+  /// @Validator.IsOptional()
+  englishName         String?
+  number              Int?
+  /// @Validator.MaxLength(100)
+  /// @Validator.IsOptional()
+  position            String?
+  /// @Validator.MaxLength(100)
+  /// @Validator.IsOptional()
+  birthday            String?
+  /// @Validator.MaxLength(100)
+  /// @Validator.IsOptional()
+  height              String?
+  /// @Validator.MaxLength(100)
+  /// @Validator.IsOptional()
+  weight              String?
+  /// @Validator.MaxLength(100)
+  /// @Validator.IsOptional()
+  strongerSide        String?
+  /// @Validator.MaxLength(100)
+  /// @Validator.IsOptional()
+  from                String?
+  /// @Validator.MaxLength(100)
+  /// @Validator.IsOptional()
+  occupation          String?
+  /// @Validator.MaxLength(100)
+  /// @Validator.IsOptional()
+  hobby               String?
+  /// @Validator.MaxLength(100)
+  /// @Validator.IsOptional()
+  skill               String?
+  startBelong         String?   @db.LongText
+  startSport          String?   @db.LongText
+  chance              String?   @db.LongText
+  dream               String?   @db.LongText
+  goal                String?   @db.LongText
+  image               String?   @db.LongText
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime? @updatedAt
+
+  user                User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId              Int       @unique
+  club                Club      @relation(fields: [clubId], references: [id], onDelete: Cascade)
+  clubId              Int
+}
+
+model UniformOwner {
+  id                  Int       @id @default(autoincrement())
+  number              Int
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime? @updatedAt
+
+  user                User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId              Int
+  club                Club      @relation(fields: [clubId], references: [id], onDelete: Cascade)
+  clubId              Int
+}
+
+model EventFee {
+  id                  Int       @id @default(autoincrement())
+  january             Boolean
+  february            Boolean
+  march               Boolean
+  april               Boolean
+  may                 Boolean
+  june                Boolean
+  july                Boolean
+  august              Boolean
+  september           Boolean
+  october             Boolean
+  november            Boolean
+  december            Boolean
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime? @updatedAt
+
+  user                User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId              Int
+  club                Club      @relation(fields: [clubId], references: [id], onDelete: Cascade)
+  clubId              Int
+}
+
+model MembershipFee {
+  id                  Int       @id @default(autoincrement())
+  january             Boolean
+  february            Boolean
+  march               Boolean
+  april               Boolean
+  may                 Boolean
+  june                Boolean
+  july                Boolean
+  august              Boolean
+  september           Boolean
+  october             Boolean
+  november            Boolean
+  december            Boolean
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime? @updatedAt
+
+  user                User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId              Int
+  club                Club      @relation(fields: [clubId], references: [id], onDelete: Cascade)
+  clubId              Int
+}
+

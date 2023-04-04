@@ -1,0 +1,27 @@
+version: '3.3'
+services:
+  api:
+    container_name: api
+    build: .
+    tty: true
+    ports:
+      - '80:80'
+    volumes:
+      - type: bind
+        source: .
+        target: /api
+
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: develop
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+      TZ: 'Asia/Tokyo'
+    command: --innodb-use-native-aio=0
+      --default-authentication-plugin=mysql_native_password
+    volumes:
+      - ./docker/db/data:/var/lib/mysql
+    ports:
+      - 3306:3306

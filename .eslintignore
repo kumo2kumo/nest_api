@@ -1,0 +1,9 @@
+**/node_modules/*
+**/docker/*
+**/dist/*
+**/prisma/*
+package.json
+renovate.json
+*.config.js
+.eslintrc.js
+/src/@generated/prisma-nestjs-graphql/**
