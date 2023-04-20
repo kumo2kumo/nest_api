@@ -1,4 +1,4 @@
-# Bagordare府中　HP＆掲示板アプリ　APIリポジトリ
+HP＆掲示板アプリ　APIリポジトリ
 
 ## Dockerの環境構築
 ```
